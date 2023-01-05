@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Pudufesor:build:production",
+            "firebaseProject": "pudufesor-b4853",
+            "firebaseHostingSite": "pudufesor-b4853"
+          }
         }
       }
     }

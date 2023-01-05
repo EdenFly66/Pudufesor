@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pudufesor-b4853": {
+      "hosting": {
+        "Pudufesor": [
+          "pudufesor-b4853"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pudufesor-b4853"
+  }
+}

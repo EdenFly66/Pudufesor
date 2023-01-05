@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <a id="icono"  href="">
+        <img src="/assets/LogoPudufesor.png" alt="Logo Pudúfesor">
+        <h1>Pudúfesor</h1>
+    </a>
+    
+    <div id="botones">
+        <div *ngIf="estadoSesion">
+            <button (click)="botonIngresar()" type="button" class="btn">Ingresar</button>
+        </div>
+        <div *ngIf="!estadoSesion">
+            <button (click)="botonSalir()" type="button" class="btn">Salir</button>
+        </div>
+        <div *ngIf="!estadoSesion">
+            <button (click)="botonPerfil()" type="button" class="btn">Perfil</button>
+        </div>
+        
+    </div>
+    
+</div>

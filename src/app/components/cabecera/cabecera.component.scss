@@ -1,0 +1,43 @@
+.container-fluid{
+    height:120px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    background-color: rgba(31, 30, 27, 0.85);
+
+    #icono{
+        align-items: center;
+        justify-content: left;
+        text-decoration: none;
+        align-self: center;
+        display: flex;
+        color: black;
+        font-family: 'Balsamiq Sans';
+        height: 120px;
+        padding: 20px;
+        
+        
+        img{
+            margin-right: 20px;
+            display: flex;
+            height: 90px;
+            width: 120px;
+            
+        }
+
+        h1{
+           color:#000000; 
+           text-shadow: rgb(116, 112, 112) 2px 5px;
+        }
+           
+    }
+    
+    #botones{
+        justify-content: space-between;
+        padding: 10px;
+
+        .btn{
+            margin: 5px;
+        }
+    }
+}
