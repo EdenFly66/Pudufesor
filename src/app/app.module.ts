@@ -16,6 +16,7 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
+import { PieComponent } from './components/pie/pie.component';
 
 const appRoutes:Routes=[
   {path:'',component:PrincipalComponent},
@@ -32,6 +33,7 @@ const appRoutes:Routes=[
     CabeceraComponent,
     IngresarComponent,
     PerfilComponent,
+    PieComponent,
   ],
   imports: [
     FormsModule,
