@@ -1,1 +1,73 @@
-<p>registrar works!</p>
+<div id="f">
+    <form (ngSubmit)="registrar()" [formGroup]="formulario">
+        <h3 style="text-align: center;">Crear Cuenta</h3>
+        <hr>
+        <div class="mb-4">
+            <label for="correo" class="form-label">Correo electrónico:</label>
+            <input
+            type="email"
+            class="form-control"
+            id="correo"
+            name="correo"
+            formControlName="correo"
+            />
+        </div>
+
+        <div
+        *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['required']"
+        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
+      >
+        Este campo es obligatorio.
+      </div>
+
+      <div
+        *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['email']"
+        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
+      >
+        Debe ser un correo válido.
+      </div>
+
+        <br>
+        <div class="mb-4">
+            <label for="contrasena" class="form-label">Contraseña:</label>
+            <input
+            type="password"
+            class="form-control"
+            id="contrasena"
+            name="contrasena"
+            formControlName="contrasena"
+            />
+        </div>
+
+        <div
+        *ngIf="formulario.get('contrasena')?.touched && formulario.get('contrasena')?.errors?.['required']"
+        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
+      >
+        Este campo es obligatorio.
+      </div>
+
+      <br>
+      <div class="mb-4">
+        <label for="contrasena2" class="form-label">Repita Contraseña:</label>
+        <input
+        type="password"
+        class="form-control"
+        id="contrasena2"
+        name="contrasena2"
+        formControlName="contrasena2"
+        />
+    </div>
+
+        <div
+        *ngIf="!compararContrasenas()"
+        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
+        >
+        Las contraseñas no coinciden.
+        </div>
+
+        <hr>
+        <button type="submit" class="btn" [disabled]="!compararContrasenas() || formulario.get('correo')?.errors?.['required'] || formulario.get('correo')?.errors?.['email'] || formulario.get('contrasena')?.errors?.['required']">Crear Cuenta</button>
+        <hr>
+        <a id="sesion" href="/ingresar">Si ya tienes cuenta, inicia sesión clickeando aquí.</a>
+    </form>
+</div>

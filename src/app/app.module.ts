@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
-
+import { AngularFireModule } from '@angular/fire/compat';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { Routes, RouterModule } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
@@ -16,12 +16,14 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
+import { VerificadoComponent } from './components/verificado/verificado.component';
 
 const appRoutes:Routes=[
   {path:'',component:PrincipalComponent},
   {path:'ingresar',component:IngresarComponent},
   {path:'registrar',component:RegistrarComponent},
-  {path:'perfil',component:PerfilComponent}
+  {path:'perfil',component:PerfilComponent},
+  {path:'verificado',component:VerificadoComponent}
 ]
 
 @NgModule({
@@ -31,9 +33,13 @@ const appRoutes:Routes=[
     RegistrarComponent,
     CabeceraComponent,
     IngresarComponent,
-    PerfilComponent
+    PerfilComponent,
+    VerificadoComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     AppRoutingModule,

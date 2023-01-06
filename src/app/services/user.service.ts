@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { signOut } from 'firebase/auth';
+import { Auth } from '@angular/fire/auth';
+import { FirebaseErrorService } from './firebase-error.service';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +11,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export class UserService {
 
-  constructor(private afAuth:AngularFireAuth) { }
+  constructor(private afAuth:AngularFireAuth, private auth:Auth, private firebaseError:FirebaseErrorService, private firestore:Firestore) { }
 
   async getUid(){
     const user = await this.afAuth.currentUser;
@@ -26,4 +30,30 @@ export class UserService {
     return true
   }
 
+  cerrarSesion(){
+    return signOut(this.auth);
+  }
+
+  iniciarSesion(correo:any,contrasena:any):void{
+    this.afAuth.signInWithEmailAndPassword(correo,contrasena).catch((error)=>
+      alert(this.firebaseError.firebaseError(error.code))
+    )
+  }
+
+  verificarCorreo(){
+    this.afAuth.currentUser.then(user=> user?.sendEmailVerification())
+  }
+
+  async guardarUsuario(correo:any){
+    const id = await this.getUid();
+    const rol = 'usuario'
+    const obj = Object.assign({
+        "UID":id,
+        "usuario":rol,
+        "Correo electrónico":correo
+      })
+    const ref = collection(this.firestore,'Usuarios');
+    return addDoc(ref,obj);
+  }
+ 
 }

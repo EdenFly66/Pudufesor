@@ -21,7 +21,7 @@ export class CabeceraComponent {
   }
 
   botonSalir(){
-
+    
   }
 
   botonPerfil(){
@@ -29,7 +29,7 @@ export class CabeceraComponent {
   }
   
   estadoSesion(){
-    return this.userSv.conexion()
+    //return this.userSv.conexion()
   }
 
 }
