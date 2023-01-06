@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth';
 import { Auth } from '@angular/fire/auth';
 import { FirebaseErrorService } from './firebase-error.service';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +50,16 @@ export class UserService {
     const rol = 'usuario'
     const obj = Object.assign({
         "UID":id,
-        "usuario":rol,
+        "rol":rol,
         "Correo electrónico":correo
       })
     const ref = collection(this.firestore,'Usuarios');
+    Swal.fire({
+      title: '¡Registrado!',
+      text: 'Verifica tu correo antes de iniciar sesión.',
+      icon: 'success',
+      allowOutsideClick: false,
+    })
     return addDoc(ref,obj);
   }
  

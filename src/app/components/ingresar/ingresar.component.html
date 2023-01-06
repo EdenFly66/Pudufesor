@@ -1,54 +1,63 @@
-<div id="f">
-    <form (ngSubmit)="ingresar()" [formGroup]="formulario">
-        <h3 style="text-align: center;">Iniciar sesión</h3>
-        <hr>
-        <div class="mb-4">
-            <label for="correo" class="form-label">Correo electrónico:</label>
-            <input
-            type="email"
-            class="form-control"
-            id="correo"
-            name="correo"
-            formControlName="correo"
-            />
+<div id="contenedor">
+  <div id="central">
+    <div id="login">
+      <form (ngSubmit)="ingresar()" [formGroup]="formulario">
+        <div class="titulo">
+          <h3 style="text-align: center;">Bienvenido</h3>
+          <hr>
+        </div>
+          
+          <div class="mb-4">
+              <label for="correo" class="form-label">Correo electrónico:</label>
+              <input
+              type="email"
+              class="form-control"
+              id="correo"
+              name="correo"
+              formControlName="correo"
+              />
+          </div>
+
+          <div
+          *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['required']"
+          style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;"
+        >
+          Este campo es obligatorio.
         </div>
 
         <div
-        *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['required']"
-        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
-      >
-        Este campo es obligatorio.
-      </div>
-
-      <div
-        *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['email']"
-        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
-      >
-        Debe ser un correo válido.
-      </div>
-
-        <br>
-        <div class="mb-4">
-            <label for="contrasena" class="form-label">Contraseña:</label>
-            <input
-            type="password"
-            class="form-control"
-            id="contrasena"
-            name="contrasena"
-            formControlName="contrasena"
-            />
+          *ngIf="formulario.get('correo')?.touched && formulario.get('correo')?.errors?.['email']"
+          style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;"
+        >
+          Debe ser un correo válido.
         </div>
 
-        <div
-        *ngIf="formulario.get('contrasena')?.touched && formulario.get('contrasena')?.errors?.['required']"
-        style="background-color:#827957; color: rgba(31, 30, 27, 0.85)"
-      >
-        Este campo es obligatorio.
-      </div>
+          <br>
+          <div class="mb-4">
+              <label for="contrasena" class="form-label">Contraseña:</label>
+              <input
+              type="password"
+              class="form-control"
+              id="contrasena"
+              name="contrasena"
+              formControlName="contrasena"
+              />
+          </div>
 
-        <hr>
-        <button type="submit" class="btn" [disabled]="formulario.get('correo')?.errors?.['required'] || formulario.get('correo')?.errors?.['email'] || formulario.get('contrasena')?.errors?.['required']">Iniciar Sesión</button>
-        <hr>
-        <a id="registro" href="/registrar">Si no tienes cuenta, únete clickeando aquí.</a>
-    </form>
+          <div
+          *ngIf="formulario.get('contrasena')?.touched && formulario.get('contrasena')?.errors?.['required']"
+          style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;"
+        >
+          Este campo es obligatorio.
+        </div>
+
+          <hr>
+          <div class="pie-form">
+            <button  type="submit" class="btn">Iniciar Sesión</button>
+           <hr>
+            <a href="/registrar">¿No tienes Cuenta? Registrate</a>
+          </div>
+      </form>
+    </div>
+  </div>    
 </div>

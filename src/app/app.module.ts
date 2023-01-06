@@ -16,14 +16,12 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
-import { VerificadoComponent } from './components/verificado/verificado.component';
 
 const appRoutes:Routes=[
   {path:'',component:PrincipalComponent},
   {path:'ingresar',component:IngresarComponent},
   {path:'registrar',component:RegistrarComponent},
   {path:'perfil',component:PerfilComponent},
-  {path:'verificado',component:VerificadoComponent}
 ]
 
 @NgModule({
@@ -34,7 +32,6 @@ const appRoutes:Routes=[
     CabeceraComponent,
     IngresarComponent,
     PerfilComponent,
-    VerificadoComponent
   ],
   imports: [
     FormsModule,

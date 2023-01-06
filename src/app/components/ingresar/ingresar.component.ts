@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingresar',
@@ -22,14 +23,25 @@ export class IngresarComponent {
   }
 
   ingresar(){
-    const email = this.formulario.value.email;
-    const password1 = this.formulario.value.password1;
-
-    this.afAuth.signInWithEmailAndPassword(email,password1).then(()=>{
+    const email = this.formulario.value.correo;
+    const password1 = this.formulario.value.contrasena;
+    console.log(this.formulario.value.correo)
+    if(this.formulario.value.correo==="" || this.formulario.value.contrasena===""){
+      Swal.fire({
+        title: '¡Cuidado!',
+        text: 'Faltan datos por completar.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
+    }
+    else{
+      this.afAuth.signInWithEmailAndPassword(email,password1).then(()=>{
       this.router.navigate(['']);
     }).catch((error)=>
       alert(this.firebaseError.firebaseError(error.code))
     )
+    }
+    
   }
 
 }

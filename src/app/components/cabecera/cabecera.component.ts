@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -28,8 +29,8 @@ export class CabeceraComponent {
     this.router.navigate(['/perfil'])
   }
   
-  estadoSesion(){
-    //return this.userSv.conexion()
+  estadoSesion():Observable<boolean>{
+    return this.userSv.conexion() as unknown as Observable<boolean>
   }
 
 }
