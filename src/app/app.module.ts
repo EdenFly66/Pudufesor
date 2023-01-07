@@ -9,6 +9,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
@@ -17,12 +18,15 @@ import { IngresarComponent } from './components/ingresar/ingresar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
 import { PieComponent } from './components/pie/pie.component';
+import { RecuperarComponent } from './components/recuperar/recuperar.component';
 
 const appRoutes:Routes=[
-  {path:'',component:PrincipalComponent},
-  {path:'ingresar',component:IngresarComponent},
+  {path:'',component:IngresarComponent},
   {path:'registrar',component:RegistrarComponent},
-  {path:'perfil',component:PerfilComponent},
+  {path:'recuperar',component:RecuperarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'perfil',component:PerfilComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  
 ]
 
 @NgModule({
@@ -34,6 +38,7 @@ const appRoutes:Routes=[
     IngresarComponent,
     PerfilComponent,
     PieComponent,
+    RecuperarComponent,
   ],
   imports: [
     FormsModule,

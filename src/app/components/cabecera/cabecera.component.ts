@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,27 +9,18 @@ import { UserService } from 'src/app/services/user.service';
   providers: [UserService]
 })
 export class CabeceraComponent {
-
-  
-
   constructor(private router:Router, private userSv: UserService){
 
   }
-
-  botonIngresar(){
-    this.router.navigate(['/ingresar'])
-  }
-
+  
   botonSalir(){
-    
+    this.userSv.cerrarSesion().then(()=>{
+      this.router.navigate([''])
+    })
   }
 
   botonPerfil(){
     this.router.navigate(['/perfil'])
-  }
-  
-  estadoSesion():Observable<boolean>{
-    return this.userSv.conexion() as unknown as Observable<boolean>
   }
 
 }

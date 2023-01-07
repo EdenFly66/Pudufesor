@@ -16,8 +16,7 @@ export class IngresarComponent {
 
   constructor(private readonly fb: FormBuilder, private afAuth: AngularFireAuth, private router:Router, private firebaseError:FirebaseErrorService){
     this.formulario = this.fb.group({
-      correo: ['',[Validators.required, Validators.email],
-      ],
+      correo: ['',[Validators.required, Validators.email],],
       contrasena:['',[Validators.required]]
     })
   }
@@ -25,7 +24,6 @@ export class IngresarComponent {
   ingresar(){
     const email = this.formulario.value.correo;
     const password1 = this.formulario.value.contrasena;
-    console.log(this.formulario.value.correo)
     if(this.formulario.value.correo==="" || this.formulario.value.contrasena===""){
       Swal.fire({
         title: '¡Cuidado!',
@@ -36,7 +34,7 @@ export class IngresarComponent {
     }
     else{
       this.afAuth.signInWithEmailAndPassword(email,password1).then(()=>{
-      this.router.navigate(['']);
+      this.router.navigate(['/principal']);
     }).catch((error)=>
       alert(this.firebaseError.firebaseError(error.code))
     )

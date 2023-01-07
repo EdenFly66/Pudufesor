@@ -5,6 +5,7 @@ import { Auth } from '@angular/fire/auth';
 import { FirebaseErrorService } from './firebase-error.service';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,15 @@ import Swal from 'sweetalert2';
 
 export class UserService {
 
-  constructor(private afAuth:AngularFireAuth, private auth:Auth, private firebaseError:FirebaseErrorService, private firestore:Firestore) { }
+  show:boolean = true
+
+  constructor(private afAuth:AngularFireAuth, private auth:Auth, private firebaseError:FirebaseErrorService, private firestore:Firestore, private router:Router) { 
+
+  }
 
   async getUid(){
     const user = await this.afAuth.currentUser;
-    if(user === null){
+    if(user === undefined){
       return null;
     }
     else{
@@ -32,7 +37,14 @@ export class UserService {
   }
 
   cerrarSesion(){
-    return signOut(this.auth);
+    return signOut(this.auth).then(()=>{
+      Swal.fire({
+        title: 'Has salido con éxito',
+        text: 'Vuelve pronto.',
+        icon: 'success',
+        allowOutsideClick: false,
+      })
+    });
   }
 
   iniciarSesion(correo:any,contrasena:any):void{
@@ -62,5 +74,18 @@ export class UserService {
     })
     return addDoc(ref,obj);
   }
- 
+  
+  recuperarContrasena(email:any){
+    this.afAuth.sendPasswordResetEmail(email).then(()=>{
+      Swal.fire({
+        title: '¡Correo enviado!',
+        text: 'Revisa tu correo electrónico.',
+        icon: 'success',
+        allowOutsideClick: false,
+      })
+      this.router.navigate([''])
+    }).catch((error)=>{
+      this.firebaseError.firebaseError(error.code);
+    })
+  }
 }
