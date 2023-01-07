@@ -1,0 +1,121 @@
+#barra{
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+    height: 40px;
+    display: flex;
+    align-items:center;
+    justify-content: flex-start;
+    padding: 5px;
+    .h3{
+        margin-left: 90vh;
+        color: black;
+        font-family: 'Balsamiq Sans';
+        font-weight: bold;
+        font-size: larger;
+        display: flex;
+    }
+}
+
+.row{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    justify-content: space-between;
+    .col{
+        margin: 1px;
+    }
+    
+}
+
+
+
+img{
+    height: 190px;
+    width: 190px;
+}
+
+.btn{
+    font-family: "Balsamiq Sans";
+}
+
+///////////////////
+
+.cards {
+    display: flex;
+    justify-content: center;
+    min-width: 100vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 20px;
+    
+    .card{
+        padding: 20px;
+        justify-content: center;
+        border-radius: 5px;
+        border: solid rgba(255, 255, 255, 0.767) 3px;
+        text-align: center;
+        font-family:'Balsamiq Sans';
+        margin: 0px auto;
+    }
+
+    .card:hover{
+        img{
+            transform: scale(1.1,1.1);
+        }
+    }
+
+    .button{
+        border-radius: 3px;
+        border: solid white 3px;
+        font-weight: bold;
+        font-size: large;
+        font-family:cursive;
+        margin:0px auto;
+        color: white;
+        height: 30px;
+        width: 150px;
+    }
+
+    .button:hover{
+        border: solid #4a4aa3 3px;
+        color:#4a4aa3;
+    }
+
+    #contenidos{
+        background-color: rgba(80,173,169);
+        .button{
+            background-color: rgba(80,173,169);
+        }
+
+        .button:hover{
+            background-color: white;
+        }
+    }
+
+    #ejercitar{
+        margin-left: 50px;
+        margin-right: 50px;
+        background-color: rgba(88,173,80);
+        .button{
+            background-color: rgba(88,173,80);
+        }
+
+        .button:hover{
+            background-color: white;
+        }
+    }
+
+    #puduebas{
+        background-color: rgba(126,70,150);
+        .button{
+            background-color: rgba(126,70,150);
+        }
+
+        .button:hover{
+            background-color: white;
+        }
+    }
+}

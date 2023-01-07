@@ -6,6 +6,8 @@
     background-color: #4A4AA3;
     border-top: solid #000000  5px;
     border-bottom: solid #000000  5px;
+    margin: 0;
+    padding-right: 50px;
     #icono{
         align-items: center;
         justify-content: left;
@@ -35,5 +37,10 @@
         align-self: center;
         color: black;
         margin: 20px;
+    }
+}
+@media (max-width:600px){
+    .container-fluid{
+        padding-right: 200px;
     }
 }
