@@ -23,7 +23,7 @@ import { RecuperarComponent } from './components/recuperar/recuperar.component';
 const appRoutes:Routes=[
   {path:'',component:IngresarComponent},
   {path:'registrar',component:RegistrarComponent},
-  {path:'recuperar',component:RecuperarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'recuperar',component:RecuperarComponent},
   {path:'perfil',component:PerfilComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   

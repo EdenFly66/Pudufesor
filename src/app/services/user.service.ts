@@ -25,6 +25,7 @@ export class UserService {
       return null;
     }
     else{
+      console.log(user?.uid)
       return user?.uid;
     }
   }
@@ -63,7 +64,7 @@ export class UserService {
     const obj = Object.assign({
         "UID":id,
         "rol":rol,
-        "Correo electrónico":correo
+        "correo":correo
       })
     const ref = collection(this.firestore,'Usuarios');
     Swal.fire({
