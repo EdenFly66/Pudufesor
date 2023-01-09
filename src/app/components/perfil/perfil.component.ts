@@ -20,7 +20,6 @@ export class PerfilComponent {
 
   async ngOnInit(){
     const id:any = await this.userSv.getUid()
-    console.log('variable id ->',id)
     const q = query(collection(this.firestore,'Usuarios'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(e => {
@@ -31,6 +30,5 @@ export class PerfilComponent {
         this.rol = datos.rol;
       } 
     });
-    console.log(this.id,this.correo,this.rol)
   }
 }

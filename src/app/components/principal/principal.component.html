@@ -1,22 +1,60 @@
 <app-cabecera></app-cabecera>
 
-<div class="centered">
+<div *ngIf="this.rol==='usuario'">
+    <div class="centered">
+        <form class="filtro" [formGroup]="formulario">
+            <select name="curso" class="form-control" id="curso" name="curso" formControlName="curso">
+                <option>Curso</option>
+                <option *ngFor="let x of this.cursos.sort()">{{x}}</option>
+            </select>
+            <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
+                <option>Asignatura</option>
+                <option *ngFor="let y of this.asignaturas.sort()">{{y}}</option>
+            </select>
+        </form>
+
+        <section class="cards">
+            <article id="contenidos" class="card">
+                <img  src="https://i.imgur.com/zLL1KLF.jpeg">
+                <br><br>
+                <button (click)="contenidos()" class="button">CONTENIDOS</button>
+                
+            </article><!-- /card-one -->
+            <article id="ejercitar" class="card">
+                <img  src="https://i.imgur.com/yRMehyF.jpeg">
+                <br><br>
+                <button (click)="ejercitar()" class="button">EJERCITAR</button>
+            </article><!-- /card-one -->
+            <article id="puduebas" class="card">
+                <img  src="https://i.imgur.com/OsWqFQx.jpeg">
+                <br><br>
+                <button (click)="puduebas()" class="button">PUDÚEBAS</button>
+            </article><!-- /card-one -->
+        </section>
+    </div>
+</div>
+
+<div *ngIf="this.rol==='admin'">
     <section class="cards">
-        <article id="contenidos" class="card">
+        <article id="agregarCurso" class="card">
             <img  src="https://i.imgur.com/zLL1KLF.jpeg">
             <br><br>
-            <button class="button">CONTENIDOS</button>
-            
+            <button (click)="agregarCurso()" class="button">CURSOS</button>
         </article><!-- /card-one -->
-        <article id="ejercitar" class="card">
+        <article id="agregarAsignatura" class="card">
             <img  src="https://i.imgur.com/yRMehyF.jpeg">
             <br><br>
-            <button class="button">EJERCITAR</button>
+            <button (click)="agregarAsignatura()" class="button">ASIGNATURAS</button>
         </article><!-- /card-one -->
-        <article id="puduebas" class="card">
+        <article id="agregarMaterial" class="card">
+            <img  src="https://i.imgur.com/zLL1KLF.jpeg">
+            <br><br>
+            <button (click)="agregarMaterial()" class="button">MATERIAL</button>
+        </article><!-- /card-one -->
+        <article id="agregarPregunta" class="card">
             <img  src="https://i.imgur.com/OsWqFQx.jpeg">
             <br><br>
-            <button class="button">PUDÚEBAS</button>
+            <button (click)="agregarPregunta()" class="button">PREGUNTAS</button>
         </article><!-- /card-one -->
     </section>
 </div>

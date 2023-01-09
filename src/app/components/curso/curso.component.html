@@ -1,0 +1,36 @@
+<app-cabecera></app-cabecera>
+<div id="contenedor">
+    <div id="central">
+      <div id="login">
+        <form (ngSubmit)="agregar()" [formGroup]="formulario">
+            <div class="titulo">
+              <h3 style="text-align: center;">Nuevo Curso.</h3>
+              <hr>
+            </div>
+            <div class="mb-4">
+                <label for="curso" class="form-label">Curso:</label>
+                <input
+                type="curso"
+                class="form-control"
+                id="curso"
+                name="curso"
+                formControlName="curso"
+                />
+            </div>
+  
+            <div
+            *ngIf="formulario.get('curso')?.touched && formulario.get('curso')?.errors?.['required']"
+            style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;"
+          >
+            Este campo es obligatorio.
+          </div>
+  
+          <hr>
+          <div class="pie-form">
+            <button  type="submit" class="btn">Agregar</button>
+           <hr>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

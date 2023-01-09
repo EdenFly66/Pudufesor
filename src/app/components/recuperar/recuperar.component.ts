@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +11,7 @@ import Swal from 'sweetalert2';
 export class RecuperarComponent {
   formulario:any
 
-  constructor(private readonly fb: FormBuilder, private userSv:UserService, private router:Router){
+  constructor(private readonly fb: FormBuilder, private userSv:UserService){
     this.formulario = this.fb.group({
       correo: ['',[Validators.required, Validators.email]],
     })

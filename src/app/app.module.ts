@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,11 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
 import { PieComponent } from './components/pie/pie.component';
 import { RecuperarComponent } from './components/recuperar/recuperar.component';
+import { CursoComponent } from './components/curso/curso.component';
+import { AsignaturaComponent } from './components/asignatura/asignatura.component';
+import { PreguntaComponent } from './components/pregunta/pregunta.component';
+import { NoDisponibleComponent } from './components/no-disponible/no-disponible.component';
+import { MaterialComponent } from './components/material/material.component';
 
 const appRoutes:Routes=[
   {path:'',component:IngresarComponent},
@@ -26,7 +31,11 @@ const appRoutes:Routes=[
   {path:'recuperar',component:RecuperarComponent},
   {path:'perfil',component:PerfilComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  
+  {path:'curso',component:CursoComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'pregunta',component:PreguntaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'no-disponible',component:NoDisponibleComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))}
 ]
 
 @NgModule({
@@ -39,6 +48,11 @@ const appRoutes:Routes=[
     PerfilComponent,
     PieComponent,
     RecuperarComponent,
+    CursoComponent,
+    AsignaturaComponent,
+    PreguntaComponent,
+    NoDisponibleComponent,
+    MaterialComponent,
   ],
   imports: [
     FormsModule,

@@ -25,7 +25,6 @@ export class UserService {
       return null;
     }
     else{
-      console.log(user?.uid)
       return user?.uid;
     }
   }
