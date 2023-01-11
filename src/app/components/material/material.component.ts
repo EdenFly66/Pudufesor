@@ -115,7 +115,4 @@ export class MaterialComponent {
    
   }
   
-  archivoHandler(){
-    
-  } 
 }

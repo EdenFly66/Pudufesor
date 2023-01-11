@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { getDocs, orderBy, query, where } from 'firebase/firestore';
+import { Component } from '@angular/core';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { orderBy, query, where } from 'firebase/firestore';
 
 @Component({
   selector: 'app-contenidos-mat1m',

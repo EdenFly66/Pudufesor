@@ -1,1 +1,134 @@
-<p>pregunta works!</p>
+<app-cabecera></app-cabecera>
+<div id="contenedor">
+    <div id="central">
+      <div id="login">
+        <form (ngSubmit)="agregar()" [formGroup]="formulario">
+            <div class="titulo">
+              <h3 style="text-align: center;">Nueva Pregunta.</h3>
+              <hr>
+            </div>
+
+            
+            <p>Material:</p>
+            <select name="material" class="form-control" id="material" name="material" formControlName="material">
+                <option *ngFor="let x of this.materialesObtenidos">{{x}}</option>
+            </select>
+
+            <br><br>
+
+            <div class="mb-4">
+                <label for="respuestaIncorrecta1" class="form-label">Respuesta Incorrecta 1:</label>
+                <input
+                type="respuestaIncorrecta1"
+                class="form-control"
+                id="respuestaIncorrecta1"
+                name="respuestaIncorrecta1"
+                formControlName="respuestaIncorrecta1"
+                />
+            </div>
+  
+            <div
+                *ngIf="formulario.get('respuestaIncorrecta1')?.touched && formulario.get('respuestaIncorrecta1')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+
+            
+
+            
+
+            <div class="mb-4">
+                <label for="respuestaIncorrecta2" class="form-label">Respuesta Incorrecta 2:</label>
+                <input
+                type="respuestaIncorrecta2"
+                class="form-control"
+                id="respuestaIncorrecta2"
+                name="respuestaIncorrecta2"
+                formControlName="respuestaIncorrecta2"
+                />
+            </div>
+  
+            <div
+                *ngIf="formulario.get('respuestaIncorrecta2')?.touched && formulario.get('respuestaIncorrecta2')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+
+            <div class="mb-4">
+            <label for="respuestaIncorrecta3" class="form-label">Respuesta Incorrecta 3:</label>
+            <input
+            type="respuestaIncorrecta3"
+            class="form-control"
+            id="respuestaIncorrecta3"
+            name="respuestaIncorrecta3"
+            formControlName="respuestaIncorrecta3"
+            />
+            </div>
+
+            <div
+                *ngIf="formulario.get('respuestaIncorrecta3')?.touched && formulario.get('respuestaIncorrecta3')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+
+            <div class="mb-4">
+            <label for="respuestaIncorrecta4" class="form-label">Respuesta Incorrecta 4:</label>
+            <input
+            type="respuestaIncorrecta4"
+            class="form-control"
+            id="respuestaIncorrecta4"
+            name="respuestaIncorrecta4"
+            formControlName="respuestaIncorrecta4"
+            />
+            </div>
+
+            <div
+                *ngIf="formulario.get('respuestaIncorrecta4')?.touched && formulario.get('respuestaIncorrecta4')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+
+            <div class="mb-4">
+            <label for="respuestaCorrecta" class="form-label">Respuesta Correcta :</label>
+            <input
+            type="respuestaCorrecta"
+            class="form-control"
+            id="respuestaCorrecta"
+            name="respuestaCorrecta"
+            formControlName="respuestaCorrecta"
+            />
+            </div>
+
+            <div
+                *ngIf="formulario.get('respuestaCorrecta')?.touched && formulario.get('respuestaCorrecta')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+
+            <div class="mb-4">
+                <label for="imagen" class="form-label">Imagen:</label>
+                <input
+                type="imagen"
+                class="form-control"
+                id="imagen"
+                name="imagen"
+                formControlName="imagen"
+                />
+            </div>
+  
+            <div
+                *ngIf="formulario.get('imagen')?.touched && formulario.get('imagen')?.errors?.['required']"
+                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
+                Este campo es obligatorio.
+            </div>
+  
+            
+            
+            <hr>
+            <div class="pie-form">
+                <button  type="submit" class="btn">Agregar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
