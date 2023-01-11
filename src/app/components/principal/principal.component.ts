@@ -63,7 +63,13 @@ export class PrincipalComponent {
   }
 
   contenidos(){
-    this.router.navigate(['/no-disponible'])
+    if(this.formulario.value.curso=='1M' && this.formulario.value.asignatura=="Matemática"){
+      this.router.navigate(['/contenidos-mat1m'])
+    }
+    else{
+      this.router.navigate(['/no-disponible'])
+    }
+    
   }
 
   ejercitar(){

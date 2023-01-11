@@ -24,6 +24,7 @@ import { AsignaturaComponent } from './components/asignatura/asignatura.componen
 import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { NoDisponibleComponent } from './components/no-disponible/no-disponible.component';
 import { MaterialComponent } from './components/material/material.component';
+import { ContenidosMat1mComponent } from './components/contenidos-mat1m/contenidos-mat1m.component';
 
 const appRoutes:Routes=[
   {path:'',component:IngresarComponent},
@@ -35,7 +36,8 @@ const appRoutes:Routes=[
   {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'pregunta',component:PreguntaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'no-disponible',component:NoDisponibleComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))}
+  {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'contenidos-mat1m',component:ContenidosMat1mComponent,...canActivate(()=>redirectUnauthorizedTo(['']))}
 ]
 
 @NgModule({
@@ -53,6 +55,7 @@ const appRoutes:Routes=[
     PreguntaComponent,
     NoDisponibleComponent,
     MaterialComponent,
+    ContenidosMat1mComponent,
   ],
   imports: [
     FormsModule,
