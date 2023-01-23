@@ -24,7 +24,9 @@ import { AsignaturaComponent } from './components/asignatura/asignatura.componen
 import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { NoDisponibleComponent } from './components/no-disponible/no-disponible.component';
 import { MaterialComponent } from './components/material/material.component';
-import { ContenidosMat1mComponent } from './components/contenidos-mat1m/contenidos-mat1m.component';
+import { ContenidosComponent } from './components/contenidos/contenidos.component';
+import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
+import { PuduebasComponent } from './components/puduebas/puduebas.component';
 
 const appRoutes:Routes=[
   {path:'',component:IngresarComponent},
@@ -35,9 +37,11 @@ const appRoutes:Routes=[
   {path:'curso',component:CursoComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'pregunta',component:PreguntaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'no-disponible',component:NoDisponibleComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'contenidos-mat1m',component:ContenidosMat1mComponent,...canActivate(()=>redirectUnauthorizedTo(['']))}
+  {path:'contenidos/:curso/:asignatura',component:ContenidosComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'puduebas/:curso/:asignatura',component:PuduebasComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'**',component:NoDisponibleComponent},
 ]
 
 @NgModule({
@@ -55,7 +59,9 @@ const appRoutes:Routes=[
     PreguntaComponent,
     NoDisponibleComponent,
     MaterialComponent,
-    ContenidosMat1mComponent,
+    ContenidosComponent,
+    EjercitarComponent,
+    PuduebasComponent,
   ],
   imports: [
     FormsModule,

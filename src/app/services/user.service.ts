@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { signOut } from 'firebase/auth';
 import { Auth } from '@angular/fire/auth';
 import { FirebaseErrorService } from './firebase-error.service';
-import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import { doc, setDoc } from 'firebase/firestore';
+import { collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -58,13 +59,8 @@ export class UserService {
   }
 
   async guardarUsuario(correo:any){
-    const id = await this.getUid();
+    const id = await this.getUid() as unknown as string;
     const rol = 'usuario'
-    const obj = Object.assign({
-        "UID":id,
-        "rol":rol,
-        "correo":correo
-      })
     const ref = collection(this.firestore,'Usuarios');
     Swal.fire({
       title: '¡Registrado!',
@@ -72,7 +68,11 @@ export class UserService {
       icon: 'success',
       allowOutsideClick: false,
     })
-    return addDoc(ref,obj);
+    return setDoc(doc(ref,id),{
+      "UID":id,
+      "rol":rol,
+      "correo":correo,
+    })
   }
   
   recuperarContrasena(email:any){

@@ -6,7 +6,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { Curso } from 'src/app/interfaces/curso';
-import { Asignatura } from 'src/app/interfaces/asignatura';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-principal',
@@ -14,10 +14,12 @@ import { Asignatura } from 'src/app/interfaces/asignatura';
   styleUrls: ['./principal.component.scss']
 })
 export class PrincipalComponent {
+  vacio:Array<any>=[""]
   formulario:any;
   rol?:string;
-  cursos:Array<string>=[]
-  asignaturas:Array<string>=[]
+  cursos:Array<Curso>=[]
+  asig1M:Array<string>=[]
+  asig2M:Array<string>=[]
   constructor(private readonly fb: FormBuilder, private firestore:Firestore, private userSv: UserService, private router:Router){
     this.formulario = this.fb.group({
       curso: ['',[],],
@@ -27,27 +29,25 @@ export class PrincipalComponent {
 
   ngOnInit(){
     this.rolUser()
-    this.obtenerCursos()
-    this.obtenerAsignaturas()
-    console.log(this.cursos,this.asignaturas)
+    this.obtenerData()
   }
 
-  async obtenerCursos(){
+  async obtenerData(){
     const q = query(collection(this.firestore,'Cursos'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(e => {
       const datos = e.data() as Curso
-      this.cursos.push(datos.nombre)
+      this.cursos.push(datos)
     })
-  }
-
-  async obtenerAsignaturas(){
-    const q = query(collection(this.firestore,'Asignaturas'));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(e => {
-      const datos = e.data() as Asignatura
-      this.asignaturas.push(datos.nombre)
-    })
+    for(let i =0 ; i<this.cursos.length ; i++){
+      if(this.cursos[i].nombre=="1M"){
+        this.asig1M = this.cursos[i].ramos
+      }
+      else if(this.cursos[i].nombre=="2M"){
+        this.asig2M = this.cursos[i].ramos
+      }
+    }
+    
   }
 
   async rolUser(){
@@ -63,21 +63,45 @@ export class PrincipalComponent {
   }
 
   contenidos(){
-    if(this.formulario.value.curso=='1M' && this.formulario.value.asignatura=="Matemática"){
-      this.router.navigate(['/contenidos-mat1m'])
+    if(this.formulario.value.curso=="" || this.formulario.value.curso=="Curso" || this.formulario.value.asignatura=="" || this.formulario.value.asignatura=="Asignatura"){
+      Swal.fire({
+        title: '¡Cuidado!',
+        text: 'No especificaste tu curso ni asignatura.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
     }
     else{
-      this.router.navigate(['/no-disponible'])
+      this.router.navigate(['/contenidos'+'/'+this.formulario.value.curso+'/'+this.formulario.value.asignatura])
     }
-    
   }
 
   ejercitar(){
-    this.router.navigate(['/no-disponible'])
+    if(this.formulario.value.curso=="" || this.formulario.value.curso=="Curso" || this.formulario.value.asignatura=="" || this.formulario.value.asignatura=="Asignatura"){
+      Swal.fire({
+        title: '¡Cuidado!',
+        text: 'No especificaste tu curso ni asignatura.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
+    }
+    else{
+      this.router.navigate(['/ejercitar'+'/'+this.formulario.value.curso+'/'+this.formulario.value.asignatura])
+    }
   }
 
   puduebas(){
-    this.router.navigate(['/no-disponible'])
+    if(this.formulario.value.curso=="" || this.formulario.value.curso=="Curso" || this.formulario.value.asignatura=="" || this.formulario.value.asignatura=="Asignatura"){
+      Swal.fire({
+        title: '¡Cuidado!',
+        text: 'No especificaste tu curso ni asignatura.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
+    }
+    else{
+      this.router.navigate(['/puduebas'+'/'+this.formulario.value.curso+'/'+this.formulario.value.asignatura])
+    }
   }
 
   agregarCurso(){

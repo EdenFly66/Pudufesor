@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { collection,Firestore, getDocs, query } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
-import { addDoc } from 'firebase/firestore';
-import { Asignatura } from 'src/app/interfaces/asignatura';
+import { addDoc, doc, setDoc } from 'firebase/firestore';
 import { Curso } from 'src/app/interfaces/curso';
 import { Material } from 'src/app/interfaces/material';
 import { UserService } from 'src/app/services/user.service';
@@ -16,8 +15,10 @@ import Swal from 'sweetalert2';
 export class MaterialComponent {
   formulario:any
   materiales:Array<any> = []
-  cursos:Array<string>=[]
-  asignaturas:Array<string>=[]
+  cursos:Array<Curso>=[]
+  asig1M:Array<string>=[]
+  asig2M:Array<string>=[]
+  vacio:Array<any>=[""]
   unidades:Array<string> = ["Unidad","U1","U2","U3","U4"]
 
   constructor(private readonly fb: FormBuilder, private userSv:UserService, private firestore:Firestore){
@@ -34,28 +35,27 @@ export class MaterialComponent {
   }
 
   ngOnInit(){
-    this.obtenerCursos()
-    this.obtenerAsignaturas()
-    console.log(this.cursos,this.asignaturas)
+    this.obtenerData()
   }
 
-  async obtenerCursos(){
+  async obtenerData(){
     const q = query(collection(this.firestore,'Cursos'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(e => {
       const datos = e.data() as Curso
-      this.cursos.push(datos.nombre)
+      this.cursos.push(datos)
     })
+    for(let i =0 ; i<this.cursos.length ; i++){
+      if(this.cursos[i].nombre=="1M"){
+        this.asig1M = this.cursos[i].ramos
+      }
+      else if(this.cursos[i].nombre=="2M"){
+        this.asig2M = this.cursos[i].ramos
+      }
+    }
+    
   }
 
-  async obtenerAsignaturas(){
-    const q = query(collection(this.firestore,'Asignaturas'));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(e => {
-      const datos = e.data() as Asignatura
-      this.asignaturas.push(datos.nombre)
-    })
-  }
 
   async agregar(){
     const ref = collection(this.firestore,'Material')
@@ -92,7 +92,7 @@ export class MaterialComponent {
         })
       }
       else{
-        const obj = Object.assign({
+        setDoc(doc(ref,this.formulario.value.curso+this.formulario.value.asignatura+this.formulario.value.unidad+this.formulario.value.nombre),{
           "curso": this.formulario.value.curso,
           "nombre":this.formulario.value.nombre,
           "asignatura":this.formulario.value.asignatura,
@@ -102,7 +102,6 @@ export class MaterialComponent {
           "orden":this.formulario.value.orden,
           "unidad":this.formulario.value.unidad,
         })
-        addDoc(ref,obj)
         Swal.fire({
           title: '¡Hecho!',
           text: 'Se ha agregado el nuevo material.',

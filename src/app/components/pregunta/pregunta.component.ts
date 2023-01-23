@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { collection,Firestore, getDocs, query } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { addDoc, where } from 'firebase/firestore';
-import { Asignatura } from 'src/app/interfaces/asignatura';
 import { Curso } from 'src/app/interfaces/curso';
 import { Material } from 'src/app/interfaces/material';
 import { UserService } from 'src/app/services/user.service';

@@ -5,12 +5,27 @@
         <form class="filtro" [formGroup]="formulario">
             <select name="curso" class="form-control" id="curso" name="curso" formControlName="curso">
                 <option>Curso</option>
-                <option *ngFor="let x of this.cursos.sort()">{{x}}</option>
+                <option *ngFor="let x of this.cursos.sort()">{{x.nombre}}</option>
             </select>
-            <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
+            <div *ngIf="this.formulario.value.curso=='' || this.formulario.value.curso=='Curso'">
+                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
                 <option>Asignatura</option>
-                <option *ngFor="let y of this.asignaturas.sort()">{{y}}</option>
-            </select>
+                <option *ngFor="let y of this.vacio">{{y}}</option>
+                </select>
+            </div>
+            <div *ngIf="this.formulario.value.curso=='1M' ">
+                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
+                <option>Asignatura</option>
+                <option *ngFor="let y of this.asig1M.sort()">{{y}}</option>
+                </select>
+            </div>
+            <div *ngIf="this.formulario.value.curso=='2M'">
+                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
+                <option>Asignatura</option>
+                <option *ngFor="let y of this.asig2M.sort()">{{y}}</option>
+                </select>
+            </div>
+            
         </form>
 
         <section class="cards">

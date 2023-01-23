@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { collection,Firestore, getDocs, query } from '@angular/fire/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
-import { addDoc } from 'firebase/firestore';
 import { Curso } from 'src/app/interfaces/curso';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -54,10 +54,10 @@ export class CursoComponent {
         })
       }
       else{
-        const obj = Object.assign({
+        setDoc(doc(ref,this.formulario.value.curso),{
           "nombre":this.formulario.value.curso,
+          "ramos":[],
         })
-        addDoc(ref,obj)
         Swal.fire({
           title: '¡Hecho!',
           text: 'Se ha agregado el nuevo curso.',

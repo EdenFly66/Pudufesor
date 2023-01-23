@@ -4,9 +4,16 @@
       <div id="login">
         <form (ngSubmit)="agregar()" [formGroup]="formulario">
             <div class="titulo">
-              <h3 style="text-align: center;">Nuevo Asignatura.</h3>
+              <h3 style="text-align: center;">Nueva Asignatura.</h3>
               <hr>
             </div>
+
+            <select name="curso" class="form-control" id="curso" name="curso" formControlName="curso">
+              <option>Curso</option>
+              <option *ngFor="let x of this.cursos.sort()">{{x.nombre}}</option>
+            </select>
+
+            <br>
             <div class="mb-4">
                 <label for="asignatura" class="form-label">Asignatura:</label>
                 <input
