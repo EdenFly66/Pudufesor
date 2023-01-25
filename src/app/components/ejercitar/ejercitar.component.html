@@ -1,1 +1,46 @@
-<p>ejercitar works!</p>
+<app-cabecera></app-cabecera>
+<div class="row" style="background-color:  #9fdd93">
+    <h1 style="text-align:center;">{{this.curso}}  {{this.asignatura}}</h1>
+    <hr>
+    <h1 style="text-align:center;">UNIDAD 1</h1>
+    <hr>
+    <div class="x" *ngFor="let x of contenidosU1">
+        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
+            <div class="info">
+                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
+            </div>
+    </div>
+
+
+    <h1 style="text-align:center;">UNIDAD 2</h1>
+    <hr>
+    <div class="x" *ngFor="let x of contenidosU2">
+        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
+            <div class="info">
+                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
+            </div>
+    </div>
+
+
+    <h1 style="text-align:center;">UNIDAD 3</h1>
+    <hr>
+    <div class="x" *ngFor="let x of contenidosU3">
+        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
+            <div class="info">
+                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
+            </div>
+    </div>
+    
+
+    <h1 style="text-align:center;">UNIDAD 4</h1>
+    <hr>
+    <div class="x" *ngFor="let x of contenidosU4">
+        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
+            <div class="info">
+                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
+            </div>
+    </div>
+
+</div>
+
+<app-pie></app-pie>
