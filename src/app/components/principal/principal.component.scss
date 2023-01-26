@@ -129,7 +129,6 @@
     }
 
     #agregarMaterial{
-        margin-right: 50px;
         background-color: rgb(47, 7, 92);
         .button{
             background-color: rgb(47, 7, 92);
@@ -140,14 +139,4 @@
         }
     }
 
-    #agregarPregunta{
-        background-color: rgb(129, 48, 23);
-        .button{
-            background-color: rgba(129, 48, 23);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
 }

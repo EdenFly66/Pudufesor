@@ -21,7 +21,6 @@ import { PieComponent } from './components/pie/pie.component';
 import { RecuperarComponent } from './components/recuperar/recuperar.component';
 import { CursoComponent } from './components/curso/curso.component';
 import { AsignaturaComponent } from './components/asignatura/asignatura.component';
-import { PreguntaComponent } from './components/pregunta/pregunta.component';
 import { NoDisponibleComponent } from './components/no-disponible/no-disponible.component';
 import { MaterialComponent } from './components/material/material.component';
 import { ContenidosComponent } from './components/contenidos/contenidos.component';
@@ -36,7 +35,6 @@ const appRoutes:Routes=[
   {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'curso',component:CursoComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'pregunta',component:PreguntaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'contenidos/:curso/:asignatura',component:ContenidosComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
@@ -56,7 +54,6 @@ const appRoutes:Routes=[
     RecuperarComponent,
     CursoComponent,
     AsignaturaComponent,
-    PreguntaComponent,
     NoDisponibleComponent,
     MaterialComponent,
     ContenidosComponent,

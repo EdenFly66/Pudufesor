@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { orderBy, query, where } from 'firebase/firestore';
+import { PreguntaService } from 'src/app/services/pregunta.service';
+import { Pregunta } from 'src/app/interfaces/pregunta';
+import { FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ejercitar',
@@ -10,14 +14,21 @@ import { orderBy, query, where } from 'firebase/firestore';
 })
 export class EjercitarComponent {
 
+  formulario!:any
   curso!:any;
   asignatura!:any;
   contenidosU1:any=[];
   contenidosU2:any=[];
   contenidosU3:any=[];
   contenidosU4:any=[];
-  constructor(private route: ActivatedRoute, private firestore:Firestore) {
-
+  show = false;
+  enunciado!:string;
+  correcta!:string;
+  alternativas:Array<string>=[];
+  constructor(private readonly fb:FormBuilder,private route: ActivatedRoute, private firestore:Firestore, private preguntaServicio:PreguntaService) {
+    this.formulario = this.fb.group({
+      respuesta:['',[]],
+    })
   }
 
   ngOnInit() {
@@ -61,31 +72,39 @@ export class EjercitarComponent {
   }
 
   pregunta(nombre:string){
-    if(nombre=="Conjunto de los números racionales"){
-      let tipo = Math.floor(Math.random() * 1);
-      if(tipo==0){ //Exprese la fracción irreductible de cada una de las siguientes fracciones:
-        let numerador = 1;
-        let denominador = 1;
-        let divisor:number = 0;
-        while(numerador==denominador || divisor==0){
-          numerador = Math.floor(Math.random() * 100)+1;
-          denominador = Math.floor(Math.random() * 100)+1;
-          divisor = this.mismoDiv(numerador,denominador)
-        }
-        let numDiv = numerador/divisor;
-        let denDiv = denominador/divisor;
+    let contenidoPregunta:Pregunta =this.preguntaServicio.pregunta(nombre)
+    this.alternativas.push(contenidoPregunta.respuestaCorrecta)
+    for(let i=0; i<contenidoPregunta.respuestasIncorrectas.length;i++){
+      this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i])
+    }
+    this.enunciado = contenidoPregunta.enunciado
+    this.correcta = contenidoPregunta.respuestaCorrecta
+    this.show = true
+    console.log(contenidoPregunta)
+  }
 
-        console.log(numerador.toString()+'/'+denominador.toString()+'='+numDiv+'/'+denDiv)
-      }
+  revision(){
+    if(this.formulario.value.respuesta==this.correcta){
+      Swal.fire({
+        title: '¡Respuesta correcta!',
+        text: 'Felicidades, sigue así.',
+        icon: 'success',
+        allowOutsideClick: false,
+      })
+      this.cerrar()
+    }
+    else{
+      Swal.fire({
+        title: 'Respuesta incorrecta',
+        text: 'La respuesta era '+this.correcta+'.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
     }
   }
 
-  mismoDiv(a:number,b:number){
-    for(let i = 100; i>1; i--){
-      if(a%i==0 && b%i==0){
-        return i
-      }
-    }
-    return 0
+  cerrar(){
+    this.show=false
+    this.alternativas=[]
   }
 }
