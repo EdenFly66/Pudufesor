@@ -49,24 +49,25 @@
 
 </div>
 
+
 <ng-container *ngIf="this.show" class="modal">
     <div class="modal modalc">
         <div class="modalc-content">
             <div class="modal-header modalc-header">
-                <h1 class="modal-title fs-5">{{this.enunciado}}</h1>
-                <button (click)="revision()">Revisar</button>
-                <button (click)="cerrar()">Cerrar</button>
+                <ul><h1 class="modal-title fs-5">{{this.enunciado}}</h1></ul>
+                <ul>
+                    <button (click)="revision()">Revisar</button>
+                    <button (click)="cerrar()">Cerrar</button>
+                </ul>
+                
             </div>
             
-            <form [formGroup]="formulario">
+            <form [formGroup]="formulario" class="text-align:center">
                <div class="modalc-body" *ngFor="let a of alternativas.sort()">
-                    <input  type="radio" name="respuesta" value="{{a}}" formControlName="respuesta">
+                    <input  type="radio" name="respuesta" value="{{a}}" formControlName="respuesta" class="height:15px">
                     <h5>{{a}}</h5>
                 </div> 
-            </form>
-            
-            
-            
+            </form>    
         </div>
     </div> 
 </ng-container>

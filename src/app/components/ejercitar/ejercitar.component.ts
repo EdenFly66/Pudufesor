@@ -93,6 +93,14 @@ export class EjercitarComponent {
       })
       this.cerrar()
     }
+    else if(this.formulario.value.respuesta==""){
+      Swal.fire({
+        title: 'No has respondido',
+        text: 'Recuerda marcar la alternativa correcta.',
+        icon: 'warning',
+        allowOutsideClick: false,
+      })
+    }
     else{
       Swal.fire({
         title: 'Respuesta incorrecta',
