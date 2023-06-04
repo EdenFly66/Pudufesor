@@ -106,6 +106,9 @@ export class EjercitarComponent {
       }
       else if(nombre == 'Potencias'){
         contenidoPregunta = this.preguntaServicio.potencias(0);
+      }
+      else if(nombre == 'Productos notables'){
+        contenidoPregunta = this.preguntaServicio.productosNotables(0);
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }

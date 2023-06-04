@@ -51,6 +51,22 @@ export class PreguntaService {
     return numero;
   }
 
+  generarNegativo(tamanno: number) {
+    let numero = Math.floor(Math.random() * tamanno) + 1;
+    return -numero;
+  }
+
+  generarEntero(tamanno: number) {
+    let numero = Math.floor(Math.random() * tamanno);
+    let signo = Math.floor(Math.random() * 2);
+
+    if (signo == 0) {
+      return numero;
+    } else {
+      return -numero;
+    }
+  }
+
   maximoComunDivisor(a: number, b: number) {
     let temporal; //Para no perder b
     while (b != 0) {
@@ -69,7 +85,7 @@ export class PreguntaService {
   operatoriaRacionales(tipo: number): Pregunta {
     if (tipo == 0) {
       //indica que no hay preferencia de pregunta tipo, se generará una pregunta con un tipo aleatorio
-      tipo = Math.floor(Math.random() * 4) + 1; //4 preguntas tipo, del 1 al 4
+      tipo = this.generarNaturales(4) + 1; //4 preguntas tipo, del 1 al 4
     }
     if (tipo == 1) {
       //Convertir de número decimal (2 decimales) a fracción
@@ -462,14 +478,272 @@ export class PreguntaService {
     }
   }
 
-  potencias(tipo:number):Pregunta{
+  potencias(tipo: number): Pregunta {
     if (tipo == 0) {
       //indica que no hay preferencia de pregunta tipo, se generará una pregunta con un tipo aleatorio
-      tipo = Math.floor(Math.random() * 4) + 1; //4 preguntas tipo, del 1 al 4
+      tipo = this.generarNaturales(4) + 1; //4 preguntas tipo, del 1 al 4
     }
-    else if(tipo==1){
+    if (tipo == 1) {
+      let base = this.generarNaturales(3);
+      if (base <= 1) {
+        return this.potencias(1);
+      }
+      let exp1 = this.generarNaturales(6);
+      let exp2 = this.generarNaturales(6);
+      let exp3 = this.generarNaturales(6);
+      if (
+        exp1 == 1 ||
+        exp2 == 1 ||
+        exp3 == 1 ||
+        exp1 + exp2 - exp3 < -5 ||
+        exp1 + exp2 + exp3 < -5 ||
+        exp1 - exp2 - exp3 < -5 ||
+        exp1 - exp2 + exp3 < -5 ||
+        -exp1 + exp2 - exp3 < -5
+      ) {
+        return this.potencias(1);
+      }
+      let texto =
+        'Resuelva el siguiente ejercicio: (' +
+        base.toString() +
+        '^' +
+        exp1.toString() +
+        ') · (' +
+        base.toString() +
+        '^' +
+        exp2.toString() +
+        ') ÷ (' +
+        base.toString() +
+        '^' +
+        exp3.toString() +
+        ')';
+
+      //calculo respuesta correcta
+      let resultado = base ** (exp1 + exp2 - exp3);
+      let respuestaCorrecta = resultado.toString();
+      //cálculo de errores
+      let respuestasIncorrectas: Array<string> = [];
+      let error1 = base ** (exp1 + exp2 + exp3);
+      let error2 = base ** (exp1 - exp2 - exp3);
+      let error3 = base ** (exp1 - exp2 + exp3);
+      let error4 = base ** (-exp1 + exp2 - exp3);
+
+      if (
+        resultado == error1 ||
+        resultado == error2 ||
+        resultado == error3 ||
+        resultado == error4 ||
+        error1 == error2 ||
+        error1 == error3 ||
+        error1 == error4 ||
+        error2 == error3 ||
+        error2 == error4 ||
+        error3 == error4
+      ) {
+        return this.potencias(1);
+      }
+
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let base = this.generarNaturales(3);
+      if (base <= 1) {
+        return this.potencias(2);
+      }
+      let exp1 = this.generarEntero(5);
+      let exp2 = this.generarEntero(5);
+      let exp3 = this.generarEntero(5);
+
+      let texto =
+        'Resuelva le siguiente ejercicio: ((' +
+        base.toString() +
+        '^' +
+        exp1.toString() +
+        ') ^ ' +
+        exp2.toString() +
+        ') ^' +
+        exp3.toString();
+
+      let expCorrecto = exp1 * exp2 * exp3;
+      let expE1 = exp1 + exp2 + exp3;
+      let expE2 = base * exp1 * exp2 * exp3;
+      let expE3 = (exp1 + exp2) * exp3;
+      let expE4 = exp1 * exp2 + exp3;
+
+      if (
+        expCorrecto == expE1 ||
+        expCorrecto == expE2 ||
+        expCorrecto == expE3 ||
+        expCorrecto == expE4 ||
+        expE1 == expE2 ||
+        expE1 == expE3 ||
+        expE1 == expE4 ||
+        expE2 == expE3 ||
+        expE2 == expE4 ||
+        expE3 == expE4
+      ) {
+        return this.potencias(2);
+      }
+      let respuestaCorrecta = base.toString() + '^' + expCorrecto.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(base.toString() + '^' + expE1.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE2.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE3.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE4.toString());
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let base = this.generarNaturales(5);
+      if (base <= 1) {
+        return this.potencias(3);
+      }
+      let exp1 = this.generarNegativo(5);
+      let exp2 = this.generarNegativo(5);
+
+      let texto =
+        'Resuelva el siguiente ejercicio: (' +
+        base.toString() +
+        '^' +
+        exp1.toString() +
+        ') · (' +
+        base.toString() +
+        '^' +
+        exp2.toString() +
+        ')';
+
+      let expCorrecto = exp1 + exp2;
+      let expE1 = exp1 - exp2;
+      let expE2 = -exp1 - exp2;
+      let expE3 = -exp1 + exp2;
+      let expE4 = this.generarEntero(10);
+
+      if (
+        expCorrecto == expE1 ||
+        expCorrecto == expE2 ||
+        expCorrecto == expE3 ||
+        expCorrecto == expE4 ||
+        expE1 == expE2 ||
+        expE1 == expE3 ||
+        expE1 == expE4 ||
+        expE2 == expE3 ||
+        expE2 == expE4 ||
+        expE3 == expE4
+      ) {
+        return this.potencias(3);
+      }
+
+      let respuestaCorrecta = base.toString() + '^' + expCorrecto.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(base.toString() + '^' + expE1.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE2.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE3.toString());
+      respuestasIncorrectas.push(base.toString() + '^' + expE4.toString());
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let base = this.generarNaturales(3);
+      if (base <= 1) {
+        return this.potencias(4);
+      }
+      let exp1 = this.generarEntero(5);
+      let exp2 = this.generarEntero(5);
+      let exp3 = this.generarEntero(5);
+      let exp4 = this.generarEntero(5);
+      let exp5 = this.generarEntero(5);
+
+      let texto =
+        '((' +
+        base.toString() +
+        '^' +
+        exp1.toString() +
+        ') ÷ (' +
+        base.toString() +
+        '^' +
+        exp2.toString() +
+        '))^' +
+        exp3.toString() +
+        ' · (' +
+        base.toString() +
+        '^' +
+        exp4.toString() +
+        ')^' +
+        exp5.toString();
+
+      let expCorrecto = (exp1 - exp2) * exp3 + exp4 * exp5;
+      let expE1 = (exp1 + exp2) * exp3 + exp4 * exp5;
+      let expE2 = exp1 + exp2 + exp3 + (exp4 + exp5);
+      let expE3 = (exp1 - exp2) * exp3 + exp4 + exp5;
+      let expE4 = exp1 - exp2 + exp3 + exp4 * exp5;
+
+      if (
+        expCorrecto > 5 ||
+        expCorrecto == expE1 ||
+        expCorrecto == expE2 ||
+        expCorrecto == expE3 ||
+        expCorrecto == expE4 ||
+        expE1 == expE2 ||
+        expE1 == expE3 ||
+        expE1 == expE4 ||
+        expE2 == expE3 ||
+        expE2 == expE4 ||
+        expE3 == expE4
+      ) {
+        return this.potencias(4);
+      }
+
+      let resultado = base ** expCorrecto;
+      let error1 = base ** expE1;
+      let error2 = base ** expE2;
+      let error3 = base ** expE3;
+      let error4 = base ** expE4;
+
+      if (
+        resultado < 0.9 ||
+        error1 < 0.9 ||
+        error2 < 0.9 ||
+        error3 < 0.9 ||
+        error4 < 0.9
+      ) {
+        return this.potencias(4);
+      }
+      let respuestaCorrecta = resultado.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else {
       return 0 as unknown as Pregunta;
     }
+  }
+
+  productosNotables(tipo: number): Pregunta{
     return 0 as unknown as Pregunta;
   }
 }
