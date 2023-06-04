@@ -103,6 +103,9 @@ export class EjercitarComponent {
     if (this.curso == '1M' && this.asignatura == 'MATEMÁTICA') {
       if (nombre == 'Operatoria en los números racionales') {
         contenidoPregunta = this.preguntaServicio.operatoriaRacionales(0);
+      }
+      else if(nombre == 'Potencias'){
+        contenidoPregunta = this.preguntaServicio.potencias(0);
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }

@@ -72,7 +72,7 @@ export class PreguntaService {
       tipo = Math.floor(Math.random() * 4) + 1; //4 preguntas tipo, del 1 al 4
     }
     if (tipo == 1) {
-      //Convertir de número decimal (3 decimales) a fracción
+      //Convertir de número decimal (2 decimales) a fracción
       let unidades = this.generarNaturales(3);
       let decimas = this.generarNaturales(9);
       let centesimas = this.generarNaturales(9);
@@ -460,5 +460,16 @@ export class PreguntaService {
     } else {
       return 0 as unknown as Pregunta;
     }
+  }
+
+  potencias(tipo:number):Pregunta{
+    if (tipo == 0) {
+      //indica que no hay preferencia de pregunta tipo, se generará una pregunta con un tipo aleatorio
+      tipo = Math.floor(Math.random() * 4) + 1; //4 preguntas tipo, del 1 al 4
+    }
+    else if(tipo==1){
+      return 0 as unknown as Pregunta;
+    }
+    return 0 as unknown as Pregunta;
   }
 }
