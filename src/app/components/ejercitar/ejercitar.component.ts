@@ -10,109 +10,144 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-ejercitar',
   templateUrl: './ejercitar.component.html',
-  styleUrls: ['./ejercitar.component.scss']
+  styleUrls: ['./ejercitar.component.scss'],
 })
 export class EjercitarComponent {
-
-  formulario!:any
-  curso!:any;
-  asignatura!:any;
-  contenidosU1:any=[];
-  contenidosU2:any=[];
-  contenidosU3:any=[];
-  contenidosU4:any=[];
+  formulario!: any;
+  curso!: any;
+  asignatura!: any;
+  contenidosU1: any = [];
+  contenidosU2: any = [];
+  contenidosU3: any = [];
+  contenidosU4: any = [];
   show = false;
-  enunciado!:string;
-  correcta!:string;
-  alternativas:Array<string>=[];
-  constructor(private readonly fb:FormBuilder,private route: ActivatedRoute, private firestore:Firestore, private preguntaServicio:PreguntaService) {
+  enunciado!: string;
+  correcta!: string;
+  alternativas: Array<string> = [];
+  constructor(
+    private readonly fb: FormBuilder,
+    private route: ActivatedRoute,
+    private firestore: Firestore,
+    private preguntaServicio: PreguntaService
+  ) {
     this.formulario = this.fb.group({
-      respuesta:['',[]],
-    })
+      respuesta: ['', []],
+    });
   }
 
   ngOnInit() {
-    
-    this.curso = this.route.snapshot.paramMap.get("curso");
-    this.asignatura = this.route.snapshot.paramMap.get("asignatura");
-    this.obtenerContenidosU1().subscribe(e=>{
+    this.curso = this.route.snapshot.paramMap.get('curso');
+    this.asignatura = this.route.snapshot.paramMap.get('asignatura');
+    this.obtenerContenidosU1().subscribe((e) => {
       this.contenidosU1 = e;
-    })
-    this.obtenerContenidosU2().subscribe(e=>{
+    });
+    this.obtenerContenidosU2().subscribe((e) => {
       this.contenidosU2 = e;
-    })
-    this.obtenerContenidosU3().subscribe(e=>{
+    });
+    this.obtenerContenidosU3().subscribe((e) => {
       this.contenidosU3 = e;
-    })
-    this.obtenerContenidosU4().subscribe(e=>{
+    });
+    this.obtenerContenidosU4().subscribe((e) => {
       this.contenidosU4 = e;
-    })
+    });
 
-    this.asignatura = this.asignatura.toUpperCase()
+    this.asignatura = this.asignatura.toUpperCase();
   }
 
-  obtenerContenidosU1(){
-    const q = query(collection(this.firestore, "Material"), where("unidad","==","U1"),where("curso","==",this.curso), where("asignatura","==",this.asignatura), orderBy("orden"));
-    return collectionData(q)
+  obtenerContenidosU1() {
+    const q = query(
+      collection(this.firestore, 'Material'),
+      where('unidad', '==', 'U1'),
+      where('curso', '==', this.curso),
+      where('asignatura', '==', this.asignatura),
+      orderBy('orden')
+    );
+    return collectionData(q);
   }
 
-  obtenerContenidosU2(){
-    const q = query(collection(this.firestore, "Material"), where("unidad","==","U2"),where("curso","==",this.curso), where("asignatura","==",this.asignatura), orderBy("orden"));
-    return collectionData(q)
+  obtenerContenidosU2() {
+    const q = query(
+      collection(this.firestore, 'Material'),
+      where('unidad', '==', 'U2'),
+      where('curso', '==', this.curso),
+      where('asignatura', '==', this.asignatura),
+      orderBy('orden')
+    );
+    return collectionData(q);
   }
 
-  obtenerContenidosU3(){
-    const q = query(collection(this.firestore, "Material"), where("unidad","==","U3"),where("curso","==",this.curso), where("asignatura","==",this.asignatura), orderBy("orden"));
-    return collectionData(q)
+  obtenerContenidosU3() {
+    const q = query(
+      collection(this.firestore, 'Material'),
+      where('unidad', '==', 'U3'),
+      where('curso', '==', this.curso),
+      where('asignatura', '==', this.asignatura),
+      orderBy('orden')
+    );
+    return collectionData(q);
   }
 
-  obtenerContenidosU4(){
-    const q = query(collection(this.firestore, "Material"), where("unidad","==","U4"),where("curso","==",this.curso), where("asignatura","==",this.asignatura), orderBy("orden"));
-    return collectionData(q)
+  obtenerContenidosU4() {
+    const q = query(
+      collection(this.firestore, 'Material'),
+      where('unidad', '==', 'U4'),
+      where('curso', '==', this.curso),
+      where('asignatura', '==', this.asignatura),
+      orderBy('orden')
+    );
+    return collectionData(q);
   }
 
-  pregunta(nombre:string){
-    let contenidoPregunta:Pregunta =this.preguntaServicio.pregunta(nombre)
-    this.alternativas.push(contenidoPregunta.respuestaCorrecta)
-    for(let i=0; i<contenidoPregunta.respuestasIncorrectas.length;i++){
-      this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i])
+  pregunta(nombre: string) {
+    let contenidoPregunta: Pregunta;
+    if (this.curso == '1M' && this.asignatura == 'MATEMÁTICA') {
+      if (nombre == 'Operatoria en los números racionales') {
+        contenidoPregunta = this.preguntaServicio.operatoriaRacionales(0);
+      } else {
+        contenidoPregunta = 0 as unknown as Pregunta;
+      }
+    } else {
+      contenidoPregunta = 0 as unknown as Pregunta;
     }
-    this.enunciado = contenidoPregunta.enunciado
-    this.correcta = contenidoPregunta.respuestaCorrecta
-    this.show = true
-    console.log(contenidoPregunta)
+    console.log(contenidoPregunta);
+    this.alternativas.push(contenidoPregunta.respuestaCorrecta);
+    for (let i = 0; i < contenidoPregunta.respuestasIncorrectas.length; i++) {
+      this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i]);
+    }
+    this.enunciado = contenidoPregunta.enunciado;
+    this.correcta = contenidoPregunta.respuestaCorrecta;
+    this.show = true;
+    console.log(contenidoPregunta);
   }
 
-  revision(){
-    if(this.formulario.value.respuesta==this.correcta){
+  revision() {
+    if (this.formulario.value.respuesta == this.correcta) {
       Swal.fire({
         title: '¡Respuesta correcta!',
         text: 'Felicidades, sigue así.',
         icon: 'success',
         allowOutsideClick: false,
-      })
-      this.cerrar()
-    }
-    else if(this.formulario.value.respuesta==""){
+      });
+      this.cerrar();
+    } else if (this.formulario.value.respuesta == '') {
       Swal.fire({
         title: 'No has respondido',
         text: 'Recuerda marcar la alternativa correcta.',
         icon: 'warning',
         allowOutsideClick: false,
-      })
-    }
-    else{
+      });
+    } else {
       Swal.fire({
         title: 'Respuesta incorrecta',
-        text: 'La respuesta era '+this.correcta+'.',
+        text: 'La respuesta era ' + this.correcta + '.',
         icon: 'warning',
         allowOutsideClick: false,
-      })
+      });
     }
   }
 
-  cerrar(){
-    this.show=false
-    this.alternativas=[]
+  cerrar() {
+    this.show = false;
+    this.alternativas = [];
   }
 }
