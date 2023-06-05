@@ -519,14 +519,14 @@ export class PreguntaService {
         ')';
 
       //calculo respuesta correcta
-      let resultado = base ** (exp1 + exp2 - exp3);
+      let resultado: any = base ** (exp1 + exp2 - exp3);
       let respuestaCorrecta = resultado.toString();
       //cálculo de errores
       let respuestasIncorrectas: Array<string> = [];
-      let error1 = base ** (exp1 + exp2 + exp3);
-      let error2 = base ** (exp1 - exp2 - exp3);
-      let error3 = base ** (exp1 - exp2 + exp3);
-      let error4 = base ** (-exp1 + exp2 - exp3);
+      let error1: any = base ** (exp1 + exp2 + exp3);
+      let error2: any = base ** (exp1 - exp2 - exp3);
+      let error3: any = base ** (exp1 - exp2 + exp3);
+      let error4: any = base ** (-exp1 + exp2 - exp3);
 
       if (
         resultado == error1 ||
@@ -543,6 +543,21 @@ export class PreguntaService {
         return this.potencias(1);
       }
 
+      if (resultado != Math.trunc(resultado)) {
+        resultado = resultado.toFixed(2);
+      }
+      if (error1 != Math.trunc(error1)) {
+        error1 = error1.toFixed(2);
+      }
+      if (error2 != Math.trunc(error2)) {
+        error2 = error2.toFixed(2);
+      }
+      if (error3 != Math.trunc(error3)) {
+        error3 = error3.toFixed(2);
+      }
+      if (error4 != Math.trunc(error4)) {
+        error4 = error4.toFixed(2);
+      }
       respuestasIncorrectas.push(error1.toString());
       respuestasIncorrectas.push(error2.toString());
       respuestasIncorrectas.push(error3.toString());
@@ -710,20 +725,26 @@ export class PreguntaService {
         return this.potencias(4);
       }
 
-      let resultado = base ** expCorrecto;
-      let error1 = base ** expE1;
-      let error2 = base ** expE2;
-      let error3 = base ** expE3;
-      let error4 = base ** expE4;
+      let resultado: any = base ** expCorrecto;
+      let error1: any = base ** expE1;
+      let error2: any = base ** expE2;
+      let error3: any = base ** expE3;
+      let error4: any = base ** expE4;
 
-      if (
-        resultado < 0.9 ||
-        error1 < 0.9 ||
-        error2 < 0.9 ||
-        error3 < 0.9 ||
-        error4 < 0.9
-      ) {
-        return this.potencias(4);
+      if (resultado != Math.trunc(resultado)) {
+        resultado = resultado.toFixed(2);
+      }
+      if (error1 != Math.trunc(error1)) {
+        error1 = error1.toFixed(2);
+      }
+      if (error2 != Math.trunc(error2)) {
+        error2 = error2.toFixed(2);
+      }
+      if (error3 != Math.trunc(error3)) {
+        error3 = error3.toFixed(2);
+      }
+      if (error4 != Math.trunc(error4)) {
+        error4 = error4.toFixed(2);
       }
       let respuestaCorrecta = resultado.toString();
       let respuestasIncorrectas: Array<string> = [];
@@ -920,7 +941,7 @@ export class PreguntaService {
       let b = this.generarNaturales(9) + 1;
       let c = this.generarNaturales(9) + 1;
 
-      if(b*c == b+c){
+      if (b * c == b + c) {
         return this.productosNotables(4);
       }
 
@@ -929,19 +950,67 @@ export class PreguntaService {
       let respuestasIncorrectas: Array<string> = [];
 
       if (a == 1) {
-        texto = 'Resuelva el siguiente ejercicio: ( '+"x + "+b.toString()+" )" + '( '+"x - "+c.toString()+" )";
-        respuestaCorrecta = "x² + "+(b-c).toString()+"x + "+(b*-c).toString();
-        respuestasIncorrectas.push("x² + "+(b+c).toString()+"x + "+(b*c).toString())
-        respuestasIncorrectas.push((b*c).toString()+"x² + "+(2*a).toString()+"x+ "+(c+b).toString())
-        respuestasIncorrectas.push("x² + "+(b+c).toString())
-        respuestasIncorrectas.push("x² + "+(b*-c).toString())
+        texto =
+          'Resuelva el siguiente ejercicio: ( ' +
+          'x + ' +
+          b.toString() +
+          ' )' +
+          '( ' +
+          'x - ' +
+          c.toString() +
+          ' )';
+        respuestaCorrecta =
+          'x² + ' + (b - c).toString() + 'x + ' + (b * -c).toString();
+        respuestasIncorrectas.push(
+          'x² + ' + (b + c).toString() + 'x + ' + (b * c).toString()
+        );
+        respuestasIncorrectas.push(
+          (b * c).toString() +
+            'x² + ' +
+            (2 * a).toString() +
+            'x+ ' +
+            (c + b).toString()
+        );
+        respuestasIncorrectas.push('x² + ' + (b + c).toString());
+        respuestasIncorrectas.push('x² + ' + (b * -c).toString());
       } else {
-        texto = 'Resuelva el siguiente ejercicio: ( '+a.toString()+"x + "+b.toString()+" )" + '( '+a.toString()+"x - "+c.toString()+" )";
-        respuestaCorrecta = (a**2).toString()+"x² + "+(b-c).toString()+"x + "+(b*-c).toString();
-        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b+c).toString()+"x + "+(b*c).toString())
-        respuestasIncorrectas.push((b*c).toString()+"x² + "+(2*a).toString()+"x+ "+(c+b).toString())
-        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b+c).toString())
-        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b*-c).toString())
+        texto =
+          'Resuelva el siguiente ejercicio: ( ' +
+          a.toString() +
+          'x + ' +
+          b.toString() +
+          ' )' +
+          '( ' +
+          a.toString() +
+          'x - ' +
+          c.toString() +
+          ' )';
+        respuestaCorrecta =
+          (a ** 2).toString() +
+          'x² + ' +
+          (b - c).toString() +
+          'x + ' +
+          (b * -c).toString();
+        respuestasIncorrectas.push(
+          (a ** 2).toString() +
+            'x² + ' +
+            (b + c).toString() +
+            'x + ' +
+            (b * c).toString()
+        );
+        respuestasIncorrectas.push(
+          (b * c).toString() +
+            'x² + ' +
+            (2 * a).toString() +
+            'x+ ' +
+            (c + b).toString()
+        );
+        respuestasIncorrectas.push(
+          (a ** 2).toString() + 'x² + ' + (b + c).toString()
+        );
+        respuestasIncorrectas.push(
+          (a ** 2).toString() + 'x² + ' + (b * -c).toString()
+        );
       }
 
       let contenidoPregunta: Pregunta = Object.assign({
@@ -953,5 +1022,154 @@ export class PreguntaService {
     } else {
       return 0 as unknown as Pregunta;
     }
+  }
+
+  cono(tipo: number): Pregunta {
+    if (tipo == 0) {
+      //indica que no hay preferencia de pregunta tipo, se generará una pregunta con un tipo aleatorio
+      tipo = this.generarNaturales(4) + 1; //4 preguntas tipo, del 1 al 4
+    }
+
+    if (tipo == 1) {
+      let r = this.generarNaturales(30) + 1;
+      let h = this.generarNaturales(30) + 1;
+      let g = (r ** 2 + h ** 2) ** (1 / 2);
+      if (g != Math.trunc(g)) {
+        return this.cono(1);
+      }
+      let texto =
+        'Calcula el área total de un cono cuya generatriz es de ' +
+        g.toString() +
+        'cms y el radio de su base es de ' +
+        r.toString() +
+        'cm.';
+      let respuestaCorrecta =
+        (3.14 * g * r + 3.14 * r ** 2).toFixed(2).toString() + 'cm²';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((3.14 * g * r).toFixed(2).toString() + 'cm²');
+      respuestasIncorrectas.push((3.14 * r ** 2).toFixed(2).toString() + 'cm²');
+      respuestasIncorrectas.push(
+        (3.14 * g * r * 3.14 * r ** 2).toFixed(2).toString() + 'cm²'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * g * r + 3.14 * r).toFixed(2).toString() + 'cm²'
+      );
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let r = this.generarNaturales(30) + 1;
+      let h = this.generarNaturales(30) + 1;
+      let g = (r ** 2 + h ** 2) ** (1 / 2);
+      if (g != Math.trunc(g)) {
+        return this.cono(2);
+      }
+      let texto =
+        'Calcula el área total de un cono cuya altura es de ' +
+        h.toString() +
+        'cms y el radio de su base es de ' +
+        r.toString() +
+        'cm.';
+      let respuestaCorrecta =
+        (3.14 * (h ** 2 + r ** 2) ** (1 / 2) * r + 3.14 * r ** 2)
+          .toFixed(2)
+          .toString() + 'cm²';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        (3.14 * (h + r) ** (1 / 2) * r + 3.14 * r ** 2).toFixed(2).toString() +
+          'cm²'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * h * r + 3.14 * r ** 2).toFixed(2).toString() + 'cm²'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * (h ** 2 + r ** 2) ** (1 / 2) * r).toFixed(2).toString() + 'cm²'
+      );
+      respuestasIncorrectas.push((3.14 * r ** 2).toFixed(2).toString() + 'cm²');
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let r = this.generarNaturales(30) + 1;
+      let h = this.generarNaturales(30) + 1;
+      let g = (r ** 2 + h ** 2) ** (1 / 2);
+      if (g != Math.trunc(g)) {
+        return this.cono(3);
+      }
+      let texto =
+        'Calcula el volumen de un cono cuya generatriz es de ' +
+        g.toString() +
+        'cms y el radio de su base es de ' +
+        r.toString() +
+        'cm.';
+      let respuestaCorrecta =
+        (3.14 * r**2 * (g**2 - r**2)**(1/2) * (1/3))
+          .toFixed(2)
+          .toString() + 'cm³';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        (3.14 * r**2 * (g**2 + r**2)**(1/2) * (1/3)).toFixed(2).toString() +
+          'cm³'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * r**2 * (g**2 - r**2)**(1/2)).toFixed(2).toString() + 'cm³'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * r**2 * (g**2 + r**2)**(1/2)).toFixed(2).toString() + 'cm³'
+      );
+      respuestasIncorrectas.push(((3.14 * r**2 + (g**2 - r**2)**(1/2)) * (1/3)).toFixed(2).toString() + 'cm³');
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let r = this.generarNaturales(30) + 1;
+      let h = this.generarNaturales(30) + 1;
+      let g = (r ** 2 + h ** 2) ** (1 / 2);
+      if (g != Math.trunc(g)) {
+        return this.cono(4);
+      }
+      let texto =
+        'Calcula el volumen de un cono cuya altura es de ' +
+        h.toString() +
+        'cms y el radio de su base es de ' +
+        r.toString() +
+        'cm.';
+      let respuestaCorrecta =
+        (3.14* r **2 * h * (1/3))
+          .toFixed(2)
+          .toString() + 'cm³';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        (3.14* r **2 * h).toFixed(2).toString() +
+          'cm³'
+      );
+      respuestasIncorrectas.push(
+        (3.14* r  * h * (1/3)).toFixed(2).toString() + 'cm³'
+      );
+      respuestasIncorrectas.push(
+        (3.14* r  * h).toFixed(2).toString() + 'cm³'
+      );
+      respuestasIncorrectas.push((3.14* h **2 * r * (1/3)).toFixed(2).toString() + 'cm³');
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
   }
 }

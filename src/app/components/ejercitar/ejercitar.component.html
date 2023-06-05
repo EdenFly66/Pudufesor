@@ -1,75 +1,87 @@
 <app-cabecera></app-cabecera>
-<div class="row" style="background-color:  #9fdd93">
-    <h1 style="text-align:center;">{{this.curso}}  {{this.asignatura}}</h1>
-    <hr>
-    <h1 style="text-align:center;">UNIDAD 1</h1>
-    <hr>
-    <div class="x" *ngFor="let x of contenidosU1">
-        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
-            <div class="info">
-                <h2>{{x.nombre}}</h2>
-                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
-            </div>
+<div class="row" style="background-color: #9fdd93">
+  <h1 style="text-align: center">{{ this.curso }} {{ this.asignatura }}</h1>
+  <hr />
+  <h1 style="text-align: center">UNIDAD 1</h1>
+  <hr />
+  <div class="x" *ngFor="let x of contenidosU1">
+    <div
+      class="image"
+      [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+    ></div>
+    <div class="info">
+      <h2>{{ x.nombre }}</h2>
+      <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
     </div>
+  </div>
 
-
-    <h1 style="text-align:center;">UNIDAD 2</h1>
-    <hr>
-    <div class="x" *ngFor="let x of contenidosU2">
-        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
-            <div class="info">
-                <h2>{{x.nombre}}</h2>
-                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
-            </div>
+  <h1 style="text-align: center">UNIDAD 2</h1>
+  <hr />
+  <div class="x" *ngFor="let x of contenidosU2">
+    <div
+      class="image"
+      [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+    ></div>
+    <div class="info">
+      <h2>{{ x.nombre }}</h2>
+      <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
     </div>
+  </div>
 
-
-    <h1 style="text-align:center;">UNIDAD 3</h1>
-    <hr>
-    <div class="x" *ngFor="let x of contenidosU3">
-        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
-            <div class="info">
-                <h2>{{x.nombre}}</h2>
-                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
-            </div>
+  <h1 style="text-align: center">UNIDAD 3</h1>
+  <hr />
+  <div class="x" *ngFor="let x of contenidosU3">
+    <div
+      class="image"
+      [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+    ></div>
+    <div class="info">
+      <h2>{{ x.nombre }}</h2>
+      <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
     </div>
-    
+  </div>
 
-    <h1 style="text-align:center;">UNIDAD 4</h1>
-    <hr>
-    <div class="x" *ngFor="let x of contenidosU4">
-        <div class="image" [ngStyle]="{ backgroundImage: 'url('+x.imagen+')' }"></div>
-            <div class="info">
-                <h2>{{x.nombre}}</h2>
-                <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
-            </div>
+  <h1 style="text-align: center">UNIDAD 4</h1>
+  <hr />
+  <div class="x" *ngFor="let x of contenidosU4">
+    <div
+      class="image"
+      [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+    ></div>
+    <div class="info">
+      <h2>{{ x.nombre }}</h2>
+      <button (click)="pregunta(x.nombre)">Obtener Pregunta</button>
     </div>
-
-    
-
+  </div>
 </div>
 
-
 <ng-container *ngIf="this.show" class="modal">
-    <div class="modal modalc">
-        <div class="modalc-content">
-            <div class="modal-header modalc-header">
-                <ul><h1 class="modal-title fs-5">{{this.enunciado}}</h1></ul>
-                <ul>
-                    <button (click)="revision()">Revisar</button>
-                    <button (click)="cerrar()">Cerrar</button>
-                </ul>
-                
-            </div>
-            
-            <form [formGroup]="formulario" class="text-align:center">
-               <div class="modalc-body" *ngFor="let a of alternativas.sort()">
-                    <input  type="radio" name="respuesta" value="{{a}}" formControlName="respuesta" class="height:15px">
-                    <h5>{{a}}</h5>
-                </div> 
-            </form>    
+  <div class="modal modalc">
+    <div class="modalc-content">
+      <div class="modal-header modalc-header">
+        <ul>
+          <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
+        </ul>
+        <ul>
+          <button (click)="revision()">Revisar</button>
+          <button (click)="cerrar()">Cerrar</button>
+        </ul>
+      </div>
+
+      <form [formGroup]="formulario" class="text-align:center">
+        <div class="modalc-body" *ngFor="let a of alternativas.sort()">
+          <input
+            type="radio"
+            name="respuesta"
+            value="{{ a }}"
+            formControlName="respuesta"
+            class="height:15px"
+          />
+          <h5>{{ a }}</h5>
         </div>
-    </div> 
+      </form>
+    </div>
+  </div>
 </ng-container>
 
 <app-pie></app-pie>
