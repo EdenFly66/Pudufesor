@@ -743,7 +743,215 @@ export class PreguntaService {
     }
   }
 
-  productosNotables(tipo: number): Pregunta{
-    return 0 as unknown as Pregunta;
+  productosNotables(tipo: number): Pregunta {
+    if (tipo == 0) {
+      //indica que no hay preferencia de pregunta tipo, se generará una pregunta con un tipo aleatorio
+      tipo = this.generarNaturales(4) + 1; //4 preguntas tipo, del 1 al 4
+    }
+    if (tipo == 1) {
+      //cuadrado de binomio,suma
+      let a = this.generarNaturales(5) + 1;
+      let b = this.generarNaturales(5) + 1;
+
+      if (b == 1) {
+        return this.productosNotables(1);
+      }
+
+      let a2 = a ** 2;
+      let ab = a * b;
+      let dos_ab = a * b * 2;
+      let b2 = b ** 2;
+      let texto;
+      let respuestaCorrecta;
+      let respuestasIncorrectas: Array<string> = [];
+      if (a == 1) {
+        texto =
+          'Resuelva el siguiente ejercicio: ( x + ' + b.toString() + ' )²';
+        respuestaCorrecta =
+          'x² + ' + dos_ab.toString() + 'x + ' + b2.toString();
+        respuestasIncorrectas.push(
+          'x² - ' + dos_ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(
+          'x² + ' + ab.toString() + 'x + ' + b2.toString()
+        );
+        respuestasIncorrectas.push(
+          'x² + ' + ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(a2.toString() + 'x² + ' + b2.toString());
+      } else {
+        texto =
+          'Resuelva el siguiente ejercicio: ( ' +
+          a.toString() +
+          'x + ' +
+          b.toString() +
+          ' )²';
+        respuestaCorrecta =
+          a2.toString() + 'x² + ' + dos_ab.toString() + 'x + ' + b2.toString();
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² + ' + dos_ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² + ' + ab.toString() + 'x + ' + b2.toString()
+        );
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² + ' + ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(a2.toString() + 'x² + ' + b2.toString());
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      //cuadrado de binomio, resta
+      let a = this.generarNaturales(5) + 1;
+      let b = this.generarNaturales(5) + 1;
+
+      if (b == 1) {
+        return this.productosNotables(2);
+      }
+
+      let a2 = a ** 2;
+      let ab = a * b;
+      let dos_ab = a * b * 2;
+      let b2 = b ** 2;
+      let texto;
+      let respuestaCorrecta;
+      let respuestasIncorrectas: Array<string> = [];
+      if (a == 1) {
+        texto =
+          'Resuelva el siguiente ejercicio: ( x - ' + b.toString() + ' )²';
+        respuestaCorrecta =
+          'x² - ' + dos_ab.toString() + 'x + ' + b2.toString();
+        respuestasIncorrectas.push(
+          'x² - ' + dos_ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(
+          'x² + ' + ab.toString() + 'x + ' + b2.toString()
+        );
+        respuestasIncorrectas.push(
+          'x² + ' + ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(a2.toString() + 'x² - ' + b2.toString());
+      } else {
+        texto =
+          'Resuelva el siguiente ejercicio: ( ' +
+          a.toString() +
+          'x - ' +
+          b.toString() +
+          ' )²';
+        respuestaCorrecta =
+          a2.toString() + 'x² - ' + dos_ab.toString() + 'x + ' + b2.toString();
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² - ' + dos_ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² + ' + ab.toString() + 'x + ' + b2.toString()
+        );
+        respuestasIncorrectas.push(
+          a2.toString() + 'x² + ' + ab.toString() + 'x + ' + b.toString()
+        );
+        respuestasIncorrectas.push(a2.toString() + 'x² - ' + b2.toString());
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      //suma por su diferencia
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
+      let a2 = a ** 2;
+      let b2 = b ** 2;
+      let texto;
+      let respuestaCorrecta;
+      let respuestasIncorrectas: Array<string> = [];
+
+      if (b == 1) {
+        this.productosNotables(3);
+      }
+
+      if (a == 1) {
+        texto =
+          'Resuelva el siguiente ejercicio: ( x +' +
+          b.toString() +
+          ' ) ( x -' +
+          b.toString() +
+          ' )';
+        respuestaCorrecta = 'x² -' + b2.toString();
+        respuestasIncorrectas.push('x² +' + b2.toString());
+        respuestasIncorrectas.push('x -' + b2.toString());
+        respuestasIncorrectas.push('x² +' + b.toString());
+        respuestasIncorrectas.push('x -' + b.toString());
+      } else {
+        texto =
+          'Resuelva el siguiente ejercicio: ( ' +
+          a.toString() +
+          'x +' +
+          b.toString() +
+          ' ) ( ' +
+          a.toString() +
+          'x -' +
+          b.toString() +
+          ' )';
+        respuestaCorrecta = a2.toString() + 'x² -' + b2.toString();
+        respuestasIncorrectas.push(a2.toString() + 'x² +' + b2.toString());
+        respuestasIncorrectas.push(a.toString() + 'x -' + b2.toString());
+        respuestasIncorrectas.push(a2.toString() + 'x² +' + b.toString());
+        respuestasIncorrectas.push(a2.toString() + 'x -' + b.toString());
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      //binomio con termino comun
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
+      let c = this.generarNaturales(9) + 1;
+
+      if(b*c == b+c){
+        return this.productosNotables(4);
+      }
+
+      let texto;
+      let respuestaCorrecta;
+      let respuestasIncorrectas: Array<string> = [];
+
+      if (a == 1) {
+        texto = 'Resuelva el siguiente ejercicio: ( '+"x + "+b.toString()+" )" + '( '+"x - "+c.toString()+" )";
+        respuestaCorrecta = "x² + "+(b-c).toString()+"x + "+(b*-c).toString();
+        respuestasIncorrectas.push("x² + "+(b+c).toString()+"x + "+(b*c).toString())
+        respuestasIncorrectas.push((b*c).toString()+"x² + "+(2*a).toString()+"x+ "+(c+b).toString())
+        respuestasIncorrectas.push("x² + "+(b+c).toString())
+        respuestasIncorrectas.push("x² + "+(b*-c).toString())
+      } else {
+        texto = 'Resuelva el siguiente ejercicio: ( '+a.toString()+"x + "+b.toString()+" )" + '( '+a.toString()+"x - "+c.toString()+" )";
+        respuestaCorrecta = (a**2).toString()+"x² + "+(b-c).toString()+"x + "+(b*-c).toString();
+        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b+c).toString()+"x + "+(b*c).toString())
+        respuestasIncorrectas.push((b*c).toString()+"x² + "+(2*a).toString()+"x+ "+(c+b).toString())
+        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b+c).toString())
+        respuestasIncorrectas.push((a**2).toString()+"x² + "+(b*-c).toString())
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else {
+      return 0 as unknown as Pregunta;
+    }
   }
 }
