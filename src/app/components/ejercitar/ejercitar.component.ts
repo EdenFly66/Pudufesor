@@ -109,6 +109,13 @@ export class EjercitarComponent {
         contenidoPregunta = this.preguntaServicio.productosNotables(0);
       } else if (nombre == 'Área de la superficie y volumen del cono') {
         contenidoPregunta = this.preguntaServicio.cono(0);
+      } else if (nombre == 'Sistema de ecuaciones lineales') {
+        contenidoPregunta = this.preguntaServicio.sistemaEcuacionesLineales(1);
+      }
+      else if (nombre == 'Relaciones lineales en dos variables') {
+        contenidoPregunta = this.preguntaServicio.funcionesLineales(0);
+      }else if (nombre == 'Perímetro y área de sectores y segmentos circulares') {
+          contenidoPregunta = this.preguntaServicio.sectoresCirculares(4);
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }

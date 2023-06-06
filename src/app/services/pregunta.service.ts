@@ -1111,21 +1111,28 @@ export class PreguntaService {
         r.toString() +
         'cm.';
       let respuestaCorrecta =
-        (3.14 * r**2 * (g**2 - r**2)**(1/2) * (1/3))
+        (3.14 * r ** 2 * (g ** 2 - r ** 2) ** (1 / 2) * (1 / 3))
           .toFixed(2)
           .toString() + 'cm³';
       let respuestasIncorrectas: Array<string> = [];
       respuestasIncorrectas.push(
-        (3.14 * r**2 * (g**2 + r**2)**(1/2) * (1/3)).toFixed(2).toString() +
+        (3.14 * r ** 2 * (g ** 2 + r ** 2) ** (1 / 2) * (1 / 3))
+          .toFixed(2)
+          .toString() + 'cm³'
+      );
+      respuestasIncorrectas.push(
+        (3.14 * r ** 2 * (g ** 2 - r ** 2) ** (1 / 2)).toFixed(2).toString() +
           'cm³'
       );
       respuestasIncorrectas.push(
-        (3.14 * r**2 * (g**2 - r**2)**(1/2)).toFixed(2).toString() + 'cm³'
+        (3.14 * r ** 2 * (g ** 2 + r ** 2) ** (1 / 2)).toFixed(2).toString() +
+          'cm³'
       );
       respuestasIncorrectas.push(
-        (3.14 * r**2 * (g**2 + r**2)**(1/2)).toFixed(2).toString() + 'cm³'
+        ((3.14 * r ** 2 + (g ** 2 - r ** 2) ** (1 / 2)) * (1 / 3))
+          .toFixed(2)
+          .toString() + 'cm³'
       );
-      respuestasIncorrectas.push(((3.14 * r**2 + (g**2 - r**2)**(1/2)) * (1/3)).toFixed(2).toString() + 'cm³');
 
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
@@ -1147,22 +1154,498 @@ export class PreguntaService {
         r.toString() +
         'cm.';
       let respuestaCorrecta =
-        (3.14* r **2 * h * (1/3))
-          .toFixed(2)
-          .toString() + 'cm³';
+        (3.14 * r ** 2 * h * (1 / 3)).toFixed(2).toString() + 'cm³';
       let respuestasIncorrectas: Array<string> = [];
       respuestasIncorrectas.push(
-        (3.14* r **2 * h).toFixed(2).toString() +
-          'cm³'
+        (3.14 * r ** 2 * h).toFixed(2).toString() + 'cm³'
       );
       respuestasIncorrectas.push(
-        (3.14* r  * h * (1/3)).toFixed(2).toString() + 'cm³'
+        (3.14 * r * h * (1 / 3)).toFixed(2).toString() + 'cm³'
       );
+      respuestasIncorrectas.push((3.14 * r * h).toFixed(2).toString() + 'cm³');
       respuestasIncorrectas.push(
-        (3.14* r  * h).toFixed(2).toString() + 'cm³'
+        (3.14 * h ** 2 * r * (1 / 3)).toFixed(2).toString() + 'cm³'
       );
-      respuestasIncorrectas.push((3.14* h **2 * r * (1/3)).toFixed(2).toString() + 'cm³');
 
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  sistemaEcuacionesLineales(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let a = this.generarNaturales(50) + 1;
+      let b = this.generarNaturales(50) + 1;
+      let c = this.generarNaturales(50) + 1;
+      let d = this.generarNaturales(50) + 1;
+      let e = this.generarNaturales(50) + 1;
+      let f = this.generarNaturales(50) + 1;
+      let y = this.generarNaturales(50) + 1;
+      let x = (-y * (b + e) + c - f) / (a - d);
+
+      while (
+        a * x + b * y != c ||
+        d * x - e * y != f ||
+        b == e ||
+        x == 1 ||
+        y == 1
+      ) {
+        a = this.generarNaturales(50) + 1;
+        b = this.generarNaturales(50) + 1;
+        c = this.generarNaturales(50) + 1;
+        d = this.generarNaturales(50) + 1;
+        e = this.generarNaturales(50) + 1;
+        f = this.generarNaturales(50) + 1;
+        y = this.generarNaturales(50) + 1;
+        x = (-y * (b + e) + c - f) / (a - d);
+      }
+
+      let texto =
+        'Resuelva el sistema de ecuaciones: ' +
+        a.toString() +
+        'x + ' +
+        b.toString() +
+        'y = ' +
+        c.toString() +
+        ' ; ' +
+        d.toString() +
+        'x - ' +
+        e.toString() +
+        'y = ' +
+        f.toString();
+
+      let xCorrecta = x,
+        yCorrecta = y;
+      let xIncorrecta1 = (-y * (b - e) + c - f) / (a - d),
+        yIncorrecta1 = (-xIncorrecta1 * (a + d) + c - f) / (b + e);
+      let xIncorrecta2 = (-y * (b + e) + c - f) / (a + d),
+        yIncorrecta2 = (-xIncorrecta2 * (a - d) + c - f) / (b - e);
+      let xIncorrecta3 = (-y * (b - e) + c - f) / (a + d),
+        yIncorrecta3 = (xIncorrecta3 * (a + d) + c + f) / (b - e);
+      let xIncorrecta4 = (-y * (b + e) + c + f) / (a - d),
+        yIncorrecta4 = (-xIncorrecta4 * (a + d) + c + f) / (b + e);
+
+      let respuestaCorrecta =
+        'x = ' + xCorrecta.toFixed(2) + ' , y = ' + yCorrecta.toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        'x = ' + xIncorrecta1.toFixed(2) + ' , y = ' + yIncorrecta1.toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'x = ' + xIncorrecta2.toFixed(2) + ' , y = ' + yIncorrecta2.toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'x = ' + xIncorrecta3.toFixed(2) + ' , y = ' + yIncorrecta3.toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'x = ' + xIncorrecta4.toFixed(2) + ' , y = ' + yIncorrecta4.toFixed(2)
+      );
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      return 0 as unknown as Pregunta;
+    } else if (tipo == 3) {
+      return 0 as unknown as Pregunta;
+    } else if (tipo == 4) {
+      return 0 as unknown as Pregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  funcionesLineales(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let m = this.generarEntero(15);
+      let a = this.generarEntero(9);
+      let b = this.generarEntero(9);
+
+      if (m == 0) {
+        return this.funcionesLineales(1);
+      }
+
+      let texto =
+        'Obtener la función de la recta, cuya pendiente mide ' +
+        m.toString() +
+        ' unidades y pasa por el punto (' +
+        a.toString() +
+        ',' +
+        b.toString() +
+        ')';
+      let respuestaCorrecta =
+        'y = ' + m.toString() + 'x + ' + (b - m * a).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        'y = ' + (-m).toString() + 'x + ' + (b - m * a).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + m.toString() + 'x + ' + (-(b - m * a)).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + (-m).toString() + 'x + ' + (b + m * a).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + m.toString() + 'x + ' + (b + m * a).toString()
+      );
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.funcionesLineales(1);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let a = this.generarEntero(9);
+      let b = this.generarEntero(9);
+      let c = this.generarEntero(9);
+      let d = this.generarEntero(9);
+
+      if (
+        a - c == 0 ||
+        a + c == 0 ||
+        (b - d) / (a - c) == 0 ||
+        b - ((b + d) / (a - c)) * a == 0
+      ) {
+        return this.funcionesLineales(2);
+      }
+
+      let texto =
+        'Obtener la función de la recta que pasa por los puntos (' +
+        a.toString() +
+        ',' +
+        b.toString() +
+        ') y (' +
+        c.toString() +
+        ',' +
+        d.toString() +
+        ')';
+      let respuestaCorrecta =
+        'y = ' +
+        ((b - d) / (a - c)).toFixed(2) +
+        'x + ' +
+        (b - ((b - d) / (a - c)) * a).toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        'y = ' +
+          ((b + d) / (a - c)).toFixed(2) +
+          'x + ' +
+          (b - ((b + d) / (a - c)) * a).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'y = ' +
+          ((b - d) / (a + c)).toFixed(2) +
+          'x + ' +
+          (b - ((b - d) / (a + c)) * a).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'y = ' +
+          ((b + d) / (a + c)).toFixed(2) +
+          'x + ' +
+          (b - ((b + d) / (a + c)) * a).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        'y = ' +
+          ((b - d) / (a - c)).toFixed(2) +
+          'x + ' +
+          (b + ((b + d) / (a - c)) * a).toFixed(2)
+      );
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.funcionesLineales(2);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let a = this.generarEntero(9);
+      let b = this.generarEntero(9);
+      let c = this.generarEntero(9);
+      let m = this.generarEntero(9);
+
+      if (m == 0) {
+        return this.funcionesLineales(3);
+      }
+
+      let texto =
+        'Obtener la función que pasa por el punto (' +
+        a.toString() +
+        ',' +
+        b.toString() +
+        ') y es paralela a la función y = ' +
+        m.toString() +
+        'x + ' +
+        c.toString();
+      let respuestaCorrecta =
+        'y = ' + m.toString() + 'x + ' + (b - m * a).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        'y = ' + (-m).toString() + 'x + ' + (b - m * a).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + m.toString() + 'x + ' + (-(b - m * a)).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + (-m).toString() + 'x + ' + (b + m * a).toString()
+      );
+      respuestasIncorrectas.push(
+        'y = ' + m.toString() + 'x + ' + (b + m * a).toString()
+      );
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.funcionesLineales(3);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let a = this.generarNaturales(1000) + 1;
+      let b = this.generarNaturales(100) + 1;
+      let c = this.generarNaturales(100) + 1;
+
+      let texto =
+        'Por el alquiler de un vehículo se cobran $' +
+        a.toString() +
+        ' diarios, y adicionalmente se cobran $' +
+        b.toString() +
+        ' por kilómetro. Si en un día se recorren ' +
+        c.toString() +
+        'km. ¿Cuánto hay que pagar?';
+      let respuestaCorrecta = '$' + (b * c + a).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push('$' + (b * a + c).toString());
+      respuestasIncorrectas.push('$' + (c * a + b).toString());
+      respuestasIncorrectas.push('$' + (b * c + b).toString());
+      respuestasIncorrectas.push('$' + (c * a + a).toString());
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.funcionesLineales(4);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  sectoresCirculares(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let r = this.generarNaturales(15) + 1;
+      let a = this.generarNaturales(359) + 1;
+
+      let texto =
+        'En un círculo de ' +
+        r.toString() +
+        'cm de radio se traza un ángulo central de ' +
+        a.toString() +
+        '°. Calcular el área del segmento circular comprendido entra la cuerda que une a los extremos de los dos radios y su arco correspondiente.';
+      let respuestaCorrecta =
+        (
+          (3.14 * r ** 2 * a) / 360 -
+          r * (r ** 2 - (r / 2) ** 2) ** (1 / 2) * (1 / 2)
+        ).toFixed(2) + 'cm²';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        (
+          (3.14 * r * a) / 360 -
+          r * (r ** 2 - (r / 2) ** 2) ** (1 / 2) * (1 / 2)
+        ).toFixed(2) + 'cm²'
+      );
+      respuestasIncorrectas.push(
+        (
+          (3.14 * r ** 2 * a) / 360 -
+          r * (r - r / 2) ** (1 / 2) * (1 / 2)
+        ).toFixed(2) + 'cm²'
+      );
+      respuestasIncorrectas.push(
+        ((3.14 * r ** 2 * a) / 360).toFixed(2) + 'cm²'
+      );
+      respuestasIncorrectas.push(
+        (r * (r ** 2 - (r / 2) ** 2) ** (1 / 2) * (1 / 2)).toFixed(2) + 'cm²'
+      );
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.sectoresCirculares(1);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let r = this.generarNaturales(15) + 1;
+      let a = this.generarNaturales(359) + 1;
+
+      let texto =
+        'Se tiene un círculo de radio ' +
+        r.toString() +
+        'cm. Calcular el valor del sector circular con un ángulo de ' +
+        a.toString() +
+        '°.';
+      let respuestaCorrecta = ((3.14 * r ** 2 * a) / 360).toFixed(2) + 'cm²';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(((3.14 * r * a) / 360).toFixed(2) + 'cm²');
+      respuestasIncorrectas.push(((r ** 2 * a) / 360).toFixed(2) + 'cm²');
+      respuestasIncorrectas.push(((3.14 * r ** 2) / 360).toFixed(2) + 'cm²');
+      respuestasIncorrectas.push(((3.14 * a) / 360).toFixed(2) + 'cm²');
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.sectoresCirculares(2);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let angulo = this.generarNaturales(359)+1
+      let area = this.generarNaturales(90)+10
+
+      let texto = "El área de un sector circular de ángulo "+angulo.toString()+"° es "+area.toString()+"π cm². Calcular el radio."
+      let respuestaCorrecta = (((area*360)/angulo)**(1/2)).toFixed(2) + 'cm';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((area*360/angulo).toFixed(2) + 'cm');
+      respuestasIncorrectas.push((angulo*360/area).toFixed(2) + 'cm');
+      respuestasIncorrectas.push(((angulo*360/area)**(1/2)).toFixed(2) + 'cm');
+      respuestasIncorrectas.push((area/angulo).toFixed(2) + 'cm');
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.sectoresCirculares(3);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let angulo = this.generarNaturales(359)+1
+      let area = this.generarNaturales(90)+10
+
+      let texto = "El área de un sector circular de ángulo "+angulo.toString()+"° es "+area.toString()+"π cm². Calcular la longitud de la circunferencia."
+      let respuestaCorrecta = (2*3.14*((area*360)/angulo)**(1/2)).toFixed(2) + 'cm';
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(((2*3.14*area*360/angulo) / 360).toFixed(2) + 'cm');
+      respuestasIncorrectas.push((2*3.14*angulo*360/area).toFixed(2) + 'cm');
+      respuestasIncorrectas.push(((2*3.14)*(angulo*360/area)**(1/2) / 360).toFixed(2) + 'cm');
+      respuestasIncorrectas.push(((2*3.14)*(area/angulo)).toFixed(2) + 'cm');
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.sectoresCirculares(4);
+      }
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
