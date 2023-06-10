@@ -1364,25 +1364,27 @@ export class PreguntaService {
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
+      let perimetro = this.generarNaturales(200) + 1;
 
-      let perimetro = this.generarNaturales(200)+1
-
-      while(perimetro%12!=0 ){
-        perimetro = this.generarNaturales(200)+1
+      while (perimetro % 12 != 0) {
+        perimetro = this.generarNaturales(200) + 1;
       }
 
-      let ladoMenor = perimetro/4
-      let ladoMayor = ladoMenor*3
+      let ladoMenor = perimetro / 4;
+      let ladoMayor = ladoMenor * 3;
 
-
-
-      let texto = "En un rectángulo de perímetro "+perimetro.toString()+", se sabe que su lado mayor mide el triple que el lado menor. Calcular el área del rectángulo."
-      let respuestaCorrecta = (ladoMenor*ladoMayor).toString()
-      let respuestasIncorrectas:Array<string>=[]
-      respuestasIncorrectas.push((ladoMenor*ladoMenor).toString())
-      respuestasIncorrectas.push((ladoMayor*ladoMayor).toString())
-      respuestasIncorrectas.push(((ladoMenor+ladoMayor)**2).toString())
-      respuestasIncorrectas.push(((perimetro/3)*(perimetro/3*2)).toString())
+      let texto =
+        'En un rectángulo de perímetro ' +
+        perimetro.toString() +
+        ', se sabe que su lado mayor mide el triple que el lado menor. Calcular el área del rectángulo.';
+      let respuestaCorrecta = (ladoMenor * ladoMayor).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((ladoMenor * ladoMenor).toString());
+      respuestasIncorrectas.push((ladoMayor * ladoMayor).toString());
+      respuestasIncorrectas.push(((ladoMenor + ladoMayor) ** 2).toString());
+      respuestasIncorrectas.push(
+        ((perimetro / 3) * ((perimetro / 3) * 2)).toString()
+      );
 
       if (
         respuestaCorrecta == respuestasIncorrectas[0] ||
@@ -1811,6 +1813,208 @@ export class PreguntaService {
         respuestasIncorrectas[2] == respuestasIncorrectas[3]
       ) {
         return this.sectoresCirculares(4);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  homoteciaTales(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let razon = this.generarNaturales(5) + 1;
+      let OA = this.generarNaturales(20) + 1;
+      let texto =
+        "Si un punto A' es homotético al punto A con razón " +
+        razon.toString() +
+        " y el centro de homotecia O, ¿cuál es la longitud del segmento OA' cuando OA = " +
+        OA.toString() +
+        'cm?';
+
+      let respuestaCorrecta = "OA' = " + (razon * OA).toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push("OA' = " + (razon / OA).toFixed(2));
+      respuestasIncorrectas.push("OA' = " + (OA / razon).toFixed(2));
+      respuestasIncorrectas.push("OA' = " + (razon - OA).toFixed(2));
+      respuestasIncorrectas.push("OA' = " + (razon + OA).toFixed(2));
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.homoteciaTales(1);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let a = this.generarNaturales(15) + 1;
+      let b = this.generarNaturales(15) + 1;
+      let c = (a ** 2 + b ** 2) ** (1 / 2);
+      if (c != Math.trunc(c)) {
+        return this.homoteciaTales(2);
+      }
+      let razon = this.generarNaturales(5) + 1;
+      let texto =
+        'A un triángulo rectángulo de catetos ' +
+        a.toString() +
+        'cm y ' +
+        b.toString() +
+        ' cm se le aplica una homotecia de razón ' +
+        razon.toString() +
+        '. ¿Cuál es el perímetro del nuevo triángulo?';
+
+      let respuestaCorrecta = ((a + b + c) * razon).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a + b + c).toString());
+      respuestasIncorrectas.push(
+        ((a ** 2 + b ** 2 + a + b) * razon).toString()
+      );
+      respuestasIncorrectas.push((a ** 2 + b ** 2 + a + b).toString());
+      respuestasIncorrectas.push((a + b + c + razon).toString());
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.homoteciaTales(2);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let sombraTotal = this.generarNaturales(20) + 10;
+      while (sombraTotal % 2 != 0) {
+        sombraTotal = this.generarNaturales(20) + 10;
+      }
+      let altura1 = this.generarNaturales(15) + 1;
+      while (altura1 % 2 != 0) {
+        altura1 = this.generarNaturales(20) + 10;
+      }
+      let altura2 = this.generarNaturales(15) + 1;
+      while (altura2 % 2 != 0) {
+        altura2 = this.generarNaturales(20) + 10;
+      }
+      let texto =
+        'Una torre de dos pisos proyecta una sombra de ' +
+        sombraTotal.toString() +
+        ' m; si el primer piso tiene una altura de ' +
+        altura1.toString() +
+        ' m y el segundo piso una altura de ' +
+        altura2.toString() +
+        ' m, ¿Cuánto mide la sombra proyectada por el segundo piso?';
+      let sombra1 = (altura1 * sombraTotal) / (altura1 + altura2);
+      let sombra2 = sombraTotal - sombra1;
+      let error1 = (altura1 * sombraTotal) / altura1;
+      let error2 = (altura1 * sombraTotal) / altura2;
+      let error3 = (altura1 * sombraTotal) / sombra1;
+      let error4 = (altura2 * sombraTotal) / sombra1;
+      let respuestaCorrecta = sombra2.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+
+      if (
+        sombra2 != Math.trunc(sombra2) ||
+        error1 != Math.trunc(error1) ||
+        error2 != Math.trunc(error2) ||
+        error3 != Math.trunc(error3) ||
+        error4 != Math.trunc(error4) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.homoteciaTales(3);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let sombra1 = this.generarNaturales(50) + 1;
+      let altura2 = this.generarNaturales(50) + 1;
+      let sombra2 = this.generarNaturales(50) + 1;
+
+      while (sombra1 == sombra2) {
+        sombra2 = this.generarNaturales(50) + 1;
+      }
+      let texto =
+        'Calcula la altura de un árbol que proyecta una sombra de ' +
+        sombra1.toString() +
+        ' metros en el momento en que otro árbol que mide ' +
+        altura2.toString() +
+        ' metros proyecta una sombra de ' +
+        sombra2.toString() +
+        ' metros.';
+
+      let altura1 = (altura2 * sombra1) / sombra2;
+      let error1 = (altura2 * sombra2) / sombra1;
+      let error2 = (sombra1 * sombra2) / altura2;
+      let error3 = altura2 / sombra1;
+      let error4 = altura2 / sombra2;
+      let respuestaCorrecta = altura1.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+
+      if (
+        altura1 != Math.trunc(altura1) ||
+        error1 != Math.trunc(error1) ||
+        error2 != Math.trunc(error2) ||
+        error3 != Math.trunc(error3) ||
+        error4 != Math.trunc(error4) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.homoteciaTales(4);
       }
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,

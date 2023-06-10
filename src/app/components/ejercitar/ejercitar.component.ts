@@ -117,6 +117,9 @@ export class EjercitarComponent {
         nombre == 'Perímetro y área de sectores y segmentos circulares'
       ) {
         contenidoPregunta = this.preguntaServicio.sectoresCirculares(0);
+      }
+      else if(nombre=='Homotecia y teorema de Tales'){
+        contenidoPregunta = this.preguntaServicio.homoteciaTales(4)
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }
