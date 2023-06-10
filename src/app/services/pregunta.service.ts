@@ -2025,4 +2025,198 @@ export class PreguntaService {
     }
     return 0 as unknown as Pregunta;
   }
+
+  semejanza(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let segmento = this.generarNaturales(9) + 1;
+      let escala = this.generarNaturales(2) + 2;
+      let texto =
+        'Dado un segmento de ' +
+        segmento.toString() +
+        'cm, construimos otro semejante a él aplicando una escala de k = ' +
+        escala.toString() +
+        '. Dicho segmento medirá: ';
+      let resultado = segmento * escala;
+      let error1 = segmento / escala;
+      let error2 = segmento + escala;
+      let error3 = segmento - escala;
+      let error4 = segmento ** escala;
+
+      let respuestaCorrecta = resultado.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+      if (
+        resultado != Math.trunc(resultado) ||
+        error1 != Math.trunc(error1) ||
+        error2 != Math.trunc(error2) ||
+        error3 != Math.trunc(error3) ||
+        error4 != Math.trunc(error4) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.semejanza(1);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 2) {
+      let a = this.generarNaturales(40) + 1;
+      let b = this.generarNaturales(40) + 1;
+
+      while (b == a) {
+        b = this.generarNaturales(40) + 1;
+      }
+      let texto =
+        'En un triángulo rectángulo, una altura corta a la hipotenusa, y define dos segmentos de longitudes ' +
+        a.toString() +
+        ' cm y ' +
+        b.toString() +
+        ' cm. Halla la longitud de la altura.';
+      let resultado = (a * b) ** (1 / 2);
+      let error1 = a * b;
+      let error2 = a + b;
+      let error3 = a ** 2 + b ** 2;
+      let error4 = (a + b) ** 2;
+
+      let respuestaCorrecta = resultado.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+      if (
+        resultado != Math.trunc(resultado) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.semejanza(2);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let p = this.generarNaturales(20)+1
+      let q = this.generarNaturales(20)+1
+      while(p==q){
+        q = this.generarNaturales(20)+1
+      }
+      let texto = "En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden "+p.toString()+" y "+q.toString()+". Determina el valor del cateto menor."
+      
+      let menor,mayor;
+      let a= p * (p+q)
+      let b = q *(p+q)
+
+      if(a>b){
+        menor = b
+        mayor = a
+      }
+      else{
+        menor = a
+        mayor = b
+      }
+      let resultado = menor
+      let error1 = mayor
+      let error2 = p + (p*q)
+      let error3 = q + (q*p)
+      let error4 = p*q
+      let respuestaCorrecta = resultado.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+      if (
+        resultado != Math.trunc(resultado) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.semejanza(3);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    
+    } else if (tipo == 4) {
+      let p = this.generarNaturales(15)+1
+      let q = this.generarNaturales(15)+1
+      while(p==q){
+        q = this.generarNaturales(15)+1
+      }
+      let texto = "En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden "+p.toString()+" y "+q.toString()+". Determina el área del triángulo."
+      
+      let resultado = p*(p+q) * q * (p+q)
+      let error1 = p * q * (p+q)
+      let error2 =  (p*q)**(1/2) * (p+q)
+      let error3 = (q + (q*p)) * (p + (q*p))
+      let error4 = p*q
+      let respuestaCorrecta = resultado.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(error1.toString());
+      respuestasIncorrectas.push(error2.toString());
+      respuestasIncorrectas.push(error3.toString());
+      respuestasIncorrectas.push(error4.toString());
+      if (
+        resultado != Math.trunc(resultado) ||
+        error2 != Math.trunc(error2) ||
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.semejanza(4);
+      }
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
 }
