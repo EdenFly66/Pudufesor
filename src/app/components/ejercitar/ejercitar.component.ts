@@ -119,7 +119,7 @@ export class EjercitarComponent {
         contenidoPregunta = this.preguntaServicio.sectoresCirculares(0);
       }
       else if(nombre=='Homotecia y teorema de Tales'){
-        contenidoPregunta = this.preguntaServicio.homoteciaTales(4)
+        contenidoPregunta = this.preguntaServicio.homoteciaTales(0)
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }
