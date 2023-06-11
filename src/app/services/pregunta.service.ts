@@ -2123,30 +2123,34 @@ export class PreguntaService {
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
-      let p = this.generarNaturales(20)+1
-      let q = this.generarNaturales(20)+1
-      while(p==q){
-        q = this.generarNaturales(20)+1
+      let p = this.generarNaturales(20) + 1;
+      let q = this.generarNaturales(20) + 1;
+      while (p == q) {
+        q = this.generarNaturales(20) + 1;
       }
-      let texto = "En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden "+p.toString()+" y "+q.toString()+". Determina el valor del cateto menor."
-      
-      let menor,mayor;
-      let a= p * (p+q)
-      let b = q *(p+q)
+      let texto =
+        'En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden ' +
+        p.toString() +
+        ' y ' +
+        q.toString() +
+        '. Determina el valor del cateto menor.';
 
-      if(a>b){
-        menor = b
-        mayor = a
+      let menor, mayor;
+      let a = p * (p + q);
+      let b = q * (p + q);
+
+      if (a > b) {
+        menor = b;
+        mayor = a;
+      } else {
+        menor = a;
+        mayor = b;
       }
-      else{
-        menor = a
-        mayor = b
-      }
-      let resultado = menor
-      let error1 = mayor
-      let error2 = p + (p*q)
-      let error3 = q + (q*p)
-      let error4 = p*q
+      let resultado = menor;
+      let error1 = mayor;
+      let error2 = p + p * q;
+      let error3 = q + q * p;
+      let error4 = p * q;
       let respuestaCorrecta = resultado.toString();
       let respuestasIncorrectas: Array<string> = [];
       respuestasIncorrectas.push(error1.toString());
@@ -2174,20 +2178,24 @@ export class PreguntaService {
         respuestasIncorrectas: respuestasIncorrectas,
       });
       return contenidoPregunta;
-    
     } else if (tipo == 4) {
-      let p = this.generarNaturales(15)+1
-      let q = this.generarNaturales(15)+1
-      while(p==q){
-        q = this.generarNaturales(15)+1
+      let p = this.generarNaturales(15) + 1;
+      let q = this.generarNaturales(15) + 1;
+      while (p == q) {
+        q = this.generarNaturales(15) + 1;
       }
-      let texto = "En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden "+p.toString()+" y "+q.toString()+". Determina el área del triángulo."
-      
-      let resultado = p*(p+q) * q * (p+q)
-      let error1 = p * q * (p+q)
-      let error2 =  (p*q)**(1/2) * (p+q)
-      let error3 = (q + (q*p)) * (p + (q*p))
-      let error4 = p*q
+      let texto =
+        'En un triángulo rectángulo, los dos segmentos de la hipotenusa separados por la altura, miden ' +
+        p.toString() +
+        ' y ' +
+        q.toString() +
+        '. Determina el área del triángulo.';
+
+      let resultado = p * (p + q) * q * (p + q);
+      let error1 = p * q * (p + q);
+      let error2 = (p * q) ** (1 / 2) * (p + q);
+      let error3 = (q + q * p) * (p + q * p);
+      let error4 = p * q;
       let respuestaCorrecta = resultado.toString();
       let respuestasIncorrectas: Array<string> = [];
       respuestasIncorrectas.push(error1.toString());
@@ -2216,6 +2224,253 @@ export class PreguntaService {
         respuestasIncorrectas: respuestasIncorrectas,
       });
       return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  analisisPoblaciones(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+      let a = this.generarNaturales(20) + 1;
+      let b = this.generarNaturales(20) + 1;
+      let c = this.generarNaturales(20) + 1;
+      let d = this.generarNaturales(20) + 1;
+      let e = this.generarNaturales(20) + 1;
+      let total = a + b + c + d + e;
+      if (
+        a == b ||
+        a == c ||
+        a == d ||
+        a == e ||
+        b == c ||
+        b == d ||
+        b == e ||
+        c == d ||
+        c == e ||
+        d == e ||
+        total%2!= 0
+      ) {
+        return this.analisisPoblaciones(1);
+      }
+
+      
+      let texto =
+        'Se hizo una encuesta en un grupo de ' +
+        total.toString() +
+        ' personas preguntando su color favorito, se obtuvo que ' +
+        a.toString() +
+        ' les gusta el color rojo, ' +
+        b.toString() +
+        ' les gusta el color azul, ' +
+        c.toString() +
+        ' prefieren el amarillo, ' +
+        d.toString() +
+        ' seleccionaron el verde y el resto seleccionaron el rosa. Calcule la frecuencia relativa de la gente que le gusta el azul.';
+      
+      let respuestaCorrecta = (b/total).toFixed(2)
+      let respuestasIncorrectas:Array<string> = []
+      respuestasIncorrectas.push((a/total).toFixed(2))
+      respuestasIncorrectas.push((c/total).toFixed(2))
+      respuestasIncorrectas.push((d/total).toFixed(2))
+      respuestasIncorrectas.push((e/total).toFixed(2))
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    
+    } else if (tipo == 2) {
+      let a = this.generarNaturales(20) + 1;
+      let b = this.generarNaturales(20) + 1;
+      let c = this.generarNaturales(20) + 1;
+      let d = this.generarNaturales(20) + 1;
+      let e = this.generarNaturales(20) + 1;
+      let total = a + b + c + d + e;
+      if (
+        a == b ||
+        a == c ||
+        a == d ||
+        a == e ||
+        b == c ||
+        b == d ||
+        b == e ||
+        c == d ||
+        c == e ||
+        d == e 
+      ) {
+        return this.analisisPoblaciones(2);
+      }
+
+      
+      let texto =
+        'Se hizo una encuesta en un grupo de ' +
+        total.toString() +
+        ' personas preguntando su color favorito, se obtuvo que ' +
+        a.toString() +
+        ' les gusta el color rojo, ' +
+        b.toString() +
+        ' les gusta el color azul, ' +
+        c.toString() +
+        ' prefieren el amarillo, ' +
+        d.toString() +
+        ' seleccionaron el verde y el resto seleccionaron el rosa. Calcule la moda.';
+      
+      let moda;
+      let noModales = []
+      if(a>b && a>c && a>d && a>e){
+        moda = a
+        noModales.push(b)
+        noModales.push(c)
+        noModales.push(d)
+        noModales.push(e)
+      }
+      else if(b>a  && b>c && b>d && b>e){
+        moda = b
+        noModales.push(a)
+        noModales.push(c)
+        noModales.push(d)
+        noModales.push(e)
+      }
+      else if(c>a  && c>b && c>d && c>e){
+        moda = c
+        noModales.push(a)
+        noModales.push(b)
+        noModales.push(d)
+        noModales.push(e)
+      }
+      else if(d>a  && d>c && d>b && d>e){
+        moda = d
+        noModales.push(a)
+        noModales.push(c)
+        noModales.push(b)
+        noModales.push(e)
+      }
+      else {
+        moda = e
+        noModales.push(a)
+        noModales.push(c)
+        noModales.push(b)
+        noModales.push(d)
+      }
+
+
+      let respuestaCorrecta = moda.toString()
+      let respuestasIncorrectas:Array<string> = []
+      respuestasIncorrectas.push(noModales[0].toString())
+      respuestasIncorrectas.push(noModales[1].toString())
+      respuestasIncorrectas.push(noModales[2].toString())
+      respuestasIncorrectas.push(noModales[3].toString())
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 3) {
+      let premios2 = this.generarNaturales(10)+1
+      let premios1 = this.generarNaturales(10)+1
+      let premios0 = this.generarNaturales(10)+1
+
+      let texto = "En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de "+premios0.toString()+", los que han obtenido un premio es de "+premios1.toString()+", y los que han obtenidos dos premios es de "+premios2.toString()+". Calcule el promedio de premios obtenidos."
+      let respuestaCorrecta = ((premios0*0 + premios1*1 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2)
+      let respuestasIncorrectas:Array<string> = []
+      respuestasIncorrectas.push(((premios0*0 + premios1*2 + premios2 * 1)/(premios0+premios1+premios2)).toFixed(2))
+      respuestasIncorrectas.push(((premios0*1 + premios1*0 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2))
+      respuestasIncorrectas.push(((premios0*1 + premios1*2 + premios2 * 0)/(premios0+premios1+premios2)).toFixed(2))
+      respuestasIncorrectas.push(((premios0*2 + premios1*0 + premios2 * 1)/(premios0+premios1+premios2)).toFixed(2))
+      
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    } else if (tipo == 4) {
+      let premios2 = this.generarNaturales(10)+1
+      let premios1 = this.generarNaturales(10)+1
+      let premios0 = this.generarNaturales(10)+1
+
+      let texto = "En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de "+premios0.toString()+", los que han obtenido un premio es de "+premios1.toString()+", y los que han obtenidos dos premios es de "+premios2.toString()+". Calcule la mediana."
+      
+      let datosObservacion = []
+      for(let i=0; i<premios0; i++){
+        datosObservacion.push(0)
+      }
+      for(let i=premios0; i<premios0+premios1; i++){
+        datosObservacion.push(1)
+      }
+      for(let i=premios1+premios0; i<premios0+premios1+premios2; i++){
+        datosObservacion.push(2)
+      }
+
+      let total = premios0+premios1+premios2
+      let mediana, posicion
+      if(total%2!=0){
+        mediana = datosObservacion[(total-1)/2]
+      }
+      else{
+        mediana = (datosObservacion[total/2 - 1] + datosObservacion[total/2])/2
+      }
+      console.log(datosObservacion)
+      console.log(mediana)
+      let respuestaCorrecta = (mediana).toFixed(2)
+      let respuestasIncorrectas:Array<string> = []
+      respuestasIncorrectas.push((mediana+1).toFixed(2))
+      respuestasIncorrectas.push((total/2).toFixed(2))
+      respuestasIncorrectas.push(((premios0*0 + premios1*1 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2))
+      respuestasIncorrectas.push(((mediana)/(premios0+premios1+premios2)).toFixed(2))
+      
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.analisisPoblaciones(4);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  reglasProbabilidad(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+    } else if (tipo == 2) {
+    } else if (tipo == 3) {
+    } else if (tipo == 4) {
+    }
+    return 0 as unknown as Pregunta;
+  }
+
+  comportamientoAleatorio(tipo: number): Pregunta {
+    if (tipo == 0) {
+      tipo = this.generarNaturales(4) + 1;
+    }
+    if (tipo == 1) {
+    } else if (tipo == 2) {
+    } else if (tipo == 3) {
+    } else if (tipo == 4) {
     }
     return 0 as unknown as Pregunta;
   }

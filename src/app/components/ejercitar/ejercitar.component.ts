@@ -121,6 +121,15 @@ export class EjercitarComponent {
         contenidoPregunta = this.preguntaServicio.homoteciaTales(0);
       } else if (nombre == 'Semejanza') {
         contenidoPregunta = this.preguntaServicio.semejanza(0);
+      }
+      else if(nombre=='Análisis de poblaciones'){
+        contenidoPregunta = this.preguntaServicio.analisisPoblaciones(4);
+      }
+      else if(nombre=='Reglas de la probabilidad'){
+        contenidoPregunta = this.preguntaServicio.reglasProbabilidad(0);
+      }
+      else if(nombre=='Comportamiento aleatorio'){
+        contenidoPregunta = this.preguntaServicio.comportamientoAleatorio(0);
       } else {
         contenidoPregunta = 0 as unknown as Pregunta;
       }
