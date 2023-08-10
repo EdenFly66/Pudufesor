@@ -2250,12 +2250,11 @@ export class PreguntaService {
         c == d ||
         c == e ||
         d == e ||
-        total%2!= 0
+        total % 2 != 0
       ) {
         return this.analisisPoblaciones(1);
       }
 
-      
       let texto =
         'Se hizo una encuesta en un grupo de ' +
         total.toString() +
@@ -2268,13 +2267,13 @@ export class PreguntaService {
         ' prefieren el amarillo, ' +
         d.toString() +
         ' seleccionaron el verde y el resto seleccionaron el rosa. Calcule la frecuencia relativa de la gente que le gusta el azul.';
-      
-      let respuestaCorrecta = (b/total).toFixed(2)
-      let respuestasIncorrectas:Array<string> = []
-      respuestasIncorrectas.push((a/total).toFixed(2))
-      respuestasIncorrectas.push((c/total).toFixed(2))
-      respuestasIncorrectas.push((d/total).toFixed(2))
-      respuestasIncorrectas.push((e/total).toFixed(2))
+
+      let respuestaCorrecta = (b / total).toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a / total).toFixed(2));
+      respuestasIncorrectas.push((c / total).toFixed(2));
+      respuestasIncorrectas.push((d / total).toFixed(2));
+      respuestasIncorrectas.push((e / total).toFixed(2));
 
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
@@ -2282,7 +2281,6 @@ export class PreguntaService {
         respuestasIncorrectas: respuestasIncorrectas,
       });
       return contenidoPregunta;
-    
     } else if (tipo == 2) {
       let a = this.generarNaturales(20) + 1;
       let b = this.generarNaturales(20) + 1;
@@ -2300,12 +2298,11 @@ export class PreguntaService {
         b == e ||
         c == d ||
         c == e ||
-        d == e 
+        d == e
       ) {
         return this.analisisPoblaciones(2);
       }
 
-      
       let texto =
         'Se hizo una encuesta en un grupo de ' +
         total.toString() +
@@ -2318,52 +2315,47 @@ export class PreguntaService {
         ' prefieren el amarillo, ' +
         d.toString() +
         ' seleccionaron el verde y el resto seleccionaron el rosa. Calcule la moda.';
-      
+
       let moda;
-      let noModales = []
-      if(a>b && a>c && a>d && a>e){
-        moda = a
-        noModales.push(b)
-        noModales.push(c)
-        noModales.push(d)
-        noModales.push(e)
-      }
-      else if(b>a  && b>c && b>d && b>e){
-        moda = b
-        noModales.push(a)
-        noModales.push(c)
-        noModales.push(d)
-        noModales.push(e)
-      }
-      else if(c>a  && c>b && c>d && c>e){
-        moda = c
-        noModales.push(a)
-        noModales.push(b)
-        noModales.push(d)
-        noModales.push(e)
-      }
-      else if(d>a  && d>c && d>b && d>e){
-        moda = d
-        noModales.push(a)
-        noModales.push(c)
-        noModales.push(b)
-        noModales.push(e)
-      }
-      else {
-        moda = e
-        noModales.push(a)
-        noModales.push(c)
-        noModales.push(b)
-        noModales.push(d)
+      let noModales = [];
+      if (a > b && a > c && a > d && a > e) {
+        moda = a;
+        noModales.push(b);
+        noModales.push(c);
+        noModales.push(d);
+        noModales.push(e);
+      } else if (b > a && b > c && b > d && b > e) {
+        moda = b;
+        noModales.push(a);
+        noModales.push(c);
+        noModales.push(d);
+        noModales.push(e);
+      } else if (c > a && c > b && c > d && c > e) {
+        moda = c;
+        noModales.push(a);
+        noModales.push(b);
+        noModales.push(d);
+        noModales.push(e);
+      } else if (d > a && d > c && d > b && d > e) {
+        moda = d;
+        noModales.push(a);
+        noModales.push(c);
+        noModales.push(b);
+        noModales.push(e);
+      } else {
+        moda = e;
+        noModales.push(a);
+        noModales.push(c);
+        noModales.push(b);
+        noModales.push(d);
       }
 
-
-      let respuestaCorrecta = moda.toString()
-      let respuestasIncorrectas:Array<string> = []
-      respuestasIncorrectas.push(noModales[0].toString())
-      respuestasIncorrectas.push(noModales[1].toString())
-      respuestasIncorrectas.push(noModales[2].toString())
-      respuestasIncorrectas.push(noModales[3].toString())
+      let respuestaCorrecta = moda.toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(noModales[0].toString());
+      respuestasIncorrectas.push(noModales[1].toString());
+      respuestasIncorrectas.push(noModales[2].toString());
+      respuestasIncorrectas.push(noModales[3].toString());
 
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
@@ -2372,18 +2364,48 @@ export class PreguntaService {
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
-      let premios2 = this.generarNaturales(10)+1
-      let premios1 = this.generarNaturales(10)+1
-      let premios0 = this.generarNaturales(10)+1
+      let premios2 = this.generarNaturales(10) + 1;
+      let premios1 = this.generarNaturales(10) + 1;
+      let premios0 = this.generarNaturales(10) + 1;
 
-      let texto = "En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de "+premios0.toString()+", los que han obtenido un premio es de "+premios1.toString()+", y los que han obtenidos dos premios es de "+premios2.toString()+". Calcule el promedio de premios obtenidos."
-      let respuestaCorrecta = ((premios0*0 + premios1*1 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2)
-      let respuestasIncorrectas:Array<string> = []
-      respuestasIncorrectas.push(((premios0*0 + premios1*2 + premios2 * 1)/(premios0+premios1+premios2)).toFixed(2))
-      respuestasIncorrectas.push(((premios0*1 + premios1*0 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2))
-      respuestasIncorrectas.push(((premios0*1 + premios1*2 + premios2 * 0)/(premios0+premios1+premios2)).toFixed(2))
-      respuestasIncorrectas.push(((premios0*2 + premios1*0 + premios2 * 1)/(premios0+premios1+premios2)).toFixed(2))
-      
+      let texto =
+        'En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de ' +
+        premios0.toString() +
+        ', los que han obtenido un premio es de ' +
+        premios1.toString() +
+        ', y los que han obtenidos dos premios es de ' +
+        premios2.toString() +
+        '. Calcule el promedio de premios obtenidos.';
+      let respuestaCorrecta = (
+        (premios0 * 0 + premios1 * 1 + premios2 * 2) /
+        (premios0 + premios1 + premios2)
+      ).toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(
+        (
+          (premios0 * 0 + premios1 * 2 + premios2 * 1) /
+          (premios0 + premios1 + premios2)
+        ).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        (
+          (premios0 * 1 + premios1 * 0 + premios2 * 2) /
+          (premios0 + premios1 + premios2)
+        ).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        (
+          (premios0 * 1 + premios1 * 2 + premios2 * 0) /
+          (premios0 + premios1 + premios2)
+        ).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        (
+          (premios0 * 2 + premios1 * 0 + premios2 * 1) /
+          (premios0 + premios1 + premios2)
+        ).toFixed(2)
+      );
+
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
@@ -2391,40 +2413,55 @@ export class PreguntaService {
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
-      let premios2 = this.generarNaturales(10)+1
-      let premios1 = this.generarNaturales(10)+1
-      let premios0 = this.generarNaturales(10)+1
+      let premios2 = this.generarNaturales(10) + 1;
+      let premios1 = this.generarNaturales(10) + 1;
+      let premios0 = this.generarNaturales(10) + 1;
 
-      let texto = "En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de "+premios0.toString()+", los que han obtenido un premio es de "+premios1.toString()+", y los que han obtenidos dos premios es de "+premios2.toString()+". Calcule la mediana."
-      
-      let datosObservacion = []
-      for(let i=0; i<premios0; i++){
-        datosObservacion.push(0)
+      let texto =
+        'En una feria se están sorteando premios, la cantidad de personas que no han obtenido premios es de ' +
+        premios0.toString() +
+        ', los que han obtenido un premio es de ' +
+        premios1.toString() +
+        ', y los que han obtenidos dos premios es de ' +
+        premios2.toString() +
+        '. Calcule la mediana.';
+
+      let datosObservacion = [];
+      for (let i = 0; i < premios0; i++) {
+        datosObservacion.push(0);
       }
-      for(let i=premios0; i<premios0+premios1; i++){
-        datosObservacion.push(1)
+      for (let i = premios0; i < premios0 + premios1; i++) {
+        datosObservacion.push(1);
       }
-      for(let i=premios1+premios0; i<premios0+premios1+premios2; i++){
-        datosObservacion.push(2)
+      for (
+        let i = premios1 + premios0;
+        i < premios0 + premios1 + premios2;
+        i++
+      ) {
+        datosObservacion.push(2);
       }
 
-      let total = premios0+premios1+premios2
-      let mediana, posicion
-      if(total%2!=0){
-        mediana = datosObservacion[(total-1)/2]
+      let total = premios0 + premios1 + premios2;
+      let mediana;
+      if (total % 2 != 0) {
+        mediana = datosObservacion[(total - 1) / 2];
+      } else {
+        mediana =
+          (datosObservacion[total / 2 - 1] + datosObservacion[total / 2]) / 2;
       }
-      else{
-        mediana = (datosObservacion[total/2 - 1] + datosObservacion[total/2])/2
-      }
-      console.log(datosObservacion)
-      console.log(mediana)
-      let respuestaCorrecta = (mediana).toFixed(2)
-      let respuestasIncorrectas:Array<string> = []
-      respuestasIncorrectas.push((mediana+1).toFixed(2))
-      respuestasIncorrectas.push((total/2).toFixed(2))
-      respuestasIncorrectas.push(((premios0*0 + premios1*1 + premios2 * 2)/(premios0+premios1+premios2)).toFixed(2))
-      respuestasIncorrectas.push(((mediana)/(premios0+premios1+premios2)).toFixed(2))
-      
+      let respuestaCorrecta = mediana.toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((mediana + 1).toFixed(2));
+      respuestasIncorrectas.push((total / 2).toFixed(2));
+      respuestasIncorrectas.push(
+        (
+          (premios0 * 0 + premios1 * 1 + premios2 * 2) /
+          (premios0 + premios1 + premios2)
+        ).toFixed(2)
+      );
+      respuestasIncorrectas.push(
+        (mediana / (premios0 + premios1 + premios2)).toFixed(2)
+      );
 
       if (
         respuestaCorrecta == respuestasIncorrectas[0] ||
@@ -2456,9 +2493,189 @@ export class PreguntaService {
       tipo = this.generarNaturales(4) + 1;
     }
     if (tipo == 1) {
+      let a = (this.generarNaturales(98) + 1) / 100;
+      let b = (this.generarNaturales(98) + 1) / 100;
+      while (a + b <= 1) {
+        b = (this.generarNaturales(98) + 1) / 100;
+      }
+
+      let texto =
+        'Sean los sucesos A y B tales que P(A ∪ B)=1 , P(A)=' +
+        a.toString() +
+        ' , P(B)=' +
+        b.toString() +
+        '. Calcule P(A ∩ B)';
+
+      let respuestaCorrecta = (a + b - 1).toFixed(2);
+      if (respuestaCorrecta == (0.0).toString()) {
+        this.reglasProbabilidad(1);
+      }
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a - Number(respuestaCorrecta)).toFixed(2));
+      respuestasIncorrectas.push((b - Number(respuestaCorrecta)).toFixed(2));
+      respuestasIncorrectas.push((1 - Number(respuestaCorrecta)).toFixed(2));
+      respuestasIncorrectas.push(
+        ((this.generarNaturales(98) + 1) / 100).toFixed(2)
+      );
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.reglasProbabilidad(1);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     } else if (tipo == 2) {
+      let a = (this.generarNaturales(98) + 1) / 100;
+      let b = (this.generarNaturales(98) + 1) / 100;
+      let c = (this.generarNaturales(98) + 1) / 100;
+      while (a + b >= 1 || c >= a || c >= b || a == b) {
+        b = (this.generarNaturales(98) + 1) / 100;
+        c = (this.generarNaturales(98) + 1) / 100;
+      }
+
+      let texto =
+        'La probabilidad de que mañana almuerces pizza es de ' +
+        a.toString() +
+        ', de que almuerces papas fritas es de ' +
+        b.toString() +
+        ', y de que comas ambos de ' +
+        c.toString() +
+        '. Calcule la probabilidad de no almorzar ninguno.';
+      let respuestaCorrecta = (1 - a - b + c).toFixed(2);
+      if (respuestaCorrecta == (0.0).toString()) {
+        this.reglasProbabilidad(2);
+      }
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a - c).toFixed(2));
+      respuestasIncorrectas.push((b - c).toFixed(2));
+      respuestasIncorrectas.push((1 - c).toFixed(2));
+      respuestasIncorrectas.push(
+        ((this.generarNaturales(98) + 1) / 100).toFixed(2)
+      );
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.reglasProbabilidad(2);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     } else if (tipo == 3) {
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
+      while (a + b >= 1 || b >= a) {
+        b = this.generarNaturales(9) + 1;
+      }
+      let texto =
+        'Una bolsa tiene ' +
+        a.toString() +
+        ' canicas rojas y ' +
+        b.toString() +
+        ' canicas verdes. si se sacan dos al azar sin reposición. ¿Cuál es la probabilidad de que ambas sean rojas?';
+
+      let respuestaCorrecta = ((a / (a + b)) * ((a - 1) / (a + b - 1))).toFixed(
+        2
+      );
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(((a / (a + b)) ** 2).toFixed(2));
+      respuestasIncorrectas.push(
+        ((b / (a + b)) * ((b - 1) / (a + b - 1))).toFixed(2)
+      );
+      respuestasIncorrectas.push(((b / (a + b)) ** 2).toFixed(2));
+      respuestasIncorrectas.push(
+        ((a / (a + b)) * ((a - 1) / (a + b))).toFixed(2)
+      );
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.reglasProbabilidad(3);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     } else if (tipo == 4) {
+      let a = (this.generarNaturales(8) + 1) / 10;
+      let b = (this.generarNaturales(8) + 1) / 10;
+      while (a == b) {
+        b = (this.generarNaturales(8) + 1) / 10;
+      }
+      let texto =
+        'En un colegio la probabilidad de que a un estudiante le guste el ajedrez es de ' +
+        a.toString() +
+        ' y de que a un estudiante le gusten las películas es de ' +
+        b.toString() +
+        ' .Calcule la probabilidad de que a un estudiante le gusten ambos.';
+      let respuestaCorrecta = (a * b).toFixed(2);
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a + b).toFixed(2));
+      respuestasIncorrectas.push((a / b).toFixed(2));
+      respuestasIncorrectas.push((a * a).toFixed(2));
+      respuestasIncorrectas.push((b * b).toFixed(2));
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.reglasProbabilidad(4);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     }
     return 0 as unknown as Pregunta;
   }
@@ -2468,9 +2685,165 @@ export class PreguntaService {
       tipo = this.generarNaturales(4) + 1;
     }
     if (tipo == 1) {
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
+      let c = this.generarNaturales(9) + 1;
+
+      let texto =
+        'Si tienes ' +
+        a.toString() +
+        ' poleras, ' +
+        b.toString() +
+        ' pantalones y ' +
+        c.toString() +
+        ' pares de zapatos. Calcule la cantidad total de combinaciones de atuendos.';
+      let respuestaCorrecta = (a * b * c).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((a + b * c).toString());
+      respuestasIncorrectas.push((a + b + c).toString());
+      respuestasIncorrectas.push((a * b + c).toString());
+      respuestasIncorrectas.push((a * c + b).toString());
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.comportamientoAleatorio(1);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     } else if (tipo == 2) {
+      let a = this.generarNaturales(5)+1
+      let texto = "Si se lanzan "+a.toString()+" monedas. Calcule la cantidad total de resultados posibles."
+      let respuestaCorrecta = (2**a).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((2*a).toString());
+      respuestasIncorrectas.push((a*a).toString());
+      respuestasIncorrectas.push((2+a).toString());
+      respuestasIncorrectas.push((2**(a-1)).toString());
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.comportamientoAleatorio(2);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
+      
     } else if (tipo == 3) {
+      let x = this.generarNaturales(4)+2
+      let c = this.generarNaturales(15)+1
+      while(x+1>=c){
+        c = this.generarNaturales(14)+1
+      }
+      let texto = "¿De cuántas maneras pueden repartirse "+x.toString()+" premios entre "+c.toString()+" ,suponiendo que cada persona no puede ganar mas de un premio."
+      
+      let correcto = 1
+      let copiaC = c
+      for(let i = 0 ; i<x ;i++){
+        correcto*= copiaC
+        copiaC -= 1 
+      }
+      let err1 = 0
+      copiaC = c
+      for(let i = 0 ; i<x ;i++){
+        err1+= copiaC
+        copiaC -= 1 
+      }
+      let err2 = 1
+      copiaC = c
+      for(let i = 0 ; i<=x ;i++){
+        err2*= copiaC
+        copiaC -= 1 
+      }
+      let respuestaCorrecta = (correcto).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push((err1).toString());
+      respuestasIncorrectas.push((err2).toString());
+      respuestasIncorrectas.push((c**x).toString());
+      respuestasIncorrectas.push((c*x).toString());
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.comportamientoAleatorio(3);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     } else if (tipo == 4) {
+      let a = this.generarNaturales(10)+5;
+      let b = this.generarNaturales(10)+5;
+
+      let texto = "Un curso de "+(a+b).toString()+" está conformado por "+ a.toString()+" hombres y "+ b.toString()+" mujeres, elegirá su directiva, compuesta por un Presidente, Vicepresidente, Tesorero(a) y Secretario(a). Si el curso decide que la tesorería estará a cargo de una mujer y la secretaría por un hombre. Calcule la cantidad de posibilidades de directiva."
+      let respuestaCorrecta = (a*b*(a+b-2)*(a+b-3)).toString();
+      let respuestasIncorrectas: Array<string> = [];
+      respuestasIncorrectas.push(((a+b)*(a+b-1)*(a+b-2)*(a+b-3)).toString());
+      respuestasIncorrectas.push((a*b*(a+b)*(a+b)).toString());
+      respuestasIncorrectas.push((a*b*(a+b)*(a+b-1)).toString());
+      respuestasIncorrectas.push(((a+b)**4).toString());
+
+      if (
+        respuestaCorrecta == respuestasIncorrectas[0] ||
+        respuestaCorrecta == respuestasIncorrectas[1] ||
+        respuestaCorrecta == respuestasIncorrectas[2] ||
+        respuestaCorrecta == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
+        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
+        respuestasIncorrectas[2] == respuestasIncorrectas[3]
+      ) {
+        return this.comportamientoAleatorio(4);
+      }
+
+      let contenidoPregunta: Pregunta = Object.assign({
+        enunciado: texto,
+        respuestaCorrecta: respuestaCorrecta,
+        respuestasIncorrectas: respuestasIncorrectas,
+      });
+      return contenidoPregunta;
     }
     return 0 as unknown as Pregunta;
   }

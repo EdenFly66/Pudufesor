@@ -123,7 +123,7 @@ export class EjercitarComponent {
         contenidoPregunta = this.preguntaServicio.semejanza(0);
       }
       else if(nombre=='Análisis de poblaciones'){
-        contenidoPregunta = this.preguntaServicio.analisisPoblaciones(4);
+        contenidoPregunta = this.preguntaServicio.analisisPoblaciones(0);
       }
       else if(nombre=='Reglas de la probabilidad'){
         contenidoPregunta = this.preguntaServicio.reglasProbabilidad(0);
