@@ -26,6 +26,7 @@ import { MaterialComponent } from './components/material/material.component';
 import { ContenidosComponent } from './components/contenidos/contenidos.component';
 import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
 import { PuduebasComponent } from './components/puduebas/puduebas.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
 
 const appRoutes:Routes=[
   {path:'',component:IngresarComponent},
@@ -39,6 +40,7 @@ const appRoutes:Routes=[
   {path:'contenidos/:curso/:asignatura',component:ContenidosComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'puduebas/:curso/:asignatura',component:PuduebasComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'prueba',component:PruebaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'**',component:NoDisponibleComponent},
 ]
 
@@ -59,6 +61,7 @@ const appRoutes:Routes=[
     ContenidosComponent,
     EjercitarComponent,
     PuduebasComponent,
+    PruebaComponent,
   ],
   imports: [
     FormsModule,

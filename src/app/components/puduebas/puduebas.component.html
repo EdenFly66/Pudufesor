@@ -1,1 +1,60 @@
-<p>puduebas works!</p>
+<app-cabecera></app-cabecera>
+
+<h1 style="text-align:center">Arma tu Prueba</h1>
+
+<div class="row" style="background-color: #c293dd">
+    <h1 style="text-align: center">{{ this.curso }} {{ this.asignatura }}</h1>
+    <hr />
+    <h1 style="text-align: center">UNIDAD 1</h1>
+    <hr />
+    <div class="x" *ngFor="let x of contenidosU1">
+      <div
+        class="image"
+        [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+      ></div>
+      <div class="info">
+        <h2>{{ x.nombre }}</h2>
+        <input type="number" step="1" class="quantity" min="0" max="30"/>
+      </div>
+    </div>
+  
+    <h1 style="text-align: center">UNIDAD 2</h1>
+    <hr />
+    <div class="x" *ngFor="let x of contenidosU2">
+      <div
+        class="image"
+        [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+      ></div>
+      <div class="info">
+        <h2>{{ x.nombre }}</h2>
+        <input type="number" step="1" class="quantity" min="0" max="30"/>
+      </div>
+    </div>
+  
+    <h1 style="text-align: center">UNIDAD 3</h1>
+    <hr />
+    <div class="x" *ngFor="let x of contenidosU3">
+      <div
+        class="image"
+        [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+      ></div>
+      <div class="info">
+        <h2>{{ x.nombre }}</h2>
+        <input type="number" step="1" class="quantity" min="0" max="30"/>
+      </div>
+    </div>
+  
+    <h1 style="text-align: center">UNIDAD 4</h1>
+    <hr />
+    <div class="x" *ngFor="let x of contenidosU4">
+      <div
+        class="image"
+        [ngStyle]="{ backgroundImage: 'url(' + x.imagen + ')' }"
+      ></div>
+      <div class="info">
+        <h2>{{ x.nombre }}</h2>
+        <input type="number" step="1" class="quantity" min="0" max="30"/>
+      </div>
+    </div>
+    <button id="crear" (click)="solicitud()">Crear</button>
+  </div>

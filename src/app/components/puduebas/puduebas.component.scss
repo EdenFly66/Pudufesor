@@ -1,0 +1,31 @@
+.row{
+    margin: 50px;
+    border: solid white 5px;
+    border-radius: 20px;
+}
+
+.h1{
+    font-family: 'Balsamiq Sans';
+}
+
+.x {
+    background-color: #cbb2d6;
+    border: 3px solid black;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    overflow: hidden;
+    margin:25px;
+    padding: 15px;
+}
+
+.x .info {
+    padding: 10px 20px;
+}
+
+.x .image {
+    background-size: cover;
+    background-position: center;
+
+    
+}

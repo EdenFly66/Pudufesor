@@ -2847,4 +2847,44 @@ export class PreguntaService {
     }
     return 0 as unknown as Pregunta;
   }
+  tematica(nombre:string,curso:string,asignatura:string):Pregunta{
+    let contenidoPregunta: Pregunta;
+    if (curso == '1M' && asignatura == 'MATEMÁTICA') {
+      if (nombre == 'Operatoria en los números racionales') {
+        contenidoPregunta = this.operatoriaRacionales(0);
+      } else if (nombre == 'Potencias') {
+        contenidoPregunta = this.potencias(0);
+      } else if (nombre == 'Productos notables') {
+        contenidoPregunta = this.productosNotables(0);
+      } else if (nombre == 'Área de la superficie y volumen del cono') {
+        contenidoPregunta = this.cono(0);
+      } else if (nombre == 'Sistema de ecuaciones lineales') {
+        contenidoPregunta = this.sistemaEcuacionesLineales(0);
+      } else if (nombre == 'Relaciones lineales en dos variables') {
+        contenidoPregunta = this.funcionesLineales(0);
+      } else if (
+        nombre == 'Perímetro y área de sectores y segmentos circulares'
+      ) {
+        contenidoPregunta = this.sectoresCirculares(0);
+      } else if (nombre == 'Homotecia y teorema de Tales') {
+        contenidoPregunta = this.homoteciaTales(0);
+      } else if (nombre == 'Semejanza') {
+        contenidoPregunta = this.semejanza(0);
+      }
+      else if(nombre=='Análisis de poblaciones'){
+        contenidoPregunta = this.analisisPoblaciones(0);
+      }
+      else if(nombre=='Reglas de la probabilidad'){
+        contenidoPregunta = this.reglasProbabilidad(0);
+      }
+      else if(nombre=='Comportamiento aleatorio'){
+        contenidoPregunta = this.comportamientoAleatorio(0);
+      } else {
+        contenidoPregunta = 0 as unknown as Pregunta;
+      }
+    } else {
+      contenidoPregunta = 0 as unknown as Pregunta;
+    }
+    return contenidoPregunta
+  }
 }

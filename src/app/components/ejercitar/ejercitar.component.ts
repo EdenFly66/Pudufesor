@@ -99,44 +99,7 @@ export class EjercitarComponent {
   }
 
   pregunta(nombre: string) {
-    let contenidoPregunta: Pregunta;
-    if (this.curso == '1M' && this.asignatura == 'MATEMÁTICA') {
-      if (nombre == 'Operatoria en los números racionales') {
-        contenidoPregunta = this.preguntaServicio.operatoriaRacionales(0);
-      } else if (nombre == 'Potencias') {
-        contenidoPregunta = this.preguntaServicio.potencias(0);
-      } else if (nombre == 'Productos notables') {
-        contenidoPregunta = this.preguntaServicio.productosNotables(0);
-      } else if (nombre == 'Área de la superficie y volumen del cono') {
-        contenidoPregunta = this.preguntaServicio.cono(0);
-      } else if (nombre == 'Sistema de ecuaciones lineales') {
-        contenidoPregunta = this.preguntaServicio.sistemaEcuacionesLineales(0);
-      } else if (nombre == 'Relaciones lineales en dos variables') {
-        contenidoPregunta = this.preguntaServicio.funcionesLineales(0);
-      } else if (
-        nombre == 'Perímetro y área de sectores y segmentos circulares'
-      ) {
-        contenidoPregunta = this.preguntaServicio.sectoresCirculares(0);
-      } else if (nombre == 'Homotecia y teorema de Tales') {
-        contenidoPregunta = this.preguntaServicio.homoteciaTales(0);
-      } else if (nombre == 'Semejanza') {
-        contenidoPregunta = this.preguntaServicio.semejanza(0);
-      }
-      else if(nombre=='Análisis de poblaciones'){
-        contenidoPregunta = this.preguntaServicio.analisisPoblaciones(0);
-      }
-      else if(nombre=='Reglas de la probabilidad'){
-        contenidoPregunta = this.preguntaServicio.reglasProbabilidad(0);
-      }
-      else if(nombre=='Comportamiento aleatorio'){
-        contenidoPregunta = this.preguntaServicio.comportamientoAleatorio(0);
-      } else {
-        contenidoPregunta = 0 as unknown as Pregunta;
-      }
-    } else {
-      contenidoPregunta = 0 as unknown as Pregunta;
-    }
-    console.log(contenidoPregunta);
+    let contenidoPregunta: Pregunta = this.preguntaServicio.tematica(nombre,this.curso,this.asignatura)
     this.alternativas.push(contenidoPregunta.respuestaCorrecta);
     for (let i = 0; i < contenidoPregunta.respuestasIncorrectas.length; i++) {
       this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i]);
