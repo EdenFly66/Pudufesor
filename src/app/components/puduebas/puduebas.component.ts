@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { orderBy, query, where } from 'firebase/firestore';
 import { FormBuilder } from '@angular/forms';
@@ -14,6 +14,8 @@ import { PreguntaService } from 'src/app/services/pregunta.service';
   styleUrls: ['./puduebas.component.scss'],
 })
 export class PuduebasComponent {
+  formulario!: any;
+  show: boolean = false;
   curso!: any;
   asignatura!: any;
   contenidosU1: any = [];
@@ -22,16 +24,19 @@ export class PuduebasComponent {
   contenidosU4: any = [];
   enunciado!: string;
   correcta!: string;
-  alternativas: Array<string> = [];
+  alternativas: Array<any> = [];
   cantP: Array<number> = [];
   preguntasPudu: Array<Pregunta> = [];
   constructor(
     private readonly fb: FormBuilder,
     private route: ActivatedRoute,
     private firestore: Firestore,
-    private preguntaServicio: PreguntaService,
-    private router: Router
-  ) {}
+    private preguntaServicio: PreguntaService
+  ) {
+    this.formulario = this.fb.group({
+      respuesta: ['', []],
+    });
+  }
 
   ngOnInit() {
     this.curso = this.route.snapshot.paramMap.get('curso');
@@ -131,6 +136,7 @@ export class PuduebasComponent {
       });
     } else {
       this.generarPudueba();
+      this.show = true;
     }
   }
 
@@ -140,6 +146,7 @@ export class PuduebasComponent {
       .concat(this.contenidosU3)
       .concat(this.contenidosU4);
     let contenidoPregunta: Pregunta;
+    let alts: Array<string> = []
     let nombre: string;
     for (let i = 0; i < this.cantP.length; i++) {
       nombre = nombres[i].nombre;
@@ -150,10 +157,20 @@ export class PuduebasComponent {
           this.asignatura
         );
         this.preguntasPudu.push(contenidoPregunta);
+        alts.push(contenidoPregunta.respuestaCorrecta);
+        alts.push(contenidoPregunta.respuestasIncorrectas[0])
+        alts.push(contenidoPregunta.respuestasIncorrectas[1])
+        alts.push(contenidoPregunta.respuestasIncorrectas[2])
+        alts.push(contenidoPregunta.respuestasIncorrectas[3])
+        alts.sort()
+        this.alternativas.push(alts)
       }
     }
 
-    //console.log(this.preguntasPudu);
-    this.router.navigate(['/prueba']);
+    console.log(this.preguntasPudu);
+  }
+  cerrar() {
+    this.show = false;
+    this.preguntasPudu = [];
   }
 }

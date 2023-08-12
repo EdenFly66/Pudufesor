@@ -159,11 +159,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(
         error4[0].toString() + '/' + error4[1].toString()
       );
-
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -258,11 +264,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(
         error4[0].toString() + '/' + error4[1].toString()
       );
-
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       console.log(contenidoPregunta);
       return contenidoPregunta;
@@ -388,10 +400,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(
         error4[0].toString() + '/' + error4[1].toString()
       );
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       console.log(contenidoPregunta);
       return contenidoPregunta;
@@ -467,10 +486,17 @@ export class PreguntaService {
         return this.operatoriaRacionales(4);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else {
@@ -563,10 +589,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(error3.toString());
       respuestasIncorrectas.push(error4.toString());
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -615,10 +648,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(base.toString() + '^' + expE3.toString());
       respuestasIncorrectas.push(base.toString() + '^' + expE4.toString());
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -668,10 +708,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(base.toString() + '^' + expE3.toString());
       respuestasIncorrectas.push(base.toString() + '^' + expE4.toString());
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -753,10 +800,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(error3.toString());
       respuestasIncorrectas.push(error4.toString());
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else {
@@ -821,10 +875,17 @@ export class PreguntaService {
         respuestasIncorrectas.push(a2.toString() + 'x² + ' + b2.toString());
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -879,10 +940,17 @@ export class PreguntaService {
         respuestasIncorrectas.push(a2.toString() + 'x² - ' + b2.toString());
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -929,10 +997,17 @@ export class PreguntaService {
         respuestasIncorrectas.push(a2.toString() + 'x -' + b.toString());
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -1013,10 +1088,17 @@ export class PreguntaService {
         );
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else {
@@ -1055,10 +1137,17 @@ export class PreguntaService {
         (3.14 * g * r + 3.14 * r).toFixed(2).toString() + 'cm²'
       );
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -1091,10 +1180,17 @@ export class PreguntaService {
       );
       respuestasIncorrectas.push((3.14 * r ** 2).toFixed(2).toString() + 'cm²');
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -1134,10 +1230,17 @@ export class PreguntaService {
           .toString() + 'cm³'
       );
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -1167,10 +1270,17 @@ export class PreguntaService {
         (3.14 * h ** 2 * r * (1 / 3)).toFixed(2).toString() + 'cm³'
       );
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -1249,10 +1359,17 @@ export class PreguntaService {
         'x = ' + xIncorrecta4.toFixed(2) + ' , y = ' + yIncorrecta4.toFixed(2)
       );
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -1311,10 +1428,17 @@ export class PreguntaService {
       ) {
         return this.sistemaEcuacionesLineales(2);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -1357,10 +1481,17 @@ export class PreguntaService {
       ) {
         return this.sistemaEcuacionesLineales(3);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -1400,10 +1531,17 @@ export class PreguntaService {
       ) {
         return this.sistemaEcuacionesLineales(4);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -1462,10 +1600,17 @@ export class PreguntaService {
         return this.funcionesLineales(1);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -1537,10 +1682,17 @@ export class PreguntaService {
       ) {
         return this.funcionesLineales(2);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -1591,10 +1743,17 @@ export class PreguntaService {
       ) {
         return this.funcionesLineales(3);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -1630,10 +1789,17 @@ export class PreguntaService {
       ) {
         return this.funcionesLineales(4);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -1693,10 +1859,17 @@ export class PreguntaService {
         return this.sectoresCirculares(1);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -1729,10 +1902,17 @@ export class PreguntaService {
       ) {
         return this.sectoresCirculares(2);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -1768,10 +1948,17 @@ export class PreguntaService {
       ) {
         return this.sectoresCirculares(3);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -1814,10 +2001,17 @@ export class PreguntaService {
       ) {
         return this.sectoresCirculares(4);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -1858,10 +2052,17 @@ export class PreguntaService {
       ) {
         return this.homoteciaTales(1);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -1903,10 +2104,17 @@ export class PreguntaService {
       ) {
         return this.homoteciaTales(2);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -1962,10 +2170,17 @@ export class PreguntaService {
       ) {
         return this.homoteciaTales(3);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -2016,10 +2231,17 @@ export class PreguntaService {
       ) {
         return this.homoteciaTales(4);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -2070,10 +2292,17 @@ export class PreguntaService {
       ) {
         return this.semejanza(1);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -2116,10 +2345,17 @@ export class PreguntaService {
       ) {
         return this.semejanza(2);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -2172,10 +2408,17 @@ export class PreguntaService {
       ) {
         return this.semejanza(3);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -2218,10 +2461,17 @@ export class PreguntaService {
       ) {
         return this.semejanza(4);
       }
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -2275,10 +2525,17 @@ export class PreguntaService {
       respuestasIncorrectas.push((d / total).toFixed(2));
       respuestasIncorrectas.push((e / total).toFixed(2));
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -2357,10 +2614,17 @@ export class PreguntaService {
       respuestasIncorrectas.push(noModales[2].toString());
       respuestasIncorrectas.push(noModales[3].toString());
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -2406,10 +2670,17 @@ export class PreguntaService {
         ).toFixed(2)
       );
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -2478,10 +2749,17 @@ export class PreguntaService {
         return this.analisisPoblaciones(4);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -2533,10 +2811,17 @@ export class PreguntaService {
         return this.reglasProbabilidad(1);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -2583,10 +2868,17 @@ export class PreguntaService {
         return this.reglasProbabilidad(2);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 3) {
@@ -2630,10 +2922,17 @@ export class PreguntaService {
         return this.reglasProbabilidad(3);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -2670,10 +2969,17 @@ export class PreguntaService {
         return this.reglasProbabilidad(4);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
@@ -2719,10 +3025,17 @@ export class PreguntaService {
         return this.comportamientoAleatorio(1);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 2) {
@@ -2750,10 +3063,17 @@ export class PreguntaService {
         return this.comportamientoAleatorio(2);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
       
@@ -2805,10 +3125,17 @@ export class PreguntaService {
         return this.comportamientoAleatorio(3);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     } else if (tipo == 4) {
@@ -2838,10 +3165,17 @@ export class PreguntaService {
         return this.comportamientoAleatorio(4);
       }
 
+      let alternativas = []
+      alternativas.push(respuestaCorrecta)
+      alternativas.push(respuestasIncorrectas[0])
+      alternativas.push(respuestasIncorrectas[1])
+      alternativas.push(respuestasIncorrectas[2])
+      alternativas.push(respuestasIncorrectas[3])
       let contenidoPregunta: Pregunta = Object.assign({
         enunciado: texto,
         respuestaCorrecta: respuestaCorrecta,
         respuestasIncorrectas: respuestasIncorrectas,
+        alternativas: alternativas,
       });
       return contenidoPregunta;
     }
