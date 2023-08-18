@@ -1,74 +1,158 @@
 <app-cabecera></app-cabecera>
 
-<div *ngIf="this.rol==='usuario'">
-    <div class="centered">
-        <form class="filtro" [formGroup]="formulario">
-            <select name="curso" class="form-control" id="curso" name="curso" formControlName="curso">
-                <option>Curso</option>
-                <option *ngFor="let x of this.cursos.sort()">{{x.nombre}}</option>
-            </select>
-            <div *ngIf="this.formulario.value.curso=='' || this.formulario.value.curso=='Curso'">
-                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
-                <option>Asignatura</option>
-                <option *ngFor="let y of this.vacio">{{y}}</option>
-                </select>
-            </div>
-            <div *ngIf="this.formulario.value.curso=='1M' ">
-                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
-                <option>Asignatura</option>
-                <option *ngFor="let y of this.asig1M.sort()">{{y}}</option>
-                </select>
-            </div>
-            <div *ngIf="this.formulario.value.curso=='2M'">
-                <select name="asignatura" class="form-control" id="asignatura" name="asignatura" formControlName="asignatura">
-                <option>Asignatura</option>
-                <option *ngFor="let y of this.asig2M.sort()">{{y}}</option>
-                </select>
-            </div>
-            
-        </form>
-
-        <section class="cards">
-            <article id="contenidos" class="card">
-                <img  src="https://i.imgur.com/zLL1KLF.jpeg">
-                <br><br>
-                <button (click)="contenidos()" class="button">CONTENIDOS</button>
-                
-            </article><!-- /card-one -->
-            <article id="ejercitar" class="card">
-                <img  src="https://i.imgur.com/yRMehyF.jpeg">
-                <br><br>
-                <button (click)="ejercitar()" class="button">EJERCITAR</button>
-            </article><!-- /card-one -->
-            <article id="puduebas" class="card">
-                <img  src="https://i.imgur.com/OsWqFQx.jpeg">
-                <br><br>
-                <button (click)="puduebas()" class="button">PUDÚEBAS</button>
-            </article><!-- /card-one -->
-        </section>
+<div *ngIf="this.rol === 'usuario'">
+  <form class="filtro" [formGroup]="formulario">
+    <select
+      name="curso"
+      class="form-control"
+      id="curso"
+      name="curso"
+      formControlName="curso"
+    >
+      <option>Curso</option>
+      <option *ngFor="let x of this.cursos.sort()">{{ x.nombre }}</option>
+    </select>
+    <div
+      *ngIf="
+        this.formulario.value.curso == '' ||
+        this.formulario.value.curso == 'Curso'
+      "
+    >
+      <select
+        name="asignatura"
+        class="form-control"
+        id="asignatura"
+        name="asignatura"
+        formControlName="asignatura"
+      >
+        <option>Asignatura</option>
+        <option *ngFor="let y of this.vacio">{{ y }}</option>
+      </select>
     </div>
+    <div *ngIf="this.formulario.value.curso == '1M'">
+      <select
+        name="asignatura"
+        class="form-control"
+        id="asignatura"
+        name="asignatura"
+        formControlName="asignatura"
+      >
+        <option>Asignatura</option>
+        <option *ngFor="let y of this.asig1M.sort()">{{ y }}</option>
+      </select>
+    </div>
+    <div *ngIf="this.formulario.value.curso == '2M'">
+      <select
+        name="asignatura"
+        class="form-control"
+        id="asignatura"
+        name="asignatura"
+        formControlName="asignatura"
+      >
+        <option>Asignatura</option>
+        <option *ngFor="let y of this.asig2M.sort()">{{ y }}</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="main">
+    <ul class="cards">
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://www.comunidadbaratz.com/wp-content/uploads/La-biblioteca-es-inclusion-social-e-igualdad-de-oportunidades.jpg"
+              alt="mixed vegetable salad in a mason jar. "
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Contenidos</h2>
+            <div class="card_text">
+              <p>
+                Acá podrás encontrar material de apoyo para reforzar tu
+                aprendizaje. 😃🧠
+              </p>
+              <p>
+                Disponemos de guías y vídeos para ayudarte en tu búsqueda de
+                conocimientos.📚🎥
+              </p>
+            </div>
+            <button (click)="contenidos()">Vamos</button>
+          </div>
+        </div>
+      </li>
+
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://www.geeknetic.es/imagenes/tutoriales/definiciones/2020/12/Calculadora-g841.jpg"
+              alt="Calculadora"
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Ejercicios</h2>
+            <div class="card_text">
+              <p>
+                Si buscas practicar, ejercitando los contenidos aprendidos, éste
+                es tu lugar.💪
+              </p>
+              <p>Tendrás infinitos ejercicios preparados para ti.🎲</p>
+              <p>
+                No te preocupes por el tiempo, en esta sección no hay reloj que
+                te apure, puedes realizar los ejercicios con total tranquilidad.🤹
+              </p>
+            </div>
+            <button (click)="ejercitar()">Vamos</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://definicion.de/wp-content/uploads/2009/03/examen-1.jpg"
+              alt="Exámen"
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Pudúebas</h2>
+            <div class="card_text">
+              <p>Si quieres simular una prueba, escoge esta opción.📋</p>
+              <p>
+                Podrás escoger los contenidos evaluados, y posterior a realizar
+                tu pudúeba, obtendrás tu resultado para comprobar tus avances.✔️❌
+              </p>
+            </div>
+            <button (click)="puduebas()">Vamos</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
-<div *ngIf="this.rol==='admin'">
-    <section class="cards">
-        <article id="agregarCurso" class="card">
-            <img  src="https://i.imgur.com/zLL1KLF.jpeg">
-            <br><br>
-            <button (click)="agregarCurso()" class="button">CURSOS</button>
-        </article><!-- /card-one -->
-        <article id="agregarAsignatura" class="card">
-            <img  src="https://i.imgur.com/yRMehyF.jpeg">
-            <br><br>
-            <button (click)="agregarAsignatura()" class="button">ASIGNATURAS</button>
-        </article><!-- /card-one -->
-        <article id="agregarMaterial" class="card">
-            <img  src="https://i.imgur.com/zLL1KLF.jpeg">
-            <br><br>
-            <button (click)="agregarMaterial()" class="button">MATERIAL</button>
-        </article><!-- /card-one -->
-    </section>
+<div *ngIf="this.rol === 'admin'">
+  <section class="cards">
+    <article id="agregarCurso" class="card">
+      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
+      <br /><br />
+      <button (click)="agregarCurso()" class="button">CURSOS</button>
+    </article>
+    <!-- /card-one -->
+    <article id="agregarAsignatura" class="card">
+      <img src="https://i.imgur.com/yRMehyF.jpeg" />
+      <br /><br />
+      <button (click)="agregarAsignatura()" class="button">ASIGNATURAS</button>
+    </article>
+    <!-- /card-one -->
+    <article id="agregarMaterial" class="card">
+      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
+      <br /><br />
+      <button (click)="agregarMaterial()" class="button">MATERIAL</button>
+    </article>
+    <!-- /card-one -->
+  </section>
 </div>
-
-
 
 <app-pie></app-pie>

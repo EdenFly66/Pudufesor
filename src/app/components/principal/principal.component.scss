@@ -6,8 +6,8 @@
     display: flex;
     align-items:center;
     justify-content: flex-start;
-    padding: 5px;
-    background-color: rgb(183, 131, 231);
+    padding: 25px;
+    background-color: #46293d;
     justify-content: center;
     
     select {
@@ -15,128 +15,120 @@
         margin-top: 10px;
         font-family: cursive, sans-serif;
         outline: 0;
-        background: #cc2e9d;
+        background: #46293d;
         color: #fff;
-        border: 1px solid rgb(58, 44, 46);
+        border: 1px solid rgb(143, 138, 139);
         padding: 4px;
         border-radius: 9px;
     }
 }
-.cards {
-    display: flex;
-    justify-content: center;
-    min-width: 100vh;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    padding: 20px;
-    
-    .card{
-        padding: 20px;
-        justify-content: center;
-        border-radius: 5px;
-        border: solid rgba(255, 255, 255, 0.767) 3px;
-        text-align: center;
-        font-family:'Balsamiq Sans';
-        margin: 0px auto;
 
-        img{
-            height: 190px;
-            width: 190px;
-        }
-    }
-
-    .card:hover{
-        img{
-            transform: scale(1.1,1.1);
-        }
-    }
-
-    .button{
-        border-radius: 3px;
-        border: solid white 3px;
-        font-weight: bold;
-        font-size: large;
-        font-family:cursive;
-        margin:0px auto;
-        color: white;
-        height: 30px;
-        width: 150px;
-    }
-
-    .button:hover{
-        border: solid #4a4aa3 3px;
-        color:#4a4aa3;
-    }
-
-    #contenidos{
-        background-color: rgba(80,173,169);
-        .button{
-            background-color: rgba(80,173,169);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-
-    #ejercitar{
-        margin-left: 50px;
-        margin-right: 50px;
-        background-color: rgba(88,173,80);
-        .button{
-            background-color: rgba(88,173,80);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-
-    #puduebas{
-        background-color: rgba(126,70,150);
-        .button{
-            background-color: rgba(126,70,150);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-    #agregarCurso{
-        background-color: rgb(182, 180, 47);
-        .button{
-            background-color: rgb(182, 180, 47);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-
-    #agregarAsignatura{
-        margin-left: 50px;
-        margin-right: 50px;
-        background-color: rgb(116, 41, 91);
-        .button{
-            background-color: rgb(116, 41, 91);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-
-    #agregarMaterial{
-        background-color: rgb(47, 7, 92);
-        .button{
-            background-color: rgb(47, 7, 92);
-        }
-
-        .button:hover{
-            background-color: white;
-        }
-    }
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+.card_image {
+  height: calc(13*1.2rem);
+  padding: 1.2rem 1.2rem 0;
+  position:relative;
+}
+.card_image:before,
+.card_image:after{
+  content: "";
+  position: absolute;
+  width: 20px;
+  left: 60%;
+  top: 0;
+  height: 45px;
+  background: #e6e6e6b8;
+  transform: rotate(45deg);
+}
+.card_image:after{
+  transform: rotate(-45deg);
+  top:auto;
+  bottom:-22px;
+  left:40%;
+}
+.card_image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.cards_item {
+  filter:drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+}
+
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: 30px;
+  background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px),#66afe1 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/2px 100% #fff;
+  background-repeat: no-repeat;
+  line-height: 1.2rem;
+  -webkit-mask:radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
+}
+
+.card_content {
+  padding: 1.2rem;
+}
+
+h2.card_title,p {
+  margin: 1.2rem 0;
+}
+h2.card_title {
+    font-size: 1.3em;
+}
+body {
+  font-family:monospace;
+  background:#eee;
+}
+
+html {
+  font-size:15px;
+}
+
+button {
+    background: rgb(194, 152, 159);
+    padding: 10px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    margin: -1px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background: rgb(112, 38, 94);
+      transition: all .4s ease-in-out;
+    }
+  }
+  
+  
+  

@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
-    background-color: #4A4AA3;
+    background-color: #000000;
     border-top: solid #000000  5px;
     border-bottom: solid #000000  5px;
     margin: 0;
@@ -14,7 +14,7 @@
         text-decoration: none;
         align-self: center;
         display: flex;
-        color: black;
+        color: rgb(219, 47, 47);
         font-family: 'Balsamiq Sans';
         height: 120px;
         padding: 10px;
@@ -27,7 +27,7 @@
         }
 
         h1{
-           color:#000000; 
+           color:#fdfbfb; 
            //text-shadow: rgb(223, 199, 217) 2px 5px;
         }
            
@@ -35,7 +35,7 @@
     
     #botones{
         align-self: center;
-        color: black;
+        color: rgb(253, 248, 248);
         margin: 20px;
     }
 }
