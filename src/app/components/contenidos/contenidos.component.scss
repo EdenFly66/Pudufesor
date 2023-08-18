@@ -1,3 +1,12 @@
+.banner{
+  background-color: #919292;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  text-align: center;
+  padding: 15px;
+  font: oblique bold 120% cursive;
+}
+
 A:link {text-decoration: none }
 
 A:visited {color: rgb(187, 47, 47); text-decoration: none }
@@ -11,6 +20,7 @@ A:hover { color: rgb(233, 227, 227); text-decoration: none }
 .ag-format-container {
     width: 1142px;
     margin: 0 auto;
+    padding: 50px;
   }
   
   
@@ -27,6 +37,9 @@ A:hover { color: rgb(233, 227, 227); text-decoration: none }
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 50px 0;
+    background-image: url("https://wallpapercave.com/wp/wp7505889.jpg");
+    margin: 15px;
+    border-radius: 25px;
   }
   .ag-courses_item {
     -ms-flex-preferred-size: calc(33.33333% - 30px);
@@ -88,7 +101,7 @@ A:hover { color: rgb(233, 227, 227); text-decoration: none }
   .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: #a6f848;
   
     z-index: 1;
     position: absolute;
@@ -102,19 +115,19 @@ A:hover { color: rgb(233, 227, 227); text-decoration: none }
     transition: all .5s ease;
   }
   .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-    background-color: #3ecd5e;
+    background-color: #eea609;
   }
   .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-    background-color: #e44002;
+    background-color: #9e14d4;
   }
   .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-    background-color: #952aff;
+    background-color: #2af1ff;
   }
   .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-    background-color: #cd3e94;
+    background-color: #dd0787;
   }
   .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-    background-color: #4c49ea;
+    background-color: #07063d;
   }
   
   

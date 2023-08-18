@@ -1,5 +1,9 @@
 <app-cabecera></app-cabecera>
 
+<div class="banner">
+  <h1>😺 {{this.curso}} {{this.asignatura}} 😺</h1>
+</div>
+
 <div class="ag-format-container">
   <div class="ag-courses_box">
     <div class="ag-courses_item" *ngFor="let x of contenidosU1">
@@ -23,75 +27,75 @@
         </div>
       </div>
     </div>
+  </div>
     <hr>
-    <div class="ag-courses_box">
-      <div class="ag-courses_item" *ngFor="let x of contenidosU2">
-        <div class="ag-courses-item_link">
-          <div class="ag-courses-item_bg"></div>
+  <div class="ag-courses_box">
+    <div class="ag-courses_item" *ngFor="let x of contenidosU2">
+      <div class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
 
-          <div class="ag-courses-item_title">
-            {{ x.nombre }}
-          </div>
+        <div class="ag-courses-item_title">
+          {{ x.nombre }}
+        </div>
 
-          <div class="ag-courses-item_date-box">
-            <span class="ag-courses-item_date">
-              <a href="{{ x.documento }}" target="blank">Ver guía</a>
-            </span>
-          </div>
-          <br />
-          <div class="ag-courses-item_date-box">
-            <span class="ag-courses-item_date">
-              <a href="{{ x.video }}" target="blank">Ver vídeo</a>
-            </span>
-          </div>
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.documento }}" target="blank">Ver guía</a>
+          </span>
+        </div>
+        <br />
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.video }}" target="blank">Ver vídeo</a>
+          </span>
         </div>
       </div>
     </div>
+  </div>
     <hr>
-    <div class="ag-courses_box">
-      <div class="ag-courses_item" *ngFor="let x of contenidosU3">
-        <div class="ag-courses-item_link">
-          <div class="ag-courses-item_bg"></div>
+  <div class="ag-courses_box">
+    <div class="ag-courses_item" *ngFor="let x of contenidosU3">
+      <div class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
 
-          <div class="ag-courses-item_title">
-            {{ x.nombre }}
-          </div>
+        <div class="ag-courses-item_title">
+          {{ x.nombre }}
+        </div>
 
-          <div class="ag-courses-item_date-box">
-            <span class="ag-courses-item_date">
-              <a href="{{ x.documento }}" target="blank">Ver guía</a>
-            </span>
-          </div>
-          <br />
-          <div class="ag-courses-item_date-box">
-            <span class="ag-courses-item_date">
-              <a href="{{ x.video }}" target="blank">Ver vídeo</a>
-            </span>
-          </div>
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.documento }}" target="blank">Ver guía</a>
+          </span>
+        </div>
+        <br />
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.video }}" target="blank">Ver vídeo</a>
+          </span>
         </div>
       </div>
-      <hr>
-      <div class="ag-courses_box">
-        <div class="ag-courses_item" *ngFor="let x of contenidosU4">
-          <div class="ag-courses-item_link">
-            <div class="ag-courses-item_bg"></div>
+    </div>
+  </div>
+    <hr>
+  <div class="ag-courses_box">
+    <div class="ag-courses_item" *ngFor="let x of contenidosU4">
+      <div class="ag-courses-item_link">
+        <div class="ag-courses-item_bg"></div>
 
-            <div class="ag-courses-item_title">
-              {{ x.nombre }}
-            </div>
+        <div class="ag-courses-item_title">
+          {{ x.nombre }}
+        </div>
 
-            <div class="ag-courses-item_date-box">
-              <span class="ag-courses-item_date">
-                <a href="{{ x.documento }}" target="blank">Ver guía</a>
-              </span>
-            </div>
-            <br />
-            <div class="ag-courses-item_date-box">
-              <span class="ag-courses-item_date">
-                <a href="{{ x.video }}" target="blank">Ver vídeo</a>
-              </span>
-            </div>
-          </div>
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.documento }}" target="blank">Ver guía</a>
+          </span>
+        </div>
+        <br />
+        <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">
+            <a href="{{ x.video }}" target="blank">Ver vídeo</a>
+          </span>
         </div>
       </div>
     </div>
