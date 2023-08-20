@@ -8,194 +8,6 @@
   font: oblique bold 120%;
 }
 
-/*
-#unidad-holder{
-  background-color: #889ea0;
-  border: 5px bold rgb(65, 68, 71);
-  color: rgb(65, 68, 71);
-  text-align: center;
-  justify-content: center;
-}
-
-A:link {
-  text-decoration: none;
-}
-
-A:visited {
-  color: rgb(187, 47, 47);
-  text-decoration: none;
-}
-
-A:hover {
-  color: rgb(233, 227, 227);
-  text-decoration: none;
-}
-
-* {
-  outline: none !important;
-}
-*:focus {
-  outline: none !important;
-}
-textarea:focus,
-input:focus {
-  outline: none !important;
-}
-a {
-  text-decoration: none !important;
-  outline: none !important;
-}
-
-.ag-format-container {
-  width: 1142px;
-  margin: 0 auto;
-  padding: 50px;
-}
-
-.ag-courses_box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 50px 0;
-  //background-image: url("https://wallpapercave.com/wp/wp7505889.jpg");
-  background: repeating-linear-gradient(
-        #0000 0 calc(1.2rem - 1px),
-        #66afe1 0 1.2rem
-      )
-      right bottom / 100% 100%,
-    linear-gradient(red 0 0) 30px 0/2px 100% #fff;
-  background-repeat: no-repeat;
-  -webkit-mask:radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
-  margin: 15px;
-  border-radius: 25px;
-  padding: 35px;
-}
-.ag-courses_item {
-  -ms-flex-preferred-size: calc(33.33333% - 30px);
-  flex-basis: calc(33.33333% - 30px);
-
-  margin: 0 15px 30px;
-
-  overflow: hidden;
-
-  border-radius: 28px;
-}
-.ag-courses-item_link {
-  display: block;
-  padding: 30px 20px;
-  background-color: #121212;
-
-  overflow: hidden;
-
-  position: relative;
-}
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_date {
-  text-decoration: none;
-  color: #fff;
-}
-.ag-courses-item_link:hover .ag-courses-item_bg {
-  -webkit-transform: scale(10);
-  -ms-transform: scale(10);
-  transform: scale(10);
-}
-.ag-courses-item_title {
-  min-height: 87px;
-  margin: 0 0 25px;
-
-  overflow: hidden;
-
-  font-weight: bold;
-  font-size: 30px;
-  color: #fff;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date-box {
-  font-size: 18px;
-  color: #fff;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date {
-  font-weight: bold;
-  color: #f9b234;
-
-  -webkit-transition: color 0.5s ease;
-  -o-transition: color 0.5s ease;
-  transition: color 0.5s ease;
-}
-.ag-courses-item_bg {
-  height: 128px;
-  width: 128px;
-  background-color: #a6f848;
-
-  z-index: 1;
-  position: absolute;
-  top: -75px;
-  right: -75px;
-
-  border-radius: 50%;
-
-  -webkit-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-  background-color: #eea609;
-}
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-  background-color: #9e14d4;
-}
-.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-  background-color: #2af1ff;
-}
-.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-  background-color: #dd0787;
-}
-.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-  background-color: #07063d;
-}
-
-@media only screen and (max-width: 979px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
-  }
-  .ag-courses-item_title {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .ag-format-container {
-    width: 96%;
-  }
-}
-@media only screen and (max-width: 639px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-  }
-  .ag-courses-item_title {
-    min-height: 72px;
-    line-height: 1;
-
-    font-size: 24px;
-  }
-  .ag-courses-item_link {
-    padding: 22px 40px;
-  }
-  .ag-courses-item_date-box {
-    font-size: 16px;
-  }*/
 * {
   margin: 0;
   padding: 0;
@@ -356,3 +168,24 @@ ul li h2{
   position:relative;
   z-index:5;
  }
+
+ @media only screen and (max-width: 979px) {
+  ul{
+    width:75%;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+  ul{
+    width: 50%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+
+  ul{
+    width: 25%;
+  }
+
+}
