@@ -6,7 +6,15 @@ family=Reenie+Beanie:regular"
   rel="stylesheet"
   type="text/css"
 />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+  crossorigin="anonymous"
+/>
 <div class="banner">
   <h1>🚀 EJERCICIOS {{ this.curso }} {{ this.asignatura }} 💪</h1>
 </div>
@@ -14,56 +22,78 @@ family=Reenie+Beanie:regular"
 <div class="container">
   <ul>
     <li>
-      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 1</h2></a>
+      <a target="_blank"
+        ><h2 style="text-align: center; font-size: 35px">Unidad 1</h2></a
+      >
     </li>
     <li *ngFor="let x of contenidosU1">
       <a target="_blank">
         <p>{{ x.nombre }}</p>
-        <br>
-        <br>
-        <i class="fa fa-rocket" style="margin:5px" (click)="pregunta(x.nombre)"></i>
+        <br />
+        <br />
+        <i
+          class="fa fa-rocket"
+          style="margin: 5px"
+          (click)="pregunta(x.nombre)"
+        ></i>
       </a>
-        
     </li>
   </ul>
   <ul>
     <li>
-      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 2</h2></a>
+      <a target="_blank"
+        ><h2 style="text-align: center; font-size: 35px">Unidad 2</h2></a
+      >
     </li>
     <li *ngFor="let x of contenidosU2">
       <a target="_blank">
         <p>{{ x.nombre }}</p>
-        <br>
-        <br>
-        <i class="fa fa-rocket" style="margin:5px" (click)="pregunta(x.nombre)"></i>
+        <br />
+        <br />
+        <i
+          class="fa fa-rocket"
+          style="margin: 5px"
+          (click)="pregunta(x.nombre)"
+        ></i>
       </a>
-        
     </li>
   </ul>
   <ul>
     <li>
-      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 3</h2></a>
+      <a target="_blank"
+        ><h2 style="text-align: center; font-size: 35px">Unidad 3</h2></a
+      >
     </li>
     <li *ngFor="let x of contenidosU3">
       <a target="_blank">
         <p>{{ x.nombre }}</p>
-        <br>
-        <br>
-        <i class="fa fa-rocket" style="margin:5px" (click)="pregunta(x.nombre)"></i></a>
-        
+        <br />
+        <br />
+        <i
+          class="fa fa-rocket"
+          style="margin: 5px"
+          (click)="pregunta(x.nombre)"
+        ></i
+      ></a>
     </li>
   </ul>
   <ul>
     <li>
-      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 4</h2></a>
+      <a target="_blank"
+        ><h2 style="text-align: center; font-size: 35px">Unidad 4</h2></a
+      >
     </li>
     <li *ngFor="let x of contenidosU4">
       <a target="_blank">
         <p>{{ x.nombre }}</p>
-        <br>
-        <br>
-        <i class="fa fa-rocket" style="margin:5px" (click)="pregunta(x.nombre)"></i></a>
-        
+        <br />
+        <br />
+        <i
+          class="fa fa-rocket"
+          style="margin: 5px"
+          (click)="pregunta(x.nombre)"
+        ></i
+      ></a>
     </li>
   </ul>
 </div>
@@ -71,16 +101,11 @@ family=Reenie+Beanie:regular"
 <ng-container *ngIf="this.show" class="modal">
   <div class="modal modalc">
     <div class="modalc-content">
-      <div class="modal-header modalc-header">
-        <ul>
-          <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
-        </ul>
-        <ul>
-          <button (click)="revision()">Revisar</button>
-          <button (click)="cerrar()">Cerrar</button>
-        </ul>
-      </div>
 
+      <div class="modal-header modalc-header">
+          <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
+      </div>
+      <hr>
       <form [formGroup]="formulario" class="text-align:center">
         <div class="modalc-body" *ngFor="let a of alternativas.sort()">
           <input
@@ -93,6 +118,12 @@ family=Reenie+Beanie:regular"
           <h5>{{ a }}</h5>
         </div>
       </form>
+      <hr>
+      <div class="modal-footer">
+          <button (click)="revision()">Revisar</button>
+          <button (click)="cerrar()">Cerrar</button>
+      </div>
+
     </div>
   </div>
 </ng-container>
