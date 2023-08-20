@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { orderBy, query, where } from 'firebase/firestore';
 
@@ -16,7 +16,7 @@ export class ContenidosComponent {
   contenidosU2:any=[];
   contenidosU3:any=[];
   contenidosU4:any=[];
-  constructor(private route: ActivatedRoute, private firestore:Firestore) {
+  constructor(private route: ActivatedRoute, private firestore:Firestore,private router:Router) {
 
   }
 
@@ -60,6 +60,8 @@ export class ContenidosComponent {
     return collectionData(q)
   }
 
-  
+  redirigir(url:string){
+    window.open(url, '_blank');
+  }
 
 }

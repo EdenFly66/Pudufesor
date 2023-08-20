@@ -1,11 +1,100 @@
 <app-cabecera></app-cabecera>
-
+<link
+  href="http://fonts.googleapis.com/css?
+family=Reenie+Beanie:regular"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 <div class="banner">
-  <h1>😺 {{this.curso}} {{this.asignatura}} 😺</h1>
+  <h1>😃 {{ this.curso }} {{ this.asignatura }} 🧠</h1>
 </div>
 
+<div class="container">
+  <ul>
+    <li>
+      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 1</h2></a>
+    </li>
+    <li *ngFor="let x of contenidosU1">
+      <a target="_blank">
+        <p>{{ x.nombre }}</p>
+        <br>
+        <br>
+        <i class="fa fa-book-open" style="margin:5px" (click)="redirigir(x.documento)"></i>
+        <i class="fa fa-play-circle"style="margin:5px" (click)="redirigir(x.video)"></i>
+      </a>
+        
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 2</h2></a>
+    </li>
+    <li *ngFor="let x of contenidosU2">
+      <a target="_blank">
+        <p>{{ x.nombre }}</p>
+        <br>
+        <br>
+        <i class="fa fa-book-open" style="margin:5px" (click)="redirigir(x.documento)"></i>
+        <i class="fa fa-play-circle"style="margin:5px" (click)="redirigir(x.video)"></i>
+      </a>
+        
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 3</h2></a>
+    </li>
+    <li *ngFor="let x of contenidosU3">
+      <a target="_blank">
+        <p>{{ x.nombre }}</p>
+        <br>
+        <br>
+        <i class="fa fa-book-open" style="margin:5px" (click)="redirigir(x.documento)"></i>
+        <i class="fa fa-play-circle"style="margin:5px" (click)="redirigir(x.video)"></i>
+      </a>
+        
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a target="_blank"><h2 style="text-align: center;font-size: 35px;">Unidad 4</h2></a>
+    </li>
+    <li *ngFor="let x of contenidosU4">
+      <a target="_blank">
+        <p>{{ x.nombre }}</p>
+        <br>
+        <br>
+        <i class="fa fa-book-open" style="margin:5px" (click)="redirigir(x.documento)"></i>
+        <i class="fa fa-play-circle"style="margin:5px" (click)="redirigir(x.video)"></i>
+      </a>
+        
+    </li>
+  </ul>
+</div>
+
+<!--
 <div class="ag-format-container">
+
   <div class="ag-courses_box">
+    <div class="ag-courses_item">
+      <div class="ag-courses-item_link" id="unidad-holder">
+        <div class="ag-courses-item_title" >
+          UNIDAD 1
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="ag-courses_box" >
+    <div class="ag-courses_item">
+      <div class="ag-courses-item_link" id="unidad-holder">
+        <div class="ag-courses-item_title" >
+          UNIDAD 1
+        </div>
+      </div>
+    </div>
     <div class="ag-courses_item" *ngFor="let x of contenidosU1">
       <div class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
@@ -30,6 +119,13 @@
   </div>
     <hr>
   <div class="ag-courses_box">
+    <div class="ag-courses_item">
+      <div class="ag-courses-item_link" id="unidad-holder">
+        <div class="ag-courses-item_title" >
+          UNIDAD 2
+        </div>
+      </div>
+    </div>
     <div class="ag-courses_item" *ngFor="let x of contenidosU2">
       <div class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
@@ -54,6 +150,13 @@
   </div>
     <hr>
   <div class="ag-courses_box">
+    <div class="ag-courses_item">
+      <div class="ag-courses-item_link" id="unidad-holder">
+        <div class="ag-courses-item_title" >
+          UNIDAD 3
+        </div>
+      </div>
+    </div>
     <div class="ag-courses_item" *ngFor="let x of contenidosU3">
       <div class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
@@ -78,6 +181,13 @@
   </div>
     <hr>
   <div class="ag-courses_box">
+    <div class="ag-courses_item">
+      <div class="ag-courses-item_link" id="unidad-holder">
+        <div class="ag-courses-item_title" >
+          UNIDAD 4
+        </div>
+      </div>
+    </div>
     <div class="ag-courses_item" *ngFor="let x of contenidosU4">
       <div class="ag-courses-item_link">
         <div class="ag-courses-item_bg"></div>
@@ -100,4 +210,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
