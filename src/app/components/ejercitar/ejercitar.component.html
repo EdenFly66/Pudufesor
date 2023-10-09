@@ -7,9 +7,12 @@ family=Reenie+Beanie:regular"
   type="text/css"
 />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+  rel="stylesheet"
+/>
 <link
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
@@ -32,6 +35,7 @@ family=Reenie+Beanie:regular"
         <br />
         <br />
         <i
+          *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
           (click)="pregunta(x.nombre)"
@@ -51,6 +55,7 @@ family=Reenie+Beanie:regular"
         <br />
         <br />
         <i
+          *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
           (click)="pregunta(x.nombre)"
@@ -70,6 +75,7 @@ family=Reenie+Beanie:regular"
         <br />
         <br />
         <i
+          *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
           (click)="pregunta(x.nombre)"
@@ -89,6 +95,7 @@ family=Reenie+Beanie:regular"
         <br />
         <br />
         <i
+          *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
           (click)="pregunta(x.nombre)"
@@ -99,14 +106,13 @@ family=Reenie+Beanie:regular"
 </div>
 
 <ng-container *ngIf="this.show" class="modal">
-  <div class="modal modalc">
+  <div class="modalc">
     <div class="modalc-content">
-
-      <div class="modal-header modalc-header">
-          <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
+      <div class="modalc-header">
+        <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
       </div>
-      <hr>
-      <form [formGroup]="formulario" class="text-align:center">
+      <hr />
+      <form [formGroup]="formulario" class="modalc-body">
         <div class="modalc-body" *ngFor="let a of alternativas.sort()">
           <input
             type="radio"
@@ -118,12 +124,11 @@ family=Reenie+Beanie:regular"
           <h5>{{ a }}</h5>
         </div>
       </form>
-      <hr>
-      <div class="modal-footer">
-          <button (click)="revision()">Revisar</button>
-          <button (click)="cerrar()">Cerrar</button>
+      <hr />
+      <div class="modalc-footer">
+        <button (click)="revision()" class="modalc-button1">Revisar</button>
+        <button (click)="cerrar()" class="modalc-button2">Cerrar</button>
       </div>
-
     </div>
   </div>
 </ng-container>

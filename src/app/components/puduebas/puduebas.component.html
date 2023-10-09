@@ -1,6 +1,8 @@
 <app-cabecera></app-cabecera>
 
-<h1 style="text-align: center">Arma tu Prueba</h1>
+<div class="banner">
+  <h1>📋 PUDÚEBAS {{ this.curso }} {{ this.asignatura }} ✏️</h1>
+</div>
 
 <div class="row" style="background-color: #c293dd">
   <h1 style="text-align: center">{{ this.curso }} {{ this.asignatura }}</h1>
@@ -79,6 +81,5 @@
     </form>
     <hr>
   </div>
-
   <button (click)="cerrar()">Cerrar</button>
 </div>
