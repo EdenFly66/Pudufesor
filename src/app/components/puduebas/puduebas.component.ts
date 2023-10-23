@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { orderBy, query, where } from 'firebase/firestore';
-import { FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Material } from 'src/app/interfaces/material';
 import { Pregunta } from 'src/app/interfaces/pregunta';
@@ -14,7 +14,7 @@ import { PreguntaService } from 'src/app/services/pregunta.service';
   styleUrls: ['./puduebas.component.scss'],
 })
 export class PuduebasComponent {
-  formulario!: any;
+  formulario!: FormGroup;
   show: boolean = false;
   curso!: any;
   asignatura!: any;
@@ -34,7 +34,9 @@ export class PuduebasComponent {
     private preguntaServicio: PreguntaService
   ) {
     this.formulario = this.fb.group({
-      respuesta: ['', []],
+      preg: new FormArray([
+        new FormControl('')
+    ])
     });
   }
 
@@ -170,7 +172,11 @@ export class PuduebasComponent {
     console.log(this.preguntasPudu);
   }
   cerrar() {
+    this.preguntasPudu = []
     this.show = false;
-    this.preguntasPudu = [];
+    window.location.reload()
+  }
+  revision(){
+    console.log(this.formulario.value)
   }
 }
