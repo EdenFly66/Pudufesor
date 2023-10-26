@@ -38,7 +38,14 @@ export class UserService {
   }
 
   cerrarSesion(){
-    return signOut(this.auth)
+    return signOut(this.auth).then(()=>{
+      Swal.fire({
+        title: 'Has salido con éxito',
+        text: 'Vuelve pronto.',
+        icon: 'success',
+        allowOutsideClick: false,
+      })
+    });
   }
 
   iniciarSesion(correo:any,contrasena:any):void{

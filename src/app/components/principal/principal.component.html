@@ -1,6 +1,6 @@
 <app-cabecera></app-cabecera>
 
-<div *ngIf="this.rol != 'admin'">
+<div *ngIf="this.rol === 'usuario'">
   <form class="filtro" [formGroup]="formulario">
     <select
       name="curso"
@@ -133,53 +133,26 @@
 </div>
 
 <div *ngIf="this.rol === 'admin'">
-  <div class="main">
-    <ul class="cards">
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://www.comunidadbaratz.com/wp-content/uploads/La-biblioteca-es-inclusion-social-e-igualdad-de-oportunidades.jpg"
-              alt="mixed vegetable salad in a mason jar. "
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Cursos.</h2>
-            <button (click)="agregarCurso()">Añadir</button>
-          </div>
-        </div>
-      </li>
-
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://www.geeknetic.es/imagenes/tutoriales/definiciones/2020/12/Calculadora-g841.jpg"
-              alt="Calculadora"
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Asignaturas.</h2>
-            <button (click)="agregarAsignatura()">Añadir</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://definicion.de/wp-content/uploads/2009/03/examen-1.jpg"
-              alt="Exámen"
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Material.</h2>
-            <button (click)="agregarMaterial()">Añadir</button>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <section class="cards">
+    <article id="agregarCurso" class="card">
+      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
+      <br /><br />
+      <button (click)="agregarCurso()" class="button">CURSOS</button>
+    </article>
+    <!-- /card-one -->
+    <article id="agregarAsignatura" class="card">
+      <img src="https://i.imgur.com/yRMehyF.jpeg" />
+      <br /><br />
+      <button (click)="agregarAsignatura()" class="button">ASIGNATURAS</button>
+    </article>
+    <!-- /card-one -->
+    <article id="agregarMaterial" class="card">
+      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
+      <br /><br />
+      <button (click)="agregarMaterial()" class="button">MATERIAL</button>
+    </article>
+    <!-- /card-one -->
+  </section>
 </div>
 
 <app-pie></app-pie>

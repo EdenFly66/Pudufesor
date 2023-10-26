@@ -3,15 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import {
-  provideAnalytics,
-  getAnalytics,
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
@@ -32,48 +27,20 @@ import { ContenidosComponent } from './components/contenidos/contenidos.componen
 import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
 import { PuduebasComponent } from './components/puduebas/puduebas.component';
 
-const appRoutes: Routes = [
-  { path: '', component: PrincipalComponent },
-  { path: 'ingresar', component: IngresarComponent },
-  { path: 'registrar', component: RegistrarComponent },
-  { path: 'recuperar', component: RecuperarComponent },
-  {
-    path: 'perfil',
-    component: PerfilComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'curso',
-    component: CursoComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'asignatura',
-    component: AsignaturaComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'material',
-    component: MaterialComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'contenidos/:curso/:asignatura',
-    component: ContenidosComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'ejercitar/:curso/:asignatura',
-    component: EjercitarComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  {
-    path: 'puduebas/:curso/:asignatura',
-    component: PuduebasComponent,
-    ...canActivate(() => redirectUnauthorizedTo([''])),
-  },
-  { path: '**', component: NoDisponibleComponent },
-];
+const appRoutes:Routes=[
+  {path:'',component:IngresarComponent},
+  {path:'registrar',component:RegistrarComponent},
+  {path:'recuperar',component:RecuperarComponent},
+  {path:'perfil',component:PerfilComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'curso',component:CursoComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'contenidos/:curso/:asignatura',component:ContenidosComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'puduebas/:curso/:asignatura',component:PuduebasComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'**',component:NoDisponibleComponent},
+]
 
 @NgModule({
   declarations: [
@@ -103,9 +70,13 @@ const appRoutes: Routes = [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
+    provideFirestore(() => getFirestore())
   ],
-  providers: [ScreenTrackingService, UserTrackingService, UserService],
-  bootstrap: [AppComponent],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+    UserService
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

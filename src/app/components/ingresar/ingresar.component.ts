@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
-import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,15 +14,11 @@ export class IngresarComponent {
 
   formulario: FormGroup;
 
-  constructor(private readonly fb: FormBuilder, private afAuth: AngularFireAuth, private router:Router, private firebaseError:FirebaseErrorService,private userSv: UserService){
+  constructor(private readonly fb: FormBuilder, private afAuth: AngularFireAuth, private router:Router, private firebaseError:FirebaseErrorService){
     this.formulario = this.fb.group({
       correo: ['',[Validators.required, Validators.email],],
       contrasena:['',[Validators.required]]
     })
-  }
-
-  ngOnInit(){
-    this.userSv.cerrarSesion()
   }
 
   ingresar(){
@@ -39,7 +34,7 @@ export class IngresarComponent {
     }
     else{
       this.afAuth.signInWithEmailAndPassword(email,password1).then(()=>{
-      this.router.navigate(['']);
+      this.router.navigate(['/principal']);
     }).catch((error)=>
       alert(this.firebaseError.firebaseError(error.code))
     )
