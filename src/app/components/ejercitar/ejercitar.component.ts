@@ -98,8 +98,8 @@ export class EjercitarComponent {
     return collectionData(q);
   }
 
-  pregunta(nombre: string) {
-    let contenidoPregunta: Pregunta = this.preguntaServicio.tematica(nombre,this.curso,this.asignatura)
+  pregunta(id:number) {
+    let contenidoPregunta: Pregunta = this.preguntaServicio.tematica(id)
     this.alternativas.push(contenidoPregunta.respuestaCorrecta);
     for (let i = 0; i < contenidoPregunta.respuestasIncorrectas.length; i++) {
       this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i]);

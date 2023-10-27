@@ -143,21 +143,18 @@ export class PuduebasComponent {
   }
 
   generarPudueba() {
-    let nombres: Array<Material> = this.contenidosU1
+    let IDS: Array<Material> = this.contenidosU1
       .concat(this.contenidosU2)
       .concat(this.contenidosU3)
       .concat(this.contenidosU4);
     let contenidoPregunta: Pregunta;
     let alts: Array<string> = []
-    let nombre: string;
+    let id: number;
     for (let i = 0; i < this.cantP.length; i++) {
-      nombre = nombres[i].nombre;
+      id = IDS[i].idMaterial;
       for (let j = 0; j < this.cantP[i]; j++) {
         contenidoPregunta = this.preguntaServicio.tematica(
-          nombre,
-          this.curso,
-          this.asignatura
-        );
+          id);
         this.preguntasPudu.push(contenidoPregunta);
         alts.push(contenidoPregunta.respuestaCorrecta);
         alts.push(contenidoPregunta.respuestasIncorrectas[0])

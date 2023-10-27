@@ -3181,44 +3181,51 @@ export class PreguntaService {
     }
     return 0 as unknown as Pregunta;
   }
-  tematica(nombre:string,curso:string,asignatura:string):Pregunta{
+  
+  tematica(id:number):Pregunta{
     let contenidoPregunta: Pregunta;
-    if (curso == '1M' && asignatura == 'MATEMÁTICA') {
-      if (nombre == 'Operatoria en los números racionales') {
+    switch (id){
+      case 1:
         contenidoPregunta = this.operatoriaRacionales(0);
-      } else if (nombre == 'Potencias') {
+        break;
+      case 2:
         contenidoPregunta = this.potencias(0);
-      } else if (nombre == 'Productos notables') {
+        break;
+      case 3:
         contenidoPregunta = this.productosNotables(0);
-      } else if (nombre == 'Área de la superficie y volumen del cono') {
+        break;
+      case 4:
         contenidoPregunta = this.cono(0);
-      } else if (nombre == 'Sistema de ecuaciones lineales') {
+      break;
+      case 5:
         contenidoPregunta = this.sistemaEcuacionesLineales(0);
-      } else if (nombre == 'Relaciones lineales en dos variables') {
+      break;
+      case 6:
         contenidoPregunta = this.funcionesLineales(0);
-      } else if (
-        nombre == 'Perímetro y área de sectores y segmentos circulares'
-      ) {
+      break;
+      case 7:
         contenidoPregunta = this.sectoresCirculares(0);
-      } else if (nombre == 'Homotecia y teorema de Tales') {
+      break;
+      case 8:
         contenidoPregunta = this.homoteciaTales(0);
-      } else if (nombre == 'Semejanza') {
+      break;
+      case 9:
         contenidoPregunta = this.semejanza(0);
-      }
-      else if(nombre=='Análisis de poblaciones'){
+      break;
+      case 10:
         contenidoPregunta = this.analisisPoblaciones(0);
-      }
-      else if(nombre=='Reglas de la probabilidad'){
+      break;
+      case 11:
         contenidoPregunta = this.reglasProbabilidad(0);
-      }
-      else if(nombre=='Comportamiento aleatorio'){
+      break;
+      case 12:
         contenidoPregunta = this.comportamientoAleatorio(0);
-      } else {
+      break;
+      default:
         contenidoPregunta = 0 as unknown as Pregunta;
-      }
-    } else {
-      contenidoPregunta = 0 as unknown as Pregunta;
+        break;
     }
+    
     return contenidoPregunta
   }
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { collection, Firestore } from '@angular/fire/firestore';
+import { query, getDocs } from 'firebase/firestore';
+import { Usuario } from 'src/app/interfaces/usuario';
 
 @Component({
   selector: 'app-cabecera',
@@ -9,8 +12,27 @@ import { UserService } from 'src/app/services/user.service';
   providers: [UserService]
 })
 export class CabeceraComponent {
-  constructor(private router:Router, private userSv: UserService){
+  rol?: string;
+  constructor(
+    private router: Router,
+    private userSv: UserService,
+    private firestore: Firestore
+  ) {}
 
+  ngOnInit() {
+    this.rolUser();
+  }
+
+  async rolUser() {
+    const id = await this.userSv.getUid();
+    const q = query(collection(this.firestore, 'Usuarios'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((e) => {
+      const datos = e.data() as Usuario;
+      if (datos.UID === id) {
+        this.rol = datos.rol;
+      }
+    });
   }
   
   botonSalir(){

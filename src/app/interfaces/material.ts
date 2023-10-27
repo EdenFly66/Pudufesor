@@ -7,4 +7,5 @@ export interface Material {
     documento:string,
     orden:string,
     unidad:string,
+    idMaterial:number
 }
