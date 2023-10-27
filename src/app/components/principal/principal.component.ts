@@ -148,7 +148,5 @@ export class PrincipalComponent {
   agregarMaterial() {
     this.router.navigate(['/material']);
   }
-  agregarPregunta() {
-    this.router.navigate(['/pregunta']);
-  }
+  
 }

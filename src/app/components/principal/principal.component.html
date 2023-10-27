@@ -62,7 +62,7 @@
           <div class="card_image">
             <img
               src="https://www.comunidadbaratz.com/wp-content/uploads/La-biblioteca-es-inclusion-social-e-igualdad-de-oportunidades.jpg"
-              alt="mixed vegetable salad in a mason jar. "
+              alt="Libros. "
             />
           </div>
           <div class="card_content">
@@ -133,26 +133,76 @@
 </div>
 
 <div *ngIf="this.rol === 'admin'">
-  <section class="cards">
-    <article id="agregarCurso" class="card">
-      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
-      <br /><br />
-      <button (click)="agregarCurso()" class="button">CURSOS</button>
-    </article>
-    <!-- /card-one -->
-    <article id="agregarAsignatura" class="card">
-      <img src="https://i.imgur.com/yRMehyF.jpeg" />
-      <br /><br />
-      <button (click)="agregarAsignatura()" class="button">ASIGNATURAS</button>
-    </article>
-    <!-- /card-one -->
-    <article id="agregarMaterial" class="card">
-      <img src="https://i.imgur.com/zLL1KLF.jpeg" />
-      <br /><br />
-      <button (click)="agregarMaterial()" class="button">MATERIAL</button>
-    </article>
-    <!-- /card-one -->
-  </section>
+  <div class="main">
+    <ul class="cards">
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/023/842/276/non_2x/school-building-cartoon-illustration-on-isolated-background-vector.jpg"
+              alt="Colegio."
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Gestión de Cursos</h2>
+            <div class="card_text">
+              <p>
+                Para agregar nuevos cursos.
+              </p>
+              <p>
+                Además se permite modificar o inhabilitar cursos ya existentes.
+              </p>
+            </div>
+            <button (click)="agregarCurso()">Vamos</button>
+          </div>
+        </div>
+      </li>
+
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://leyinclusion.mineduc.cl/wp-content/uploads/sites/91/2019/08/Sala-de-clases.jpg"
+              alt="Sala de clases."
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Gestión de Asignaturas</h2>
+            <div class="card_text">
+              <p>
+                Añadir asignaturas a algún curso
+              </p>
+              <p>Modificar el nombre de las asignaturas.</p>
+              <p>
+                Deshabilitar asignaturas en caso de errores en el sistema, u obsolencia según el Ministerio de Educación.
+              </p>
+            </div>
+            <button (click)="agregarAsignatura()">Vamos</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image">
+            <img
+              src="https://i.pinimg.com/originals/65/08/e8/6508e80376fbeba9e602129ea10ea294.jpg"
+              alt="Cuaderno de apuntes."
+            />
+          </div>
+          <div class="card_content">
+            <h2 class="card_title">Gestión de Material</h2>
+            <div class="card_text">
+              <p>Agregar nuevo material de estudio.</p>
+              <p>
+                Cambiar aspectos del material ya disponible, o desactivar contenidos según necesidades del sistema.
+              </p>
+            </div>
+            <button (click)="agregarMaterial()">Vamos</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <app-pie></app-pie>
