@@ -40,9 +40,12 @@ export class CabeceraComponent {
       this.router.navigate([''])
     })
   }
-
   botonPerfil(){
     this.router.navigate(['/perfil'])
+  }
+
+  botonInicio(){
+    this.router.navigate(['/principal'])
   }
 
 }
