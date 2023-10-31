@@ -68,7 +68,7 @@ export class IngresarComponent {
       this.afAuth
         .signInWithEmailAndPassword(email, password1)
         .then(() => {
-          this.router.navigate(['/principal']);
+          this.router.navigate(['']);
         })
         .catch((error) => alert(this.firebaseError.firebaseError(error.code)));
     }

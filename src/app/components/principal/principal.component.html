@@ -1,6 +1,6 @@
 <app-cabecera></app-cabecera>
 
-<div *ngIf="this.rol === 'usuario'">
+<div *ngIf="this.rol != 'admin'">
   <form class="filtro" [formGroup]="formulario">
     <select
       name="curso"

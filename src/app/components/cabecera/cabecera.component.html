@@ -5,6 +5,10 @@
         <h1>Pudúfesor</h1>
       </a>
     </div>
+    <ul *ngIf="this.rol != 'usuario' && this.rol != 'admin'" class="main-nav">
+      <li><button (click)="botonIngresar()">Ingresar</button></li>
+      <li><button (click)="botonRegistrar()">Registrar</button></li>
+    </ul>
     <ul *ngIf="this.rol === 'usuario'" class="main-nav">
       <li><button (click)="botonInicio()">Inicio</button></li>
       <li><button (click)="botonPerfil()">Perfil</button></li>

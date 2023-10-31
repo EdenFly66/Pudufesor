@@ -28,17 +28,17 @@ import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
 import { PuduebasComponent } from './components/puduebas/puduebas.component';
 
 const appRoutes:Routes=[
-  {path:'',component:IngresarComponent},
+  {path:'',component:PrincipalComponent},
+  {path:'ingresar',component:IngresarComponent},
   {path:'registrar',component:RegistrarComponent},
   {path:'recuperar',component:RecuperarComponent},
   {path:'perfil',component:PerfilComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'principal',component:PrincipalComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'curso',component:CursoComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'asignatura',component:AsignaturaComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
   {path:'material',component:MaterialComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'contenidos/:curso/:asignatura',component:ContenidosComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
-  {path:'puduebas/:curso/:asignatura',component:PuduebasComponent,...canActivate(()=>redirectUnauthorizedTo(['']))},
+  {path:'contenidos/:curso/:asignatura',component:ContenidosComponent},
+  {path:'ejercitar/:curso/:asignatura',component:EjercitarComponent},
+  {path:'puduebas/:curso/:asignatura',component:PuduebasComponent},
   {path:'**',component:NoDisponibleComponent},
 ]
 

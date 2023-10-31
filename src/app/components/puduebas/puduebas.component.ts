@@ -27,17 +27,13 @@ export class PuduebasComponent {
   alternativas: Array<any> = [];
   cantP: Array<number> = [];
   preguntasPudu: Array<Pregunta> = [];
+  questionsGroups!: any;
   constructor(
     private readonly fb: FormBuilder,
     private route: ActivatedRoute,
     private firestore: Firestore,
     private preguntaServicio: PreguntaService
   ) {
-    this.formulario = this.fb.group({
-      preg: new FormArray([
-        new FormControl('')
-    ])
-    });
   }
 
   ngOnInit() {
@@ -143,7 +139,7 @@ export class PuduebasComponent {
   }
 
   generarPudueba() {
-    let IDS: Array<Material> = this.contenidosU1
+    /*let IDS: Array<Material> = this.contenidosU1
       .concat(this.contenidosU2)
       .concat(this.contenidosU3)
       .concat(this.contenidosU4);
@@ -166,14 +162,16 @@ export class PuduebasComponent {
       }
     }
 
-    console.log(this.preguntasPudu);
+    console.log(this.preguntasPudu);*/
+    
+
   }
   cerrar() {
     this.preguntasPudu = []
     this.show = false;
     window.location.reload()
   }
-  revision(){
+  submit(){
     console.log(this.formulario.value)
   }
 }

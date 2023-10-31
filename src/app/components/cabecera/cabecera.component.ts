@@ -37,7 +37,7 @@ export class CabeceraComponent {
   
   botonSalir(){
     this.userSv.cerrarSesion().then(()=>{
-      this.router.navigate([''])
+      window.location.reload()
     })
   }
   botonPerfil(){
@@ -45,7 +45,15 @@ export class CabeceraComponent {
   }
 
   botonInicio(){
-    this.router.navigate(['/principal'])
+    this.router.navigate([''])
+  }
+
+  botonIngresar(){
+    this.router.navigate(['/ingresar'])
+  }
+
+  botonRegistrar(){
+    this.router.navigate(['/registrar'])
   }
 
 }
