@@ -33,7 +33,6 @@ export class IngresarComponent {
 
   ngOnInit() {
     this.rolUser();
-    console.log(this.rol);
     if (this.rol == 'admin' || this.rol == 'usuario') {
       this.userSv.cerrarSesion();
     }

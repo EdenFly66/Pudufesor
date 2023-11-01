@@ -107,7 +107,6 @@ export class EjercitarComponent {
     this.enunciado = contenidoPregunta.enunciado;
     this.correcta = contenidoPregunta.respuestaCorrecta;
     this.show = true;
-    console.log(contenidoPregunta);
   }
 
   revision() {

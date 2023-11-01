@@ -82,7 +82,6 @@ export class MaterialComponent {
           guardar = false
         }
       }
-      console.log(guardar)
       if(!guardar){
         Swal.fire({
           title: '¡Denegado!',

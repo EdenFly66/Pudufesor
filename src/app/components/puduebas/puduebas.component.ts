@@ -26,8 +26,8 @@ export class PuduebasComponent {
   correcta!: string;
   alternativas: Array<any> = [];
   cantP: Array<number> = [];
-  preguntasPudu: Array<Pregunta> = [];
-  questionsGroups!: any;
+  questionGroups!: any;
+  pvqForm!:any;
   constructor(
     private readonly fb: FormBuilder,
     private route: ActivatedRoute,
@@ -139,7 +139,32 @@ export class PuduebasComponent {
   }
 
   generarPudueba() {
-    /*let IDS: Array<Material> = this.contenidosU1
+    this.questionGroups = this.fb.array(this.getQuestions().map(question => this.fb.group(question)));
+
+    this.pvqForm = this.fb.group({
+      questions: this.questionGroups
+    });
+
+    /*for(let i = 0; i<this.questionGroups.value.length;i++){
+      //console.log(this.questionGroups.value.get(2))
+    }*/
+    
+
+    //console.log(this.questionGroups.value);
+  }
+
+  cerrar() {
+    this.show = false;
+    window.location.reload()
+  }
+  submit(pvqAnswer:any){
+    //console.log(pvqAnswer)
+  }
+
+  getQuestions() {
+    const questionControlArray = [];
+    const capsule = [];
+    let IDS: Array<Material> = this.contenidosU1
       .concat(this.contenidosU2)
       .concat(this.contenidosU3)
       .concat(this.contenidosU4);
@@ -151,7 +176,7 @@ export class PuduebasComponent {
       for (let j = 0; j < this.cantP[i]; j++) {
         contenidoPregunta = this.preguntaServicio.tematica(
           id);
-        this.preguntasPudu.push(contenidoPregunta);
+        questionControlArray.push(contenidoPregunta);
         alts.push(contenidoPregunta.respuestaCorrecta);
         alts.push(contenidoPregunta.respuestasIncorrectas[0])
         alts.push(contenidoPregunta.respuestasIncorrectas[1])
@@ -161,17 +186,10 @@ export class PuduebasComponent {
         this.alternativas.push(alts)
       }
     }
-
-    console.log(this.preguntasPudu);*/
     
+    capsule.push(questionControlArray)
+    return capsule
+  }
 
-  }
-  cerrar() {
-    this.preguntasPudu = []
-    this.show = false;
-    window.location.reload()
-  }
-  submit(){
-    console.log(this.formulario.value)
-  }
+  
 }

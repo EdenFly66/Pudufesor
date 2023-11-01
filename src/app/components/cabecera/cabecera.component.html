@@ -1,11 +1,12 @@
 <header class="header">
     <div id="logo">
-      <a id="icono" href="/principal">
+      <a id="icono" href="">
         <img src="/assets/LogoPudufesor.png" alt="Logo Pudúfesor" />
         <h1>Pudúfesor</h1>
       </a>
     </div>
     <ul *ngIf="this.rol != 'usuario' && this.rol != 'admin'" class="main-nav">
+      <li><button (click)="botonInicio()">Inicio</button></li>
       <li><button (click)="botonIngresar()">Ingresar</button></li>
       <li><button (click)="botonRegistrar()">Registrar</button></li>
     </ul>

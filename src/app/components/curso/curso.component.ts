@@ -62,7 +62,6 @@ export class CursoComponent {
           guardar = false;
         }
       }
-      console.log(guardar);
       if (!guardar) {
         Swal.fire({
           title: '¡Denegado!',

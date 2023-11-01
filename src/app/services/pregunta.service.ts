@@ -276,7 +276,6 @@ export class PreguntaService {
         respuestasIncorrectas: respuestasIncorrectas,
         alternativas: alternativas,
       });
-      console.log(contenidoPregunta);
       return contenidoPregunta;
     } else if (tipo == 3) {
       //division y multiplicacion formato: (a/b)/(c/d) - (e/f)*(g/h)
@@ -412,7 +411,6 @@ export class PreguntaService {
         respuestasIncorrectas: respuestasIncorrectas,
         alternativas: alternativas,
       });
-      console.log(contenidoPregunta);
       return contenidoPregunta;
     } else if (tipo == 4) {
       let dinero = 1;

@@ -91,5 +91,15 @@
 </div>
 
 <div *ngIf="this.show">
+  <form [formGroup]="pvqForm" (ngSubmit)="submit(pvqForm)">
+    <div [formArrayName]="'questions'">
+      <div *ngFor="let q of questionGroups.controls.value; let i = index;" class="form-group">
+        <div [formGroupName]="i">
+          <h1>{{q}}</h1>
+        </div>
+      </div>
+    </div>
+    <button>Submit</button>
+  </form>
   
 </div>

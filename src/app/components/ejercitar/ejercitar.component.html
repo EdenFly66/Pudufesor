@@ -119,15 +119,17 @@ family=Reenie+Beanie:regular"
             name="respuesta"
             value="{{ a }}"
             formControlName="respuesta"
-            class="height:15px"
+            class="modalc-casilla"
           />
-          <h5>{{ a }}</h5>
+          <h5 class="modalc-alternativa">{{ a }}</h5>
         </div>
       </form>
       <hr />
       <div class="modalc-footer">
-        <button (click)="revision()" class="modalc-button1">Revisar</button>
-        <button (click)="cerrar()" class="modalc-button2">Cerrar</button>
+        <div class="modadlc-buttoncontainer">
+          <button (click)="revision()" class="modalc-button1">Revisar</button>
+          <button (click)="cerrar()" class="modalc-button2">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
