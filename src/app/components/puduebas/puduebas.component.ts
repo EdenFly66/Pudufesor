@@ -182,6 +182,10 @@ export class PuduebasComponent {
     console.log(puntajeObtenido,notaObtenida)
   }
 
+  check(nr:number,ans:string){
+    return this.respuestas[nr]==ans
+  }
+
   answers(nr:number,ans:string){
     this.respuestas[nr] = ans;
     console.log(this.respuestas)
