@@ -1,5 +1,5 @@
 export interface Material {
-    curso: string,
+    curso: number,
     nombre:string,
     asignatura:string,
     video:string,

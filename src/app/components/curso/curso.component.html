@@ -1,6 +1,7 @@
 <app-cabecera></app-cabecera>
+<app-carga *ngIf="this.listaCursos.length==0"></app-carga>
 <div id="contenedor">
-    <div id="central">
+    <div class="central">
       <div id="login">
         <form (ngSubmit)="agregar()" [formGroup]="formulario">
             <div class="titulo">
@@ -8,7 +9,7 @@
               <hr>
             </div>
             <div class="mb-4">
-                <label for="curso" class="form-label">Curso:</label>
+                <label for="curso" class="form-label">Nombre del curso:</label>
                 <input
                 type="curso"
                 class="form-control"
@@ -32,5 +33,28 @@
           </div>
         </form>
       </div>
+    </div>
+    <div class="central" style="background-color: blanchedalmond;">
+      <h3 style="text-align:center;">CURSOS</h3>
+      <hr>
+      <div class="x" *ngFor="let x of listaCursos; let i = index">
+            <div style="justify-content: space-between; text-align: center;">
+              <h4>{{x.nombre}}</h4>
+              <button class="btn" (click)="mostrarForm(x)">✏️</button>
+              <button class="btn" *ngIf="x.habilitado" (click)="habilitar(x)">🚫</button>
+              <button class="btn" *ngIf="!x.habilitado" (click)="habilitar(x)">✅</button>
+            </div>
+        </div>
+      <hr>
+      </div>
+
+    <div *ngIf="this.show" class="central" style="background-color: aqua;">
+          <form>
+            <h3>Cambio de nombre a {{this.cursoCambio.nombre}}</h3>
+            <input type="text" id="inputPalabras">
+            <hr>
+            <button (click)="editarNombre(this.cursoCambio)">Actualizar</button>
+            <button (click)="cerrar()">Cancelar</button>
+          </form>
     </div>
 </div>

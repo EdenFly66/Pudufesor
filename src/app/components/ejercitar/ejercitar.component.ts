@@ -36,7 +36,7 @@ export class EjercitarComponent {
   }
 
   ngOnInit() {
-    this.curso = this.route.snapshot.paramMap.get('curso');
+    this.curso = Number(this.route.snapshot.paramMap.get("curso"));
     this.asignatura = this.route.snapshot.paramMap.get('asignatura');
     this.obtenerContenidosU1().subscribe((e) => {
       this.contenidosU1 = e;
