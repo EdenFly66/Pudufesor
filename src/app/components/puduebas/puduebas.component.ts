@@ -8,12 +8,14 @@ import { Material } from 'src/app/interfaces/material';
 import { Pregunta } from 'src/app/interfaces/pregunta';
 import { PreguntaService } from 'src/app/services/pregunta.service';
 
+
 @Component({
   selector: 'app-puduebas',
   templateUrl: './puduebas.component.html',
   styleUrls: ['./puduebas.component.scss'],
 })
 export class PuduebasComponent {
+
   formulario!: FormGroup;
   show: boolean = false;
   curso!: any;
@@ -27,16 +29,23 @@ export class PuduebasComponent {
   alternativas: Array<any> = [];
   cantP: Array<number> = [];
   questionGroups!: any;
-  pvqForm!:any;
+  pvqForm!:FormGroup;
+  preguntasPudu!:any;
+  respuestas:any = [];
+
   constructor(
     private readonly fb: FormBuilder,
     private route: ActivatedRoute,
     private firestore: Firestore,
     private preguntaServicio: PreguntaService
   ) {
+    this.pvqForm = this.fb.group({
+      respuestas: new FormArray([])
+    });
   }
 
   ngOnInit() {
+
     this.curso = this.route.snapshot.paramMap.get('curso');
     this.asignatura = this.route.snapshot.paramMap.get('asignatura');
     this.obtenerContenidosU1().subscribe((e) => {
@@ -139,31 +148,48 @@ export class PuduebasComponent {
   }
 
   generarPudueba() {
-    this.questionGroups = this.fb.array(this.getQuestions().map(question => this.fb.group(question)));
-
-    this.pvqForm = this.fb.group({
-      questions: this.questionGroups
-    });
-
-    /*for(let i = 0; i<this.questionGroups.value.length;i++){
-      //console.log(this.questionGroups.value.get(2))
-    }*/
-    
-
-    //console.log(this.questionGroups.value);
+    this.getQuestions()
   }
 
   cerrar() {
+    this.preguntasPudu = []
     this.show = false;
     window.location.reload()
   }
-  submit(pvqAnswer:any){
-    //console.log(pvqAnswer)
+  revision(){
+    let puntajeObtenido:number = 0
+    let aprobado:boolean
+    let puntajeMaximo = this.preguntasPudu.length
+    let notaObtenida:number
+    for(let i=0;i<this.respuestas.length;i++){
+      if(this.respuestas[i]==this.preguntasPudu.respuestaCorrecta){
+        puntajeObtenido++
+      }
+    }
+    if(puntajeObtenido< puntajeMaximo *0.6){
+      aprobado=false
+    }
+    else{
+      aprobado=true
+    }
+    if(aprobado){
+      notaObtenida = (3 * (puntajeObtenido/(0.6 * puntajeMaximo))) + 1
+    }
+    else{
+      notaObtenida = (3 * ((puntajeObtenido - (0.6 * puntajeMaximo))/(puntajeMaximo * 0.4))) + 4
+    }
+    notaObtenida = Number(notaObtenida.toFixed(1))
+    console.log(puntajeObtenido,notaObtenida)
   }
+
+  answers(nr:number,ans:string){
+    this.respuestas[nr] = ans;
+    console.log(this.respuestas)
+  }
+
 
   getQuestions() {
     const questionControlArray = [];
-    const capsule = [];
     let IDS: Array<Material> = this.contenidosU1
       .concat(this.contenidosU2)
       .concat(this.contenidosU3)
@@ -187,8 +213,7 @@ export class PuduebasComponent {
       }
     }
     
-    capsule.push(questionControlArray)
-    return capsule
+    this.preguntasPudu = questionControlArray
   }
 
   

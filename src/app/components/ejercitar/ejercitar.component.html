@@ -21,9 +21,17 @@ family=Reenie+Beanie:regular"
 <div class="banner">
   <h1>🚀 EJERCICIOS {{ this.curso }} {{ this.asignatura }} 💪</h1>
 </div>
-
+<app-carga
+  *ngIf="
+    contenidosU1.length == 0 &&
+    contenidosU2.length == 0 &&
+    contenidosU3.length == 0 &&
+    contenidosU4.length == 0
+  "
+>
+</app-carga>
 <div class="container">
-  <ul>
+  <ul *ngIf="contenidosU1.length > 0">
     <li>
       <a target="_blank"
         ><h2 style="text-align: center; font-size: 35px">Unidad 1</h2></a
@@ -43,7 +51,7 @@ family=Reenie+Beanie:regular"
       </a>
     </li>
   </ul>
-  <ul>
+  <ul *ngIf="contenidosU2.length > 0">
     <li>
       <a target="_blank"
         ><h2 style="text-align: center; font-size: 35px">Unidad 2</h2></a
@@ -63,7 +71,7 @@ family=Reenie+Beanie:regular"
       </a>
     </li>
   </ul>
-  <ul>
+  <ul *ngIf="contenidosU3.length > 0">
     <li>
       <a target="_blank"
         ><h2 style="text-align: center; font-size: 35px">Unidad 3</h2></a
@@ -83,7 +91,7 @@ family=Reenie+Beanie:regular"
       ></a>
     </li>
   </ul>
-  <ul>
+  <ul *ngIf="contenidosU4.length > 0">
     <li>
       <a target="_blank"
         ><h2 style="text-align: center; font-size: 35px">Unidad 4</h2></a

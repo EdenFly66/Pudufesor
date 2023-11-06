@@ -1,208 +1,210 @@
 <app-cabecera></app-cabecera>
-
-<div *ngIf="this.rol != 'admin'">
-  <form class="filtro" [formGroup]="formulario">
-    <select
-      name="curso"
-      class="form-control"
-      id="curso"
-      name="curso"
-      formControlName="curso"
-    >
-      <option>Curso</option>
-      <option *ngFor="let x of this.cursos.sort()">{{ x.nombre }}</option>
-    </select>
-    <div
-      *ngIf="
-        this.formulario.value.curso == '' ||
-        this.formulario.value.curso == 'Curso'
-      "
-    >
+<app-carga *ngIf="this.cursos.length == 0"></app-carga>
+<div *ngIf="this.cursos.length > 0">
+  <div *ngIf="this.rol != 'admin'">
+    <form class="filtro" [formGroup]="formulario">
       <select
-        name="asignatura"
+        name="curso"
         class="form-control"
-        id="asignatura"
-        name="asignatura"
-        formControlName="asignatura"
+        id="curso"
+        name="curso"
+        formControlName="curso"
       >
-        <option>Asignatura</option>
-        <option *ngFor="let y of this.vacio">{{ y }}</option>
+        <option>Curso</option>
+        <option *ngFor="let x of this.cursos.sort()">{{ x.nombre }}</option>
       </select>
-    </div>
-    <div *ngIf="this.formulario.value.curso == '1M'">
-      <select
-        name="asignatura"
-        class="form-control"
-        id="asignatura"
-        name="asignatura"
-        formControlName="asignatura"
+      <div
+        *ngIf="
+          this.formulario.value.curso == '' ||
+          this.formulario.value.curso == 'Curso'
+        "
       >
-        <option>Asignatura</option>
-        <option *ngFor="let y of this.asig1M.sort()">{{ y }}</option>
-      </select>
-    </div>
-    <div *ngIf="this.formulario.value.curso == '2M'">
-      <select
-        name="asignatura"
-        class="form-control"
-        id="asignatura"
-        name="asignatura"
-        formControlName="asignatura"
-      >
-        <option>Asignatura</option>
-        <option *ngFor="let y of this.asig2M.sort()">{{ y }}</option>
-      </select>
-    </div>
-  </form>
+        <select
+          name="asignatura"
+          class="form-control"
+          id="asignatura"
+          name="asignatura"
+          formControlName="asignatura"
+        >
+          <option>Asignatura</option>
+          <option *ngFor="let y of this.vacio">{{ y }}</option>
+        </select>
+      </div>
+      <div *ngIf="this.formulario.value.curso == '1M'">
+        <select
+          name="asignatura"
+          class="form-control"
+          id="asignatura"
+          name="asignatura"
+          formControlName="asignatura"
+        >
+          <option>Asignatura</option>
+          <option *ngFor="let y of this.asig1M.sort()">{{ y }}</option>
+        </select>
+      </div>
+      <div *ngIf="this.formulario.value.curso == '2M'">
+        <select
+          name="asignatura"
+          class="form-control"
+          id="asignatura"
+          name="asignatura"
+          formControlName="asignatura"
+        >
+          <option>Asignatura</option>
+          <option *ngFor="let y of this.asig2M.sort()">{{ y }}</option>
+        </select>
+      </div>
+    </form>
 
-  <div class="main">
-    <ul class="cards">
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://www.comunidadbaratz.com/wp-content/uploads/La-biblioteca-es-inclusion-social-e-igualdad-de-oportunidades.jpg"
-              alt="Libros. "
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Contenidos</h2>
-            <div class="card_text">
-              <p>
-                Acá podrás encontrar material de apoyo para reforzar tu
-                aprendizaje. 😃🧠
-              </p>
-              <p>
-                Disponemos de guías y vídeos para ayudarte en tu búsqueda de
-                conocimientos.📚🎥
-              </p>
+    <div class="main">
+      <ul class="cards">
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Libros.jpg"
+                alt="Libros. "
+              />
             </div>
-            <button (click)="contenidos()">Vamos</button>
+            <div class="card_content">
+              <h2 class="card_title">Contenidos</h2>
+              <div class="card_text">
+                <p>
+                  Acá podrás encontrar material de apoyo para reforzar tu
+                  aprendizaje. 😃🧠
+                </p>
+                <p>
+                  Disponemos de guías y vídeos para ayudarte en tu búsqueda de
+                  conocimientos.📚🎥
+                </p>
+              </div>
+              <button (click)="contenidos()">Vamos</button>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://www.geeknetic.es/imagenes/tutoriales/definiciones/2020/12/Calculadora-g841.jpg"
-              alt="Calculadora"
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Ejercicios</h2>
-            <div class="card_text">
-              <p>
-                Si buscas practicar, ejercitando los contenidos aprendidos, éste
-                es tu lugar.💪
-              </p>
-              <p>Tendrás infinitos ejercicios preparados para ti.🎲</p>
-              <p>
-                No te preocupes por el tiempo, en esta sección no hay reloj que
-                te apure, puedes realizar los ejercicios con total tranquilidad.🤹
-              </p>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Calculadora.jpg"
+                alt="Calculadora"
+              />
             </div>
-            <button (click)="ejercitar()">Vamos</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://definicion.de/wp-content/uploads/2009/03/examen-1.jpg"
-              alt="Exámen"
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Pudúebas</h2>
-            <div class="card_text">
-              <p>Si quieres simular una prueba, escoge esta opción.📋</p>
-              <p>
-                Podrás escoger los contenidos evaluados, y posterior a realizar
-                tu pudúeba, obtendrás tu resultado para comprobar tus avances.✔️❌
-              </p>
+            <div class="card_content">
+              <h2 class="card_title">Ejercicios</h2>
+              <div class="card_text">
+                <p>
+                  Si buscas practicar, ejercitando los contenidos aprendidos,
+                  éste es tu lugar.💪
+                </p>
+                <p>Tendrás infinitos ejercicios preparados para ti.🎲</p>
+                <p>
+                  No te preocupes por el tiempo, en esta sección no hay reloj
+                  que te apure, puedes realizar los ejercicios con total
+                  tranquilidad.🤹
+                </p>
+              </div>
+              <button (click)="ejercitar()">Vamos</button>
             </div>
-            <button (click)="puduebas()">Vamos</button>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Examen.webp"
+                alt="Exámen"
+              />
+            </div>
+            <div class="card_content">
+              <h2 class="card_title">Pudúebas</h2>
+              <div class="card_text">
+                <p>Si quieres simular una prueba, escoge esta opción.📋</p>
+                <p>
+                  Podrás escoger los contenidos evaluados, y posterior a
+                  realizar tu pudúeba, obtendrás tu resultado para comprobar tus
+                  avances.✔️❌
+                </p>
+              </div>
+              <button (click)="puduebas()">Vamos</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="this.rol === 'admin'">
+    <div class="main">
+      <ul class="cards">
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Colegio.jpg"
+                alt="Colegio."
+              />
+            </div>
+            <div class="card_content">
+              <h2 class="card_title">Gestión de Cursos</h2>
+              <div class="card_text">
+                <p>Para agregar nuevos cursos.</p>
+                <p>
+                  Además se permite modificar o inhabilitar cursos ya
+                  existentes.
+                </p>
+              </div>
+              <button (click)="agregarCurso()">Vamos</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Sala-de-clases.jpg"
+                alt="Sala de clases."
+              />
+            </div>
+            <div class="card_content">
+              <h2 class="card_title">Gestión de Asignaturas</h2>
+              <div class="card_text">
+                <p>Añadir asignaturas a algún curso</p>
+                <p>Modificar el nombre de las asignaturas.</p>
+                <p>
+                  Deshabilitar asignaturas en caso de errores en el sistema, u
+                  obsolencia según el Ministerio de Educación.
+                </p>
+              </div>
+              <button (click)="agregarAsignatura()">Vamos</button>
+            </div>
+          </div>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img
+                src="/assets/Apuntes.jpg"
+                alt="Cuaderno de apuntes."
+              />
+            </div>
+            <div class="card_content">
+              <h2 class="card_title">Gestión de Material</h2>
+              <div class="card_text">
+                <p>Agregar nuevo material de estudio.</p>
+                <p>
+                  Cambiar aspectos del material ya disponible, o desactivar
+                  contenidos según necesidades del sistema.
+                </p>
+              </div>
+              <button (click)="agregarMaterial()">Vamos</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
-
-<div *ngIf="this.rol === 'admin'">
-  <div class="main">
-    <ul class="cards">
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/023/842/276/non_2x/school-building-cartoon-illustration-on-isolated-background-vector.jpg"
-              alt="Colegio."
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Cursos</h2>
-            <div class="card_text">
-              <p>
-                Para agregar nuevos cursos.
-              </p>
-              <p>
-                Además se permite modificar o inhabilitar cursos ya existentes.
-              </p>
-            </div>
-            <button (click)="agregarCurso()">Vamos</button>
-          </div>
-        </div>
-      </li>
-
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://leyinclusion.mineduc.cl/wp-content/uploads/sites/91/2019/08/Sala-de-clases.jpg"
-              alt="Sala de clases."
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Asignaturas</h2>
-            <div class="card_text">
-              <p>
-                Añadir asignaturas a algún curso
-              </p>
-              <p>Modificar el nombre de las asignaturas.</p>
-              <p>
-                Deshabilitar asignaturas en caso de errores en el sistema, u obsolencia según el Ministerio de Educación.
-              </p>
-            </div>
-            <button (click)="agregarAsignatura()">Vamos</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image">
-            <img
-              src="https://i.pinimg.com/originals/65/08/e8/6508e80376fbeba9e602129ea10ea294.jpg"
-              alt="Cuaderno de apuntes."
-            />
-          </div>
-          <div class="card_content">
-            <h2 class="card_title">Gestión de Material</h2>
-            <div class="card_text">
-              <p>Agregar nuevo material de estudio.</p>
-              <p>
-                Cambiar aspectos del material ya disponible, o desactivar contenidos según necesidades del sistema.
-              </p>
-            </div>
-            <button (click)="agregarMaterial()">Vamos</button>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
-
 <app-pie></app-pie>

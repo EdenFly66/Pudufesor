@@ -26,6 +26,7 @@ import { MaterialComponent } from './components/material/material.component';
 import { ContenidosComponent } from './components/contenidos/contenidos.component';
 import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
 import { PuduebasComponent } from './components/puduebas/puduebas.component';
+import { CargaComponent } from './components/carga/carga.component';
 
 const appRoutes:Routes=[
   {path:'',component:PrincipalComponent},
@@ -59,6 +60,7 @@ const appRoutes:Routes=[
     ContenidosComponent,
     EjercitarComponent,
     PuduebasComponent,
+    CargaComponent,
   ],
   imports: [
     FormsModule,
