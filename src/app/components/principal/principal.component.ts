@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { collection, Firestore } from '@angular/fire/firestore';
-import { query, getDocs, where, orderBy } from 'firebase/firestore';
+import { query, getDocs } from 'firebase/firestore';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
@@ -38,7 +38,7 @@ export class PrincipalComponent {
   }
 
   async obtenerData() {
-    const q = query(collection(this.firestore, 'Cursos'), where("habilitado","==",true),orderBy("nombre"));
+    const q = query(collection(this.firestore, 'Cursos'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((e) => {
       const datos = e.data() as Curso;
@@ -79,17 +79,10 @@ export class PrincipalComponent {
         allowOutsideClick: false,
       });
     } else {
-      let idCurso:number = 0;
-      for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i]==this.formulario.value.curso){
-          idCurso = this.cursos[i].idCurso
-        }
-      }
-
       this.router.navigate([
         '/contenidos' +
           '/' +
-          idCurso +
+          this.formulario.value.curso +
           '/' +
           this.formulario.value.asignatura,
       ]);
@@ -110,17 +103,10 @@ export class PrincipalComponent {
         allowOutsideClick: false,
       });
     } else {
-      let idCurso:number = 0;
-      for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i]==this.formulario.value.curso){
-          idCurso = this.cursos[i].idCurso
-        }
-      }
-
       this.router.navigate([
         '/ejercitar' +
           '/' +
-          idCurso +
+          this.formulario.value.curso +
           '/' +
           this.formulario.value.asignatura,
       ]);
@@ -141,17 +127,10 @@ export class PrincipalComponent {
         allowOutsideClick: false,
       });
     } else {
-      let idCurso:number = 0;
-      for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i]==this.formulario.value.curso){
-          idCurso = this.cursos[i].idCurso
-        }
-      }
-
       this.router.navigate([
         '/puduebas' +
           '/' +
-          idCurso +
+          this.formulario.value.curso +
           '/' +
           this.formulario.value.asignatura,
       ]);

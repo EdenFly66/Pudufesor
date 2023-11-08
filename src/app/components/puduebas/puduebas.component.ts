@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { orderBy, query, where } from 'firebase/firestore';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Material } from 'src/app/interfaces/material';
 import { Pregunta } from 'src/app/interfaces/pregunta';
@@ -15,9 +16,7 @@ import { PreguntaService } from 'src/app/services/pregunta.service';
 })
 export class PuduebasComponent {
 
-  aprobado! :boolean
-  notaPudueba! :string;
-  revisado : boolean = false;
+  formulario!: FormGroup;
   show: boolean = false;
   curso!: any;
   asignatura!: any;
@@ -25,22 +24,29 @@ export class PuduebasComponent {
   contenidosU2: any = [];
   contenidosU3: any = [];
   contenidosU4: any = [];
+  enunciado!: string;
+  correcta!: string;
   alternativas: Array<any> = [];
   cantP: Array<number> = [];
+  questionGroups!: any;
+  pvqForm!:FormGroup;
   preguntasPudu!:any;
   respuestas:any = [];
 
   constructor(
+    private readonly fb: FormBuilder,
     private route: ActivatedRoute,
     private firestore: Firestore,
     private preguntaServicio: PreguntaService
   ) {
-    
+    this.pvqForm = this.fb.group({
+      respuestas: new FormArray([])
+    });
   }
 
   ngOnInit() {
 
-    this.curso = Number(this.route.snapshot.paramMap.get("curso"));
+    this.curso = this.route.snapshot.paramMap.get('curso');
     this.asignatura = this.route.snapshot.paramMap.get('asignatura');
     this.obtenerContenidosU1().subscribe((e) => {
       this.contenidosU1 = e;
@@ -147,9 +153,8 @@ export class PuduebasComponent {
 
   cerrar() {
     this.preguntasPudu = []
-    window.location.reload()
     this.show = false;
-    this.revisado = false;
+    window.location.reload()
   }
   revision(){
     let puntajeObtenido:number = 0
@@ -157,8 +162,7 @@ export class PuduebasComponent {
     let puntajeMaximo = this.preguntasPudu.length
     let notaObtenida:number
     for(let i=0;i<this.respuestas.length;i++){
-      console.log(this.respuestas[i],this.preguntasPudu[i].respuestaCorrecta)
-      if(this.respuestas[i]==this.preguntasPudu[i].respuestaCorrecta){
+      if(this.respuestas[i]==this.preguntasPudu.respuestaCorrecta){
         puntajeObtenido++
       }
     }
@@ -168,18 +172,14 @@ export class PuduebasComponent {
     else{
       aprobado=true
     }
-    if(!aprobado){
+    if(aprobado){
       notaObtenida = (3 * (puntajeObtenido/(0.6 * puntajeMaximo))) + 1
-      this.aprobado = false
     }
     else{
       notaObtenida = (3 * ((puntajeObtenido - (0.6 * puntajeMaximo))/(puntajeMaximo * 0.4))) + 4
-      this.aprobado = true
     }
-
-    this.notaPudueba = notaObtenida.toFixed(1)
-    console.log(puntajeObtenido,puntajeMaximo,notaObtenida)
-    this.revisado = true
+    notaObtenida = Number(notaObtenida.toFixed(1))
+    console.log(puntajeObtenido,notaObtenida)
   }
 
   check(nr:number,ans:string){

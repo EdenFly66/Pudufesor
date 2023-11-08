@@ -110,7 +110,7 @@
   </div>
 </div>
 
-<div *ngIf="this.show && !this.revisado" class="pudueba">
+<div *ngIf="this.show" class="pudueba">
   <div *ngFor="let pregunta of this.preguntasPudu; let i = index" class="ejercicio">
     <h1>{{ pregunta.enunciado }}</h1>
     <ol *ngFor="let a of pregunta.alternativas.sort()" class="respuestas">
@@ -126,31 +126,8 @@
 
   <hr>
   <div>
-    <button class="button1" (click)="revision()">Revisar</button>
-    <button class="button2" (click)="cerrar()">Cerrar</button>
+    <button (click)="revision()">Revisar</button>
+    <button (click)="cerrar()">Cerrar</button>
   </div>
   
-</div>
-
-<div *ngIf="this.revisado" class="pudueba">
-  <h2 class="ejercicio" *ngIf="aprobado" style="color:blue;font-size: 15vh; text-align: center;font-family: Homemade Apple;">{{this.notaPudueba}}</h2>
-  <h2 class="ejercicio" *ngIf="!aprobado" style="color:red;font-size: 15vh;text-align: center;font-family: Homemade Apple;">{{this.notaPudueba}}</h2>
-  <hr>
-  <div *ngFor="let pregunta of this.preguntasPudu; let i = index" class="ejercicio">
-    <h1 *ngIf="this.respuestas[i]==pregunta.respuestaCorrecta" style="color:green">{{ pregunta.enunciado }}</h1>
-    <h1 *ngIf="this.respuestas[i]!=pregunta.respuestaCorrecta" style="color:red">{{ pregunta.enunciado }}</h1>
-    <br>
-    <br>
-      <li>
-        Respuesta seleccionada: {{this.respuestas[i]}}
-      </li>
-      <br>
-      <li>
-        Respuesta correcta: {{pregunta.respuestaCorrecta}}
-      </li>
-  </div>
-  <hr>
-  <div>
-    <button class="button2" (click)="cerrar()">Cerrar</button>
-  </div>
 </div>

@@ -10,9 +10,7 @@
     height: 100%;
 }
 
-.central {
-    margin: 5vh;
-    padding: 5vh;
+#central {
     max-width: 320px;
     width: 100%;
 }
@@ -102,8 +100,4 @@
 
 .pie-form a:hover {
     color: rgb(41, 54, 41);
-}
-
-.btn{
-    margin: 1vh
 }
