@@ -80,7 +80,7 @@ export class CursoComponent {
       if (!guardar) {
         Swal.fire({
           title: '¡Denegado!',
-          text: 'Ya existe la asignatura.',
+          text: 'Ya existe el curso.',
           icon: 'warning',
           allowOutsideClick: false,
         });
