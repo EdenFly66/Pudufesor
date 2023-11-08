@@ -81,7 +81,7 @@ export class PrincipalComponent {
     } else {
       let idCurso:number = 0;
       for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i].nombre==this.formulario.value.curso){
+        if (this.cursos[i]==this.formulario.value.curso){
           idCurso = this.cursos[i].idCurso
         }
       }
@@ -112,7 +112,7 @@ export class PrincipalComponent {
     } else {
       let idCurso:number = 0;
       for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i].nombre==this.formulario.value.curso){
+        if (this.cursos[i]==this.formulario.value.curso){
           idCurso = this.cursos[i].idCurso
         }
       }
@@ -143,7 +143,7 @@ export class PrincipalComponent {
     } else {
       let idCurso:number = 0;
       for(let i=0;i<this.cursos.length;i++){
-        if (this.cursos[i].nombre==this.formulario.value.curso){
+        if (this.cursos[i]==this.formulario.value.curso){
           idCurso = this.cursos[i].idCurso
         }
       }
