@@ -200,9 +200,9 @@ export class PuduebasComponent {
       .concat(this.contenidosU4);
     let contenidoPregunta: Pregunta;
     let alts: Array<string> = []
-    let id: number;
+    let id: string;
     for (let i = 0; i < this.cantP.length; i++) {
-      id = IDS[i].idMaterial;
+      id = IDS[i].nombre;
       for (let j = 0; j < this.cantP[i]; j++) {
         contenidoPregunta = this.preguntaServicio.tematica(
           id);

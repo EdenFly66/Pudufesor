@@ -30,7 +30,7 @@ family=Reenie+Beanie:regular"
   "
 >
 </app-carga>
-<div class="container">
+<div class="container" *ngIf="!this.show">
   <ul *ngIf="contenidosU1.length > 0">
     <li>
       <a target="_blank"
@@ -46,7 +46,7 @@ family=Reenie+Beanie:regular"
           *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
-          (click)="pregunta(x.idMaterial)"
+          (click)="pregunta(x.nombre)"
         ></i>
       </a>
     </li>
@@ -66,7 +66,7 @@ family=Reenie+Beanie:regular"
           *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
-          (click)="pregunta(x.idMaterial)"
+          (click)="pregunta(x.nombre)"
         ></i>
       </a>
     </li>
@@ -86,7 +86,7 @@ family=Reenie+Beanie:regular"
           *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
-          (click)="pregunta(x.idMaterial)"
+          (click)="pregunta(x.nombre)"
         ></i
       ></a>
     </li>
@@ -106,41 +106,36 @@ family=Reenie+Beanie:regular"
           *ngIf="!this.show"
           class="fa fa-rocket"
           style="margin: 5px"
-          (click)="pregunta(x.idMaterial)"
+          (click)="pregunta(x.nombre)"
         ></i
       ></a>
     </li>
   </ul>
 </div>
 
-<ng-container *ngIf="this.show" class="modal">
-  <div class="modalc">
-    <div class="modalc-content">
-      <div class="modalc-header">
-        <h1 class="modal-title fs-5">{{ this.enunciado }}</h1>
-      </div>
-      <hr />
-      <form [formGroup]="formulario" class="modalc-body">
-        <div class="modalc-body" *ngFor="let a of alternativas.sort()">
-          <input
-            type="radio"
-            name="respuesta"
-            value="{{ a }}"
-            formControlName="respuesta"
-            class="modalc-casilla"
-          />
-          <h5 class="modalc-alternativa">{{ a }}</h5>
-        </div>
-      </form>
-      <hr />
-      <div class="modalc-footer">
-        <div class="modadlc-buttoncontainer">
-          <button (click)="revision()" class="modalc-button1">Revisar</button>
-          <button (click)="cerrar()" class="modalc-button2">Cerrar</button>
-        </div>
-      </div>
-    </div>
+<div *ngIf="this.show" class="pudueba">
+  <div class="ejercicio">
+    <h1>{{ this.enunciado }}</h1>
   </div>
-</ng-container>
+  <hr />
+  <ol *ngFor="let a of alternativas.sort()" class="respuestas">
+    <li class="alternativa" *ngIf="a != this.selected" (click)="select(a)">
+      ➵ {{ a }}
+    </li>
+    <li
+      (click)="select(a)"
+      class="alternativa"
+      *ngIf="a == this.selected"
+      style="color: rgb(60, 131, 72); text-decoration: underline"
+    >
+    ➵ {{ a }}
+    </li>
+  </ol>
+  <hr />
+  <div>
+    <button class="button1" (click)="revision()">Revisar</button>
+    <button class="button2" (click)="cerrar()">Cerrar</button>
+  </div>
+</div>
 
 <app-pie></app-pie>

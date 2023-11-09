@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ejercitar.component.scss'],
 })
 export class EjercitarComponent {
+  selected :string = '';
   formulario!: any;
   curso!: any;
   asignatura!: any;
@@ -98,8 +99,9 @@ export class EjercitarComponent {
     return collectionData(q);
   }
 
-  pregunta(id:number) {
+  pregunta(id:string) {
     let contenidoPregunta: Pregunta = this.preguntaServicio.tematica(id)
+    console.log(contenidoPregunta)
     this.alternativas.push(contenidoPregunta.respuestaCorrecta);
     for (let i = 0; i < contenidoPregunta.respuestasIncorrectas.length; i++) {
       this.alternativas.push(contenidoPregunta.respuestasIncorrectas[i]);
@@ -109,8 +111,12 @@ export class EjercitarComponent {
     this.show = true;
   }
 
+  select(a:string){
+    this.selected = a
+  }
+
   revision() {
-    if (this.formulario.value.respuesta == this.correcta) {
+    if (this.selected == this.correcta) {
       Swal.fire({
         title: '¡Respuesta correcta!',
         text: 'Felicidades, sigue así.',
@@ -118,7 +124,7 @@ export class EjercitarComponent {
         allowOutsideClick: false,
       });
       this.cerrar();
-    } else if (this.formulario.value.respuesta == '') {
+    } else if (this.selected == '') {
       Swal.fire({
         title: 'No has respondido',
         text: 'Recuerda marcar la alternativa correcta.',

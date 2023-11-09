@@ -28,6 +28,7 @@ import { EjercitarComponent } from './components/ejercitar/ejercitar.component';
 import { PuduebasComponent } from './components/puduebas/puduebas.component';
 import { CargaComponent } from './components/carga/carga.component';
 
+
 const appRoutes:Routes=[
   {path:'',component:PrincipalComponent},
   {path:'ingresar',component:IngresarComponent},

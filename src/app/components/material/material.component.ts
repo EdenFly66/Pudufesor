@@ -27,7 +27,6 @@ export class MaterialComponent {
       nombre:['',[Validators.required]],
       asignatura:['',[Validators.required]],
       video:['',[Validators.required]],
-      imagen:['',[Validators.required]],
       documento:['',[Validators.required]],
       orden:['',[Validators.required]],
       unidad:['',[Validators.required]],
@@ -66,7 +65,7 @@ export class MaterialComponent {
       this.materiales.push(datos.nombre)
     })
     if(this.formulario.value.curso=="Curso" || this.formulario.value.nombre=="" || this.formulario.value.asignatura=="Asignatura"
-    || this.formulario.value.unidad=="Unidad"|| this.formulario.value.orden==""|| this.formulario.value.imagen==""
+    || this.formulario.value.unidad=="Unidad"|| this.formulario.value.orden==""
     || this.formulario.value.video==""|| this.formulario.value.documento==""){
       Swal.fire({
         title: '¡Cuidado!',
@@ -96,7 +95,6 @@ export class MaterialComponent {
           "nombre":this.formulario.value.nombre,
           "asignatura":this.formulario.value.asignatura,
           "video":this.formulario.value.video,
-          "imagen":this.formulario.value.imagen,
           "documento":this.formulario.value.documento,
           "orden":this.formulario.value.orden,
           "unidad":this.formulario.value.unidad,

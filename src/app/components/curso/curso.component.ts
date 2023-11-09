@@ -9,7 +9,6 @@ import {
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Curso } from 'src/app/interfaces/curso';
-import { Incremental } from 'src/app/interfaces/incremental';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -35,9 +34,6 @@ export class CursoComponent {
   async ngOnInit() {
     const docRef = doc(this.firestore, 'Incrementales', 'UltimoIdCurso');
     const docSnap = await getDoc(docRef);
-    let data: Incremental = docSnap.data() as Incremental;
-    this.incremental = data.id;
-    console.log("inc = ",data.id);
   }
 
   async agregar() {
@@ -71,18 +67,9 @@ export class CursoComponent {
         });
       } else {
         setDoc(doc(ref, this.formulario.value.curso), {
-          idCurso: this.incremental + 1,
           nombre: this.formulario.value.curso,
           ramos: [],
         });
-
-        setDoc(
-          doc(collection(this.firestore, 'Incrementales'), 'UltimoIdCurso'),
-          {
-            id: this.incremental + 1,
-            nombre: 'curso',
-          }
-        );
         Swal.fire({
           title: '¡Hecho!',
           text: 'Se ha agregado el nuevo curso.',

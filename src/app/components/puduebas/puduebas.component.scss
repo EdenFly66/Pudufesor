@@ -187,28 +187,28 @@ ul li a:focus {
   }
 }
 
-.b-holder{
-    text-align: center;
+.b-holder {
+  text-align: center;
 }
 #crear {
-    justify-self: center;
-    background-color: #5ed8d8; /* Red */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 100px;
+  justify-self: center;
+  background-color: #5ed8d8; /* Red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 100px;
 }
-#crear:hover{
-    background-color: #ffffff;
-    color:#5ed8d8;
+#crear:hover {
+  background-color: #ffffff;
+  color: #5ed8d8;
 }
 
 //pudueba generada
 
-.pudueba{
+.pudueba {
   margin: 10vh;
   padding: 10vh;
   background: repeating-linear-gradient(
@@ -221,21 +221,50 @@ ul li a:focus {
   -webkit-mask: radial-gradient(circle 0.8rem at 2px 50%, #0000 98%, #000) 0 0/100%
     2.4rem;
 
-
-  .h1{
+  .h1 {
     margin-bottom: 5vh;
   }
-  .ejercicio{
+  .ejercicio {
     padding: 5vh;
     font-size: larger;
     font-weight: bold;
     justify-self: center;
   }
 
-  .respuestas{
+  .respuestas {
     padding: 3vh;
     justify-content: space-between;
   }
-  
+  .button1 {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100px;
+    margin: 10px;
+  }
+  .button1:hover {
+    background-color: rgb(177, 177, 177);
+    color: #ffffff;
+  }
+  .button2 {
+    background-color: #af4c54; /* Red */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100px;
+    margin: 10px;
+  }
+  .button2:hover {
+    background-color: rgb(177, 177, 177);
+    color: #ffffff;
+  }
 }
-  

@@ -115,10 +115,10 @@
     <h1>{{ pregunta.enunciado }}</h1>
     <ol *ngFor="let a of pregunta.alternativas.sort()" class="respuestas">
       <li (click)="answers(i, a)" class="alternativa" *ngIf="!check(i,a)">
-        {{ a }}
+        ➵ {{ a }}
       </li>
       <li (click)="answers(i, a)" class="alternativa" *ngIf="check(i,a)" style="color: rgb(60, 131, 72); text-decoration: underline;">
-        {{ a }}
+        ➵ {{ a }}
       </li>
     </ol>
     
@@ -126,8 +126,8 @@
 
   <hr>
   <div>
-    <button (click)="revision()">Revisar</button>
-    <button (click)="cerrar()">Cerrar</button>
+    <button class="button1" (click)="revision()">Revisar</button>
+    <button class="button2" (click)="cerrar()">Cerrar</button>
   </div>
   
 </div>

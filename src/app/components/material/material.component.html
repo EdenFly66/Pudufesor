@@ -100,23 +100,6 @@
                 Este campo es obligatorio.
             </div>
 
-            <div class="mb-4">
-                <label for="imagen" class="form-label">Imagen:</label>
-                <input
-                type="imagen"
-                class="form-control"
-                id="imagen"
-                name="imagen"
-                formControlName="imagen"
-                />
-            </div>
-  
-            <div
-                *ngIf="formulario.get('imagen')?.touched && formulario.get('imagen')?.errors?.['required']"
-                style="background-color:#7e7c11; color: rgba(255, 255, 255, 0.85);text-align: center;">
-                Este campo es obligatorio.
-            </div>
-  
             
             <div class="mb-4">
             <label for="documento" class="form-label">Documento:</label>

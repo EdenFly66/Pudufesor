@@ -1,9 +1,9 @@
 <header class="header">
     <div id="logo">
-      <a id="icono" href="">
+      <div id="icono" href="">
         <img src="/assets/LogoPudufesor.png" alt="Logo Pudúfesor" />
         <h1>Pudúfesor</h1>
-      </a>
+      </div>
     </div>
     <ul *ngIf="this.rol != 'usuario' && this.rol != 'admin'" class="main-nav">
       <li><button (click)="botonInicio()">Inicio</button></li>
@@ -12,7 +12,6 @@
     </ul>
     <ul *ngIf="this.rol === 'usuario'" class="main-nav">
       <li><button (click)="botonInicio()">Inicio</button></li>
-      <li><button (click)="botonPerfil()">Perfil</button></li>
       <li><button (click)="botonSalir()">Salir</button></li>
     </ul>
     <ul *ngIf="this.rol === 'admin'" class="main-nav">

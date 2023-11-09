@@ -89,7 +89,7 @@ export class PreguntaService {
     }
     if (tipo == 1) {
       //Convertir de número decimal (2 decimales) a fracción
-      let unidades = this.generarNaturales(3);
+      let unidades = this.generarNaturales(9);
       let decimas = this.generarNaturales(9);
       let centesimas = this.generarNaturales(9);
 
@@ -512,9 +512,9 @@ export class PreguntaService {
       if (base <= 1) {
         return this.potencias(1);
       }
-      let exp1 = this.generarNaturales(6);
-      let exp2 = this.generarNaturales(6);
-      let exp3 = this.generarNaturales(6);
+      let exp1 = this.generarNaturales(9);
+      let exp2 = this.generarNaturales(9);
+      let exp3 = this.generarNaturales(9);
       if (
         exp1 == 1 ||
         exp2 == 1 ||
@@ -605,9 +605,9 @@ export class PreguntaService {
       if (base <= 1) {
         return this.potencias(2);
       }
-      let exp1 = this.generarEntero(5);
-      let exp2 = this.generarEntero(5);
-      let exp3 = this.generarEntero(5);
+      let exp1 = this.generarEntero(9);
+      let exp2 = this.generarEntero(9);
+      let exp3 = this.generarEntero(9);
 
       let texto =
         'Resuelva le siguiente ejercicio: ((' +
@@ -823,8 +823,8 @@ export class PreguntaService {
     }
     if (tipo == 1) {
       //cuadrado de binomio,suma
-      let a = this.generarNaturales(5) + 1;
-      let b = this.generarNaturales(5) + 1;
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
 
       if (b == 1) {
         return this.productosNotables(1);
@@ -888,8 +888,8 @@ export class PreguntaService {
       return contenidoPregunta;
     } else if (tipo == 2) {
       //cuadrado de binomio, resta
-      let a = this.generarNaturales(5) + 1;
-      let b = this.generarNaturales(5) + 1;
+      let a = this.generarNaturales(9) + 1;
+      let b = this.generarNaturales(9) + 1;
 
       if (b == 1) {
         return this.productosNotables(2);
@@ -2989,235 +2989,55 @@ export class PreguntaService {
       tipo = this.generarNaturales(4) + 1;
     }
     if (tipo == 1) {
-      let a = this.generarNaturales(9) + 1;
-      let b = this.generarNaturales(9) + 1;
-      let c = this.generarNaturales(9) + 1;
-
-      let texto =
-        'Si tienes ' +
-        a.toString() +
-        ' poleras, ' +
-        b.toString() +
-        ' pantalones y ' +
-        c.toString() +
-        ' pares de zapatos. Calcule la cantidad total de combinaciones de atuendos.';
-      let respuestaCorrecta = (a * b * c).toString();
-      let respuestasIncorrectas: Array<string> = [];
-      respuestasIncorrectas.push((a + b * c).toString());
-      respuestasIncorrectas.push((a + b + c).toString());
-      respuestasIncorrectas.push((a * b + c).toString());
-      respuestasIncorrectas.push((a * c + b).toString());
-
-      if (
-        respuestaCorrecta == respuestasIncorrectas[0] ||
-        respuestaCorrecta == respuestasIncorrectas[1] ||
-        respuestaCorrecta == respuestasIncorrectas[2] ||
-        respuestaCorrecta == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[2] == respuestasIncorrectas[3]
-      ) {
-        return this.comportamientoAleatorio(1);
-      }
-
-      let alternativas = []
-      alternativas.push(respuestaCorrecta)
-      alternativas.push(respuestasIncorrectas[0])
-      alternativas.push(respuestasIncorrectas[1])
-      alternativas.push(respuestasIncorrectas[2])
-      alternativas.push(respuestasIncorrectas[3])
-      let contenidoPregunta: Pregunta = Object.assign({
-        enunciado: texto,
-        respuestaCorrecta: respuestaCorrecta,
-        respuestasIncorrectas: respuestasIncorrectas,
-        alternativas: alternativas,
-      });
-      return contenidoPregunta;
+      
     } else if (tipo == 2) {
-      let a = this.generarNaturales(5)+1
-      let texto = "Si se lanzan "+a.toString()+" monedas. Calcule la cantidad total de resultados posibles."
-      let respuestaCorrecta = (2**a).toString();
-      let respuestasIncorrectas: Array<string> = [];
-      respuestasIncorrectas.push((2*a).toString());
-      respuestasIncorrectas.push((a*a).toString());
-      respuestasIncorrectas.push((2+a).toString());
-      respuestasIncorrectas.push((2**(a-1)).toString());
 
-      if (
-        respuestaCorrecta == respuestasIncorrectas[0] ||
-        respuestaCorrecta == respuestasIncorrectas[1] ||
-        respuestaCorrecta == respuestasIncorrectas[2] ||
-        respuestaCorrecta == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[2] == respuestasIncorrectas[3]
-      ) {
-        return this.comportamientoAleatorio(2);
-      }
-
-      let alternativas = []
-      alternativas.push(respuestaCorrecta)
-      alternativas.push(respuestasIncorrectas[0])
-      alternativas.push(respuestasIncorrectas[1])
-      alternativas.push(respuestasIncorrectas[2])
-      alternativas.push(respuestasIncorrectas[3])
-      let contenidoPregunta: Pregunta = Object.assign({
-        enunciado: texto,
-        respuestaCorrecta: respuestaCorrecta,
-        respuestasIncorrectas: respuestasIncorrectas,
-        alternativas: alternativas,
-      });
-      return contenidoPregunta;
-      
     } else if (tipo == 3) {
-      let x = this.generarNaturales(4)+2
-      let c = this.generarNaturales(15)+1
-      while(x+1>=c){
-        c = this.generarNaturales(14)+1
-      }
-      let texto = "¿De cuántas maneras pueden repartirse "+x.toString()+" premios entre "+c.toString()+" ,suponiendo que cada persona no puede ganar mas de un premio."
-      
-      let correcto = 1
-      let copiaC = c
-      for(let i = 0 ; i<x ;i++){
-        correcto*= copiaC
-        copiaC -= 1 
-      }
-      let err1 = 0
-      copiaC = c
-      for(let i = 0 ; i<x ;i++){
-        err1+= copiaC
-        copiaC -= 1 
-      }
-      let err2 = 1
-      copiaC = c
-      for(let i = 0 ; i<=x ;i++){
-        err2*= copiaC
-        copiaC -= 1 
-      }
-      let respuestaCorrecta = (correcto).toString();
-      let respuestasIncorrectas: Array<string> = [];
-      respuestasIncorrectas.push((err1).toString());
-      respuestasIncorrectas.push((err2).toString());
-      respuestasIncorrectas.push((c**x).toString());
-      respuestasIncorrectas.push((c*x).toString());
 
-      if (
-        respuestaCorrecta == respuestasIncorrectas[0] ||
-        respuestaCorrecta == respuestasIncorrectas[1] ||
-        respuestaCorrecta == respuestasIncorrectas[2] ||
-        respuestaCorrecta == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[2] == respuestasIncorrectas[3]
-      ) {
-        return this.comportamientoAleatorio(3);
-      }
-
-      let alternativas = []
-      alternativas.push(respuestaCorrecta)
-      alternativas.push(respuestasIncorrectas[0])
-      alternativas.push(respuestasIncorrectas[1])
-      alternativas.push(respuestasIncorrectas[2])
-      alternativas.push(respuestasIncorrectas[3])
-      let contenidoPregunta: Pregunta = Object.assign({
-        enunciado: texto,
-        respuestaCorrecta: respuestaCorrecta,
-        respuestasIncorrectas: respuestasIncorrectas,
-        alternativas: alternativas,
-      });
-      return contenidoPregunta;
     } else if (tipo == 4) {
-      let a = this.generarNaturales(10)+5;
-      let b = this.generarNaturales(10)+5;
 
-      let texto = "Un curso de "+(a+b).toString()+" está conformado por "+ a.toString()+" hombres y "+ b.toString()+" mujeres, elegirá su directiva, compuesta por un Presidente, Vicepresidente, Tesorero(a) y Secretario(a). Si el curso decide que la tesorería estará a cargo de una mujer y la secretaría por un hombre. Calcule la cantidad de posibilidades de directiva."
-      let respuestaCorrecta = (a*b*(a+b-2)*(a+b-3)).toString();
-      let respuestasIncorrectas: Array<string> = [];
-      respuestasIncorrectas.push(((a+b)*(a+b-1)*(a+b-2)*(a+b-3)).toString());
-      respuestasIncorrectas.push((a*b*(a+b)*(a+b)).toString());
-      respuestasIncorrectas.push((a*b*(a+b)*(a+b-1)).toString());
-      respuestasIncorrectas.push(((a+b)**4).toString());
-
-      if (
-        respuestaCorrecta == respuestasIncorrectas[0] ||
-        respuestaCorrecta == respuestasIncorrectas[1] ||
-        respuestaCorrecta == respuestasIncorrectas[2] ||
-        respuestaCorrecta == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[1] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[0] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[2] ||
-        respuestasIncorrectas[1] == respuestasIncorrectas[3] ||
-        respuestasIncorrectas[2] == respuestasIncorrectas[3]
-      ) {
-        return this.comportamientoAleatorio(4);
-      }
-
-      let alternativas = []
-      alternativas.push(respuestaCorrecta)
-      alternativas.push(respuestasIncorrectas[0])
-      alternativas.push(respuestasIncorrectas[1])
-      alternativas.push(respuestasIncorrectas[2])
-      alternativas.push(respuestasIncorrectas[3])
-      let contenidoPregunta: Pregunta = Object.assign({
-        enunciado: texto,
-        respuestaCorrecta: respuestaCorrecta,
-        respuestasIncorrectas: respuestasIncorrectas,
-        alternativas: alternativas,
-      });
-      return contenidoPregunta;
     }
     return 0 as unknown as Pregunta;
   }
   
-  tematica(id:number):Pregunta{
+  tematica(id:string):Pregunta{
     let contenidoPregunta: Pregunta;
     switch (id){
-      case 1:
+      case 'Operatoria en los números racionales':
         contenidoPregunta = this.operatoriaRacionales(0);
         break;
-      case 2:
-        contenidoPregunta = this.potencias(0);
+      case 'Potencias':
+        contenidoPregunta = this.potencias(0); 
         break;
-      case 3:
+      case 'Productos notables':
         contenidoPregunta = this.productosNotables(0);
         break;
-      case 4:
+      case 'Área de la superficie y volumen del cono':
         contenidoPregunta = this.cono(0);
       break;
-      case 5:
-        contenidoPregunta = this.sistemaEcuacionesLineales(0);
+      case 'Perímetro y área de sectores y segmentos circulares':
+        contenidoPregunta = this.sectoresCirculares(4);
       break;
-      case 6:
+      case 'Relaciones lineales en dos variables':
         contenidoPregunta = this.funcionesLineales(0);
       break;
-      case 7:
-        contenidoPregunta = this.sectoresCirculares(0);
+      case 'Sistema de ecuaciones lineales':
+        contenidoPregunta = this.sistemaEcuacionesLineales(0);
       break;
-      case 8:
+      case 'Homotecia y teorema de Tales':
         contenidoPregunta = this.homoteciaTales(0);
       break;
-      case 9:
+      case 'Semejanza':
         contenidoPregunta = this.semejanza(0);
       break;
-      case 10:
+      case 'Análisis de poblaciones':
         contenidoPregunta = this.analisisPoblaciones(0);
       break;
-      case 11:
+      case 'Comportamiento aleatorio':
         contenidoPregunta = this.reglasProbabilidad(0);
       break;
-      case 12:
-        contenidoPregunta = this.comportamientoAleatorio(0);
+      case 'Reglas de la probabilidad':
+        contenidoPregunta = this.comportamientoAleatorio(1); //arreglar full
       break;
       default:
         contenidoPregunta = 0 as unknown as Pregunta;
