@@ -14,7 +14,7 @@
 >
 </app-carga>
 
-<div *ngIf="!this.show">
+<div *ngIf="!this.show && !this.revisado">
   <div
     class="container"
     *ngIf="
@@ -130,4 +130,17 @@
     <button class="button2" (click)="cerrar()">Cerrar</button>
   </div>
   
+</div>
+
+<div *ngIf="this.revisado" class="pudueba">
+  <h1 *ngIf="this.notaFinal >= 4" style="text-align: center; color:blue;">Nota Obtenida: {{this.notaFinal}}</h1>
+  <h1 *ngIf="4 > this.notaFinal" style="text-align: center; color:red;">Nota Obtenida: {{this.notaFinal}}</h1>
+  <div *ngFor="let p of this.preguntasPudu; let i = index" class="ejercicio">
+    <h1>{{p.enunciado}}</h1>
+    <br>
+    <li class="alternativa">Respuesta correcta: {{p.respuestaCorrecta}}</li>
+    <li *ngIf="p.respuestaCorrecta == this.respuestas[i]" class="alternativa" style="color:green">Respuesta marcada: {{this.respuestas[i]}}</li>
+    <li *ngIf="p.respuestaCorrecta != this.respuestas[i]" class="alternativa" style="color:red">Respuesta marcada: {{this.respuestas[i]}}</li>
+  </div>
+  <button class="button2" (click)="cerrar()">Cerrar</button>
 </div>

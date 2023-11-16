@@ -29,9 +29,10 @@ export class PuduebasComponent {
   alternativas: Array<any> = [];
   cantP: Array<number> = [];
   questionGroups!: any;
-  pvqForm!:FormGroup;
   preguntasPudu!:any;
   respuestas:any = [];
+  revisado:boolean = false;
+  notaFinal!: number;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -39,9 +40,7 @@ export class PuduebasComponent {
     private firestore: Firestore,
     private preguntaServicio: PreguntaService
   ) {
-    this.pvqForm = this.fb.group({
-      respuestas: new FormArray([])
-    });
+    
   }
 
   ngOnInit() {
@@ -154,15 +153,17 @@ export class PuduebasComponent {
   cerrar() {
     this.preguntasPudu = []
     this.show = false;
+    this.revisado = false;
     window.location.reload()
   }
   revision(){
+    this.show = false;
     let puntajeObtenido:number = 0
     let aprobado:boolean
     let puntajeMaximo = this.preguntasPudu.length
     let notaObtenida:number
     for(let i=0;i<this.respuestas.length;i++){
-      if(this.respuestas[i]==this.preguntasPudu.respuestaCorrecta){
+      if(this.respuestas[i]==this.preguntasPudu[i].respuestaCorrecta){
         puntajeObtenido++
       }
     }
@@ -172,14 +173,16 @@ export class PuduebasComponent {
     else{
       aprobado=true
     }
-    if(aprobado){
+    if(!aprobado){
       notaObtenida = (3 * (puntajeObtenido/(0.6 * puntajeMaximo))) + 1
     }
     else{
       notaObtenida = (3 * ((puntajeObtenido - (0.6 * puntajeMaximo))/(puntajeMaximo * 0.4))) + 4
     }
+    
     notaObtenida = Number(notaObtenida.toFixed(1))
-    console.log(puntajeObtenido,notaObtenida)
+    this.revisado = true;
+    this.notaFinal = notaObtenida;
   }
 
   check(nr:number,ans:string){
@@ -188,7 +191,6 @@ export class PuduebasComponent {
 
   answers(nr:number,ans:string){
     this.respuestas[nr] = ans;
-    console.log(this.respuestas)
   }
 
 

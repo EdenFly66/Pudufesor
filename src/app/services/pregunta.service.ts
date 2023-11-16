@@ -2986,7 +2986,7 @@ export class PreguntaService {
 
   comportamientoAleatorio(tipo: number): Pregunta {
     if (tipo == 0) {
-      tipo = this.generarNaturales(4) + 1;
+      tipo = this.generarNaturales(0) + 1;
     }
     if (tipo == 1) {
       
