@@ -4,15 +4,19 @@ Este proyecto fue generado con Angular CLI [Angular CLI](https://github.com/angu
 
 ## Descripción del Proyecto.
 
-Pudúfesor es una aplicación web cuyo propósito es complementar el estudio de los estudiantes, mediante la disposición de contenidos educativos,
-tales como guías o vídeos. También proporciona una sección de preguntas para la realización de ejercicios, estos son generados de manera
-pseudo-aleatoria, evitando el problema de obsolencia tras el uso de la página.
+Pudúfesor es una aplicación web cuyo propósito es complementar el estudio de los estudiantes, mediante la disposición de contenidos educativos, tales como guías o vídeos. También proporciona una sección de preguntas para la realización de ejercicios, estos son generados de manera pseudo-aleatoria, evitando el problema de obsolencia tras el uso de la página.
 
 ## Herramientas utilizadas.
 
 Se utilizó Angular CLI v.15.0.2, los servicios de Backend de Firebase, la base de datos no relacional Firestore y Sass para la codificación de las hojas de estilo.
 
+# Instrucciones de Compilación
 
+1. Descargar el repositorio, mediante Github Desktop, o descargando la carpeta en formato .zip.
+2. Abrir la carpeta en el editor de código de preferencia.
+3. Teniendo node.js instalado, abrir la consola e ingresar el comando: npm install
+4. En la consola ingresar el comando: ng serve
+5. Ingresar mediante su navegador en el localhost de su dispositivo.
 
 # Angular Commands 
 ## Development server
