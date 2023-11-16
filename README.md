@@ -15,8 +15,9 @@ Se utilizó Angular CLI v.15.0.2, los servicios de Backend de Firebase, la base 
 1. Descargar el repositorio, mediante Github Desktop, o descargando la carpeta en formato .zip.
 2. Abrir la carpeta en el editor de código de preferencia.
 3. Teniendo node.js instalado, abrir la consola e ingresar el comando: npm install
-4. En la consola ingresar el comando: ng serve
-5. Ingresar mediante su navegador en el localhost de su dispositivo.
+4. Instalar angular cli utilizando el siguiente comando en consola: npm install @angular/cli
+5. En la consola ingresar el comando: npm run ng serve
+6. Ingresar mediante su navegador en el localhost de su dispositivo.
 
 # Angular Commands 
 ## Development server
