@@ -83,7 +83,7 @@ export class UserService {
         icon: 'success',
         allowOutsideClick: false,
       })
-      this.router.navigate([''])
+      this.router.navigate(['/ingresar'])
     }).catch((error)=>{
       this.firebaseError.firebaseError(error.code);
     })
