@@ -3037,7 +3037,7 @@ export class PreguntaService {
         contenidoPregunta = this.reglasProbabilidad(0);
       break;
       case 'Reglas de la probabilidad':
-        contenidoPregunta = this.comportamientoAleatorio(1); //arreglar full
+        contenidoPregunta = this.comportamientoAleatorio(0);
       break;
       default:
         contenidoPregunta = 0 as unknown as Pregunta;
